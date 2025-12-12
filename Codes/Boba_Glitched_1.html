@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
 
   <style>
     body {
@@ -21,13 +21,13 @@
     header {
       background-color: #dc3545;
       color: white;
-      padding: 3rem 0;
+      padding: 4rem 0;
       text-align: center;
     }
 
     header h1 {
       font-weight: 800;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
     }
 
     .btn-back {
@@ -45,20 +45,16 @@
     main {
       max-width: 900px;
       margin: 3rem auto;
-      padding: 2.5rem;
-      background-color: white;
-      border-radius: 2rem;
-      box-shadow: 0 0.75rem 2rem rgba(0,0,0,0.15);
-      transition: all 0.3s ease;
-    }
-
-    main:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 1rem 2.5rem rgba(0,0,0,0.2);
     }
 
     .project-info .card {
       border-left-width: 0.25rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .project-info .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0.75rem 1.5rem rgba(0,0,0,0.1);
     }
 
     .project-image img {
@@ -100,53 +96,57 @@
 
   <!-- Main Content -->
   <main>
-    <h2 class="text-center text-danger mb-5">Project Overview: Data Bending with TextEdit</h2>
-    
-    <p class="text-center mb-4 text-muted">
-      This project is the first in an experimental digital art series, focusing on <strong>glitch art</strong> created by manually manipulating a file's code, also called <strong>data bending</strong>.
-    </p>
+    <div class="bg-white p-5 rounded-4 shadow-sm">
 
-    <!-- Project Info Cards -->
-    <div class="row g-3 mb-5 project-info text-center text-md-start">
-      <div class="col-md-4">
-        <div class="card p-3 border-start border-danger">
-          <p class="fw-semibold mb-1 text-muted">Category:</p>
-          <p class="mb-0">Data Manipulation / Glitch Art</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card p-3 border-start border-danger">
-          <p class="fw-semibold mb-1 text-muted">Tools Used:</p>
-          <p class="mb-0">TextEdit (Mac), Preview</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card p-3 border-start border-danger">
-          <p class="fw-semibold mb-1 text-muted">File Source:</p>
-          <p class="mb-0">JPEG Image</p>
-        </div>
-      </div>
-    </div>
+      <h2 class="text-center text-danger mb-4">Project Overview: Data Bending with TextEdit</h2>
 
-    <!-- Artwork -->
-    <div class="project-image text-center mb-5">
-      <img src="../Images/Boba Glitched - Part 1.jpg" alt="Boba Glitched 1 Artwork with intentional digital distortion"
-           onerror="this.onerror=null; this.src='https://placehold.co/600x400/DC3545/ffffff?text=Boba+Glitched+1+Not+Found';">
-    </div>
-
-    <!-- Process Description -->
-    <section>
-      <h3 class="h4 text-danger mb-3">Process Description</h3>
-      <p class="bg-light p-4 rounded-3 border border-secondary">
-        I used <strong>TextEdit</strong> on Mac to open the original JPEG image. Then I <strong>copied and pasted sections</strong> after ~20% into the file to avoid corrupting the header. 
-        Finally, I opened the modified file in <strong>Preview</strong> to observe the glitch effects produced by this manipulation.
+      <p class="text-center mb-4 text-muted">
+        This project is the first in an experimental digital art series, focusing on <strong>glitch art</strong> created by manually manipulating a file's code, also called <strong>data bending</strong>.
       </p>
-    </section>
 
-    <!-- Next Project -->
-    <div class="text-center mt-5">
-      <p class="text-muted mb-3">See the continuation of this experimental series:</p>
-      <a href="Boba_Glitched_2.html" class="btn btn-danger btn-lg rounded-pill shadow">View Boba Glitched 2 →</a>
+      <!-- Project Info Cards -->
+      <div class="row g-3 mb-5 project-info text-center text-md-start">
+        <div class="col-md-4">
+          <div class="card p-3 border-start border-danger">
+            <p class="fw-semibold mb-1 text-muted">Category:</p>
+            <p class="mb-0">Data Manipulation / Glitch Art</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card p-3 border-start border-danger">
+            <p class="fw-semibold mb-1 text-muted">Tools Used:</p>
+            <p class="mb-0">TextEdit (Mac), Preview</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card p-3 border-start border-danger">
+            <p class="fw-semibold mb-1 text-muted">File Source:</p>
+            <p class="mb-0">JPEG Image</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Artwork -->
+      <div class="project-image text-center mb-5">
+        <img src="../Images/Boba Glitched - Part 1.jpg" alt="Boba Glitched 1 Artwork with intentional digital distortion"
+             onerror="this.onerror=null; this.src='https://placehold.co/600x400/DC3545/ffffff?text=Boba+Glitched+1+Not+Found';">
+      </div>
+
+      <!-- Process Description -->
+      <section>
+        <h3 class="h4 text-danger mb-3">Process Description</h3>
+        <p class="bg-light p-4 rounded-3 border border-secondary">
+          I used <strong>TextEdit</strong> on Mac to open the original JPEG image. Then I <strong>copied and pasted sections</strong> after ~20% into the file to avoid corrupting the header. 
+          Finally, I opened the modified file in <strong>Preview</strong> to observe the glitch effects produced by this manipulation.
+        </p>
+      </section>
+
+      <!-- Next Project -->
+      <div class="text-center mt-5">
+        <p class="text-muted mb-3">See the continuation of this experimental series:</p>
+        <a href="Boba_Glitched_2.html" class="btn btn-danger btn-lg rounded-pill shadow">View Boba Glitched 2 →</a>
+      </div>
+
     </div>
   </main>
 
