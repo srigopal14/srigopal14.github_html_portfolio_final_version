@@ -25,48 +25,14 @@
       text-align: center;
     }
 
-    header h1 {
-      font-weight: 800;
-      margin-bottom: 0.5rem;
-    }
-
-    .btn-back {
-      background-color: white;
-      color: #dc3545;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-
-    .btn-back:hover {
-      background-color: #f8d7da;
-      transform: scale(1.05);
-    }
-
-    main {
-      max-width: 900px;
-      margin: 3rem auto;
-    }
-
-    .project-info .card {
-      border-left-width: 0.25rem;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .project-info .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 0.75rem 1.5rem rgba(0,0,0,0.1);
-    }
-
-    .project-image img {
-      max-width: 100%;
-      height: auto;
+    main img {
       border-radius: 1.5rem;
       border: 4px solid #f1f1f1;
       box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
       transition: transform 0.3s, box-shadow 0.3s;
     }
 
-    .project-image img:hover {
+    main img:hover {
       transform: scale(1.05);
       box-shadow: 0 0.75rem 1.5rem rgba(0,0,0,0.2);
     }
@@ -84,70 +50,68 @@
   <!-- Header -->
   <header>
     <div class="container">
-      <h1>Boba Glitched 1</h1>
+      <h1 class="fw-bold">Boba Glitched 1</h1>
       <p class="lead">Experimental Digital Art: Glitch & Data Bending</p>
     </div>
   </header>
 
   <!-- Back Button -->
   <div class="text-center my-4">
-    <a href="../index.html#projects" class="btn btn-back px-4 py-2 rounded-pill">&larr; Back to Portfolio</a>
+    <a href="../index.html#projects" class="btn btn-outline-danger btn-lg rounded-pill fw-semibold">&larr; Back to Portfolio</a>
   </div>
 
   <!-- Main Content -->
-  <main>
-    <div class="bg-white p-5 rounded-4 shadow-sm">
+  <main class="container bg-white rounded-4 shadow-sm p-5 mb-5">
 
-      <h2 class="text-center text-danger mb-4">Project Overview: Data Bending with TextEdit</h2>
+    <!-- Project Overview -->
+    <h2 class="text-center text-danger fw-bold mb-4">Project Overview: Data Bending with TextEdit</h2>
+    <p class="text-center text-muted mb-5">
+      This project is the first in an experimental digital art series, focusing on <strong>glitch art</strong> created by manually manipulating a file's code, also called <strong>data bending</strong>.
+    </p>
 
-      <p class="text-center mb-4 text-muted">
-        This project is the first in an experimental digital art series, focusing on <strong>glitch art</strong> created by manually manipulating a file's code, also called <strong>data bending</strong>.
-      </p>
-
-      <!-- Project Info Cards -->
-      <div class="row g-3 mb-5 project-info text-center text-md-start">
-        <div class="col-md-4">
-          <div class="card p-3 border-start border-danger">
-            <p class="fw-semibold mb-1 text-muted">Category:</p>
-            <p class="mb-0">Data Manipulation / Glitch Art</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card p-3 border-start border-danger">
-            <p class="fw-semibold mb-1 text-muted">Tools Used:</p>
-            <p class="mb-0">TextEdit (Mac), Preview</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card p-3 border-start border-danger">
-            <p class="fw-semibold mb-1 text-muted">File Source:</p>
-            <p class="mb-0">JPEG Image</p>
-          </div>
+    <!-- Project Info Cards -->
+    <div class="row g-3 mb-5 text-center text-md-start">
+      <div class="col-md-4">
+        <div class="card border-start border-4 border-danger p-3 h-100">
+          <p class="text-muted fw-semibold mb-1">Category:</p>
+          <p class="mb-0">Data Manipulation / Glitch Art</p>
         </div>
       </div>
-
-      <!-- Artwork -->
-      <div class="project-image text-center mb-5">
-        <img src="../Images/Boba Glitched - Part 1.jpg" alt="Boba Glitched 1 Artwork with intentional digital distortion"
-             onerror="this.onerror=null; this.src='https://placehold.co/600x400/DC3545/ffffff?text=Boba+Glitched+1+Not+Found';">
+      <div class="col-md-4">
+        <div class="card border-start border-4 border-danger p-3 h-100">
+          <p class="text-muted fw-semibold mb-1">Tools Used:</p>
+          <p class="mb-0">TextEdit (Mac), Preview</p>
+        </div>
       </div>
-
-      <!-- Process Description -->
-      <section>
-        <h3 class="h4 text-danger mb-3">Process Description</h3>
-        <p class="bg-light p-4 rounded-3 border border-secondary">
-          I used <strong>TextEdit</strong> on Mac to open the original JPEG image. Then I <strong>copied and pasted sections</strong> after ~20% into the file to avoid corrupting the header. 
-          Finally, I opened the modified file in <strong>Preview</strong> to observe the glitch effects produced by this manipulation.
-        </p>
-      </section>
-
-      <!-- Next Project -->
-      <div class="text-center mt-5">
-        <p class="text-muted mb-3">See the continuation of this experimental series:</p>
-        <a href="Boba_Glitched_2.html" class="btn btn-danger btn-lg rounded-pill shadow">View Boba Glitched 2 →</a>
+      <div class="col-md-4">
+        <div class="card border-start border-4 border-danger p-3 h-100">
+          <p class="text-muted fw-semibold mb-1">File Source:</p>
+          <p class="mb-0">JPEG Image</p>
+        </div>
       </div>
-
     </div>
+
+    <!-- Artwork -->
+    <div class="text-center mb-5">
+      <img src="../Images/Boba Glitched - Part 1.jpg" class="img-fluid" alt="Boba Glitched 1 Artwork with intentional digital distortion"
+           onerror="this.onerror=null; this.src='https://placehold.co/600x400/DC3545/ffffff?text=Boba+Glitched+1+Not+Found';">
+    </div>
+
+    <!-- Process Description -->
+    <section>
+      <h3 class="h4 text-danger fw-bold mb-3">Process Description</h3>
+      <p class="bg-light p-4 rounded-3 border border-secondary">
+        I used <strong>TextEdit</strong> on Mac to open the original JPEG image. Then I <strong>copied and pasted sections</strong> after ~20% into the file to avoid corrupting the header. 
+        Finally, I opened the modified file in <strong>Preview</strong> to observe the glitch effects produced by this manipulation.
+      </p>
+    </section>
+
+    <!-- Next Project -->
+    <div class="text-center mt-5">
+      <p class="text-muted mb-3">See the continuation of this experimental series:</p>
+      <a href="Boba_Glitched_2.html" class="btn btn-danger btn-lg rounded-pill shadow fw-semibold">View Boba Glitched 2 →</a>
+    </div>
+
   </main>
 
   <!-- Footer -->
