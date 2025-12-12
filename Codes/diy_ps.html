@@ -1,27 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>p5.js Sketch — Sriya</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIY p5.js Sketch | Sriya Gopalan</title>
 
-  <!-- p5.js Libraries -->
-  <script src="https://cdn.jsdelivr.net/npm/p5@1.8.0/lib/p5.js"></script>
+    <!-- Tailwind (same styling as your main site) -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
+    <!-- p5.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        canvas { border: 2px solid #2563eb; border-radius: 8px; }
+    </style>
 </head>
-<body style="margin:0; overflow:hidden;">
 
-  <script>
-    function setup() {
-      createCanvas(windowWidth, windowHeight);
-      background(220);
+<body class="bg-gray-50 text-gray-800">
+
+    <header class="bg-blue-600 text-white py-6 text-center shadow-lg">
+        <h1 class="text-3xl font-bold">DIY p5.js Sketch</h1>
+        <p class="opacity-90">Interactive Drawing Tool</p>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 py-10">
+
+        <a href="../index.html#projects" class="text-blue-600 underline text-lg">
+            ← Back to Portfolio
+        </a>
+
+        <div class="mt-6 bg-white shadow-lg p-6 rounded-xl">
+
+            <h2 class="text-2xl font-bold mb-4">Instructions</h2>
+            <ul class="list-disc ml-6 mb-6 text-gray-700">
+                <li>Press keys <strong>1–8</strong> to choose a drawing tool</li>
+                <li>Press <strong>x</strong> to clear the screen</li>
+                <li>Press <strong>p</strong> to save a screenshot</li>
+                <li>Click & drag your mouse to draw</li>
+            </ul>
+
+            <div id="sketch-holder" class="flex justify-center">
+                <!-- p5.js sketch will appear here -->
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer class="bg-gray-800 text-white text-center py-6 mt-10">
+        © 2025 Sriya Gopalan — All Rights Reserved.
+    </footer>
+
+    <!-- Your Actual p5.js Drawing Code -->
+    <script>
+var img;
+var initials ='jm';
+var choice = '1';
+var screenbg = 250;
+var lastscreenshot=61;
+
+function preload() {
+  img = loadImage('https://dma-git.github.io/images/74.png');
+}
+
+function setup() {
+  let canvas = createCanvas(600, 400);
+  canvas.parent("sketch-holder"); 
+  background(screenbg);
+}
+
+function draw() {
+  if (keyIsPressed) {
+    choice = key;
+    clear_print();
+  }
+  if (mouseIsPressed){
+    newkeyChoice(choice);
+  }
+}
+
+function newkeyChoice(toolChoice) {
+
+ if (toolChoice == '1' ) {
+    stroke(0, 0, 255);
+    strokeWeight(12);
+    line(mouseX, mouseY, pmouseX, pmouseY);
+
+ } else if (toolChoice == '2') {
+    stroke(70, 130, 255);
+    strokeWeight(24);
+    line(mouseX, mouseY, pmouseX, pmouseY);
+
+ } else if (toolChoice == '3') {
+    stroke(0, 100, 0);
+    strokeWeight(2);
+    for (let i = 0; i < 5; i++) {
+        let xOffset = random(-3, 3);
+        let yOffset = random(-10, 0);
+        line(mouseX + xOffset, mouseY, mouseX + xOffset, mouseY + yOffset);
     }
 
-    function draw() {
-      // Your p5.js code here
-      ellipse(mouseX, mouseY, 50, 50);
-    }
-  </script>
+ } else if (toolChoice == '4') {
+    noStroke();
+    fill(34, 139, 34);
+    triangle(mouseX, mouseY - 40, mouseX - 20, mouseY + 15, mouseX + 15, mouseY + 15);
+    fill(139, 69, 19);
+    rect(mouseX - 5, mouseY + 15, 10, 30);
+
+ } else if (toolChoice == '5') {
+    noStroke();
+    fill(255, 80, 100);
+    ellipse(mouseX, mouseY, 50, 30);
+    fill(240, 220, 180);
+    rect(mouseX - 8, mouseY + 5, 16, 25, 5);
+    fill(255);
+    ellipse(mouseX - 10, mouseY - 5, 7, 5);
+    ellipse(mouseX + 8, mouseY - 3, 6, 4);
+    ellipse(mouseX, mouseY + 2, 5, 4);
+
+ } else if (toolChoice == '6') {
+    stroke(255, 215, 0);
+    strokeWeight(12);
+    line(mouseX, mouseY, pmouseX, pmouseY);
+
+ } else if (toolChoice == '7') {
+    stroke(255, 140, 0);
+    strokeWeight(12);
+    line(mouseX, mouseY, pmouseX, pmouseY);
+
+ } else if (toolChoice == '8') {
+    stroke(64, 244, 208);
+    strokeWeight(12);
+    line(mouseX, mouseY, pmouseX, pmouseY);
+ }
+}
+
+function clear_print() {
+  if (key == 'x' || key == 'X') {
+    background(screenbg);
+  } else if (key == 'p' || key == 'P') {
+     saveme();
+  }
+}
+
+function saveme(){
+  filename = initials + day() + hour() + minute() + second();
+  if (second() != lastscreenshot) {
+    saveCanvas(filename, 'jpg');
+    key="";
+  }
+  lastscreenshot = second();
+}
+    </script>
 
 </body>
 </html>
