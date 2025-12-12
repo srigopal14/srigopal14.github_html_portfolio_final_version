@@ -13,36 +13,46 @@
 
     <style>
         body { font-family: 'Inter', sans-serif; }
-        .tab-active { background-color: #2563eb; color: white; }
+        .tab-active {
+            @apply bg-blue-600 text-white shadow-lg;
+        }
         .tab-content { display: none; }
-        .tab-content.active { display: block; }
+        .tab-content.active { display: block; animation: fadeIn 0.4s ease-in-out; }
+        .project-tab-active {
+            @apply bg-blue-600 text-white shadow-lg;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
     </style>
 </head>
 
 <body class="bg-gray-50 text-gray-800">
 
     <!-- HEADER -->
-    <header class="bg-blue-600 text-white py-10 text-center shadow-lg">
-        <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl">Sriya's Digital Portfolio</h1>
+    <header class="bg-blue-600 text-white py-12 text-center shadow-md">
+        <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight">Sriya's Digital Portfolio</h1>
         <p class="text-xl mt-2 opacity-90">Web Designer • Digital Artist • Developer</p>
     </header>
 
-    <main class="max-w-6xl mx-auto px-4 py-12">
+    <main class="max-w-6xl mx-auto px-4 py-16">
 
         <!-- MAIN TABS -->
-        <div class="flex justify-center mb-10 space-x-4">
-            <button class="tab px-6 py-2 rounded-lg font-semibold bg-gray-200 hover:bg-gray-300" data-tab="about">About</button>
-            <button class="tab px-6 py-2 rounded-lg font-semibold bg-gray-200 hover:bg-gray-300" data-tab="projects">Projects</button>
-            <button class="tab px-6 py-2 rounded-lg font-semibold bg-gray-200 hover:bg-gray-300" data-tab="contact">Contact</button>
+        <div class="flex justify-center mb-12 space-x-4 flex-wrap">
+            <button class="tab px-6 py-3 rounded-xl font-semibold bg-gray-200 hover:bg-gray-300 transition-colors" data-tab="about">About</button>
+            <button class="tab px-6 py-3 rounded-xl font-semibold bg-gray-200 hover:bg-gray-300 transition-colors" data-tab="projects">Projects</button>
+            <button class="tab px-6 py-3 rounded-xl font-semibold bg-gray-200 hover:bg-gray-300 transition-colors" data-tab="contact">Contact</button>
         </div>
 
         <!-- ABOUT -->
         <section id="about" class="tab-content active">
             <h2 class="text-4xl font-bold text-blue-600 text-center mb-6">About Me</h2>
-            <div class="bg-white p-8 rounded-xl shadow-lg max-w-3xl mx-auto">
+            <div class="bg-white p-10 rounded-2xl shadow-xl max-w-3xl mx-auto text-center">
                 <p class="text-lg leading-relaxed">
-                    Hi, I'm <strong class="text-blue-600">Sriya Gopalan</strong>, a Design Studies major at San José State University.
-                    I specialize in digital art, web design, and visual storytelling.  
+                    Hi, I'm <strong class="text-blue-600">Sriya Gopalan</strong>, a Design Studies major at San José State University. 
+                    I specialize in digital art, web design, and visual storytelling.
                 </p>
             </div>
         </section>
@@ -52,76 +62,65 @@
             <h2 class="text-4xl font-bold text-blue-600 text-center mb-8">My Projects</h2>
 
             <!-- Project Tabs -->
-            <div class="flex flex-wrap justify-center mb-6 gap-3">
-                <button class="project-tab px-4 py-2 bg-gray-200 rounded-lg font-semibold" data-project="p1">2 Axis Music Logos</button>
-                <button class="project-tab px-4 py-2 bg-gray-200 rounded-lg font-semibold" data-project="p2">Inside Out Meme</button>
-                <button class="project-tab px-4 py-2 bg-gray-200 rounded-lg font-semibold" data-project="p3">Boba Glitched 1</button>
-                <button class="project-tab px-4 py-2 bg-gray-200 rounded-lg font-semibold" data-project="p4">Boba Glitched 2</button>
-                <button class="project-tab px-4 py-2 bg-gray-200 rounded-lg font-semibold" data-project="p5">Boba Glitched 3</button>
-                <button class="project-tab px-4 py-2 bg-gray-200 rounded-lg font-semibold" data-project="p6">Net Art</button>
-
-                <!-- NEW TAB ADDED -->
-                <button class="project-tab px-4 py-2 bg-gray-200 rounded-lg font-semibold" data-project="p7">DIY p5.js Sketch</button>
+            <div class="flex flex-wrap justify-center gap-4 mb-8">
+                <button class="project-tab px-5 py-2 rounded-xl font-semibold bg-gray-200 hover:bg-gray-300 transition-colors" data-project="p1">2 Axis Music Logos</button>
+                <button class="project-tab px-5 py-2 rounded-xl font-semibold bg-gray-200 hover:bg-gray-300 transition-colors" data-project="p2">Inside Out Meme</button>
+                <button class="project-tab px-5 py-2 rounded-xl font-semibold bg-gray-200 hover:bg-gray-300 transition-colors" data-project="p3">Boba Glitched 1</button>
+                <button class="project-tab px-5 py-2 rounded-xl font-semibold bg-gray-200 hover:bg-gray-300 transition-colors" data-project="p4">Boba Glitched 2</button>
+                <button class="project-tab px-5 py-2 rounded-xl font-semibold bg-gray-200 hover:bg-gray-300 transition-colors" data-project="p5">Boba Glitched 3</button>
+                <button class="project-tab px-5 py-2 rounded-xl font-semibold bg-gray-200 hover:bg-gray-300 transition-colors" data-project="p6">Net Art</button>
+                <button class="project-tab px-5 py-2 rounded-xl font-semibold bg-gray-200 hover:bg-gray-300 transition-colors" data-project="p7">DIY p5.js Sketch</button>
             </div>
 
             <!-- Project Content -->
-            <div class="bg-white p-8 rounded-xl shadow-lg">
-
+            <div class="bg-white p-10 rounded-2xl shadow-xl space-y-6">
                 <div id="p1" class="project-content active">
-                    <h3 class="text-2xl font-bold mb-3">2 Axis Music Logos</h3>
-                    <p class="mb-4">A logo design exploration based on axis symmetry.</p>
-                    <a href="Codes/2-axis-music-logos.html" class="text-blue-600 font-semibold">View Project →</a>
+                    <h3 class="text-2xl font-bold text-blue-600">2 Axis Music Logos</h3>
+                    <p>A logo design exploration based on axis symmetry.</p>
+                    <a href="Codes/2-axis-music-logos.html" class="text-blue-600 font-semibold hover:underline">View Project →</a>
                 </div>
-
                 <div id="p2" class="project-content hidden">
-                    <h3 class="text-2xl font-bold mb-3">Inside Out Meme Final</h3>
-                    <p class="mb-4">A creative project combining digital editing and humor.</p>
-                    <a href="Codes/Inside_Out_Meme_Final.html" class="text-blue-600 font-semibold">View Project →</a>
+                    <h3 class="text-2xl font-bold text-blue-600">Inside Out Meme Final</h3>
+                    <p>A creative project combining digital editing and humor.</p>
+                    <a href="Codes/Inside_Out_Meme_Final.html" class="text-blue-600 font-semibold hover:underline">View Project →</a>
                 </div>
-
                 <div id="p3" class="project-content hidden">
-                    <h3 class="text-2xl font-bold mb-3">Boba Glitched 1</h3>
-                    <p class="mb-4">Glitch art experiment with distortion effects.</p>
-                    <a href="Codes/Boba_Glitched_1.html" class="text-blue-600 font-semibold">View Project →</a>
+                    <h3 class="text-2xl font-bold text-blue-600">Boba Glitched 1</h3>
+                    <p>Glitch art experiment with distortion effects.</p>
+                    <a href="Codes/Boba_Glitched_1.html" class="text-blue-600 font-semibold hover:underline">View Project →</a>
                 </div>
-
                 <div id="p4" class="project-content hidden">
-                    <h3 class="text-2xl font-bold mb-3">Boba Glitched 2</h3>
-                    <p class="mb-4">Second installment of the glitch art series.</p>
-                    <a href="Codes/Boba_Glitched_2.html" class="text-blue-600 font-semibold">View Project →</a>
+                    <h3 class="text-2xl font-bold text-blue-600">Boba Glitched 2</h3>
+                    <p>Second installment of the glitch art series.</p>
+                    <a href="Codes/Boba_Glitched_2.html" class="text-blue-600 font-semibold hover:underline">View Project →</a>
                 </div>
-
                 <div id="p5" class="project-content hidden">
-                    <h3 class="text-2xl font-bold mb-3">Boba Glitched 3</h3>
-                    <p class="mb-4">Final entry of the Boba glitch collection.</p>
-                    <a href="Codes/Boba_Glitched_3.html" class="text-blue-600 font-semibold">View Project →</a>
+                    <h3 class="text-2xl font-bold text-blue-600">Boba Glitched 3</h3>
+                    <p>Final entry of the Boba glitch collection.</p>
+                    <a href="Codes/Boba_Glitched_3.html" class="text-blue-600 font-semibold hover:underline">View Project →</a>
                 </div>
-
                 <div id="p6" class="project-content hidden">
-                    <h3 class="text-2xl font-bold mb-3">Net Art GitHub Project</h3>
-                    <p class="mb-4">A multi-page interactive art experience built with HTML/CSS.</p>
-                    <a href="Codes/net_art.html" class="text-blue-600 font-semibold">View Project →</a>
+                    <h3 class="text-2xl font-bold text-blue-600">Net Art GitHub Project</h3>
+                    <p>A multi-page interactive art experience built with HTML/CSS.</p>
+                    <a href="Codes/net_art.html" class="text-blue-600 font-semibold hover:underline">View Project →</a>
                 </div>
-
-                <!-- NEW PROJECT CONTENT ADDED -->
                 <div id="p7" class="project-content hidden">
-                    <h3 class="text-2xl font-bold mb-3">DIY p5.js Sketch</h3>
-                    <p class="mb-4">An interactive p5.js sketch embedded into its own page.</p>
-                    <a href="Codes/diy_ps.html" class="text-blue-600 font-semibold">View Project →</a>
+                    <h3 class="text-2xl font-bold text-blue-600">DIY p5.js Sketch</h3>
+                    <p>An interactive p5.js sketch embedded into its own page.</p>
+                    <a href="Codes/diy_ps.html" class="text-blue-600 font-semibold hover:underline">View Project →</a>
                 </div>
-
             </div>
         </section>
 
         <!-- CONTACT -->
         <section id="contact" class="tab-content">
             <h2 class="text-4xl font-bold text-blue-600 text-center mb-6">Contact Me</h2>
-            <div class="bg-white p-8 rounded-xl shadow-lg max-w-xl mx-auto">
+            <div class="bg-white p-10 rounded-2xl shadow-xl max-w-xl mx-auto">
                 <form action="mailto:sriya.svg@gmail.com" method="post" enctype="text/plain" class="space-y-4">
                     <input type="text" name="name" placeholder="Your Name" class="w-full p-3 border rounded-lg" required>
                     <input type="email" name="email" placeholder="Your Email" class="w-full p-3 border rounded-lg" required>
                     <textarea name="message" placeholder="Message" rows="4" class="w-full p-3 border rounded-lg" required></textarea>
-                    <button class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700">Send Email</button>
+                    <button class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors">Send Email</button>
                 </form>
             </div>
         </section>
@@ -135,7 +134,6 @@
 
     <!-- JS for Tabs -->
     <script>
-        // Main page tabs
         const tabs = document.querySelectorAll(".tab");
         const sections = document.querySelectorAll(".tab-content");
 
@@ -149,14 +147,13 @@
             });
         });
 
-        // Project tabs
         const projTabs = document.querySelectorAll(".project-tab");
         const projContents = document.querySelectorAll(".project-content");
 
         projTabs.forEach(btn => {
             btn.addEventListener("click", () => {
-                projTabs.forEach(b => b.classList.remove("tab-active"));
-                btn.classList.add("tab-active");
+                projTabs.forEach(b => b.classList.remove("project-tab-active"));
+                btn.classList.add("project-tab-active");
 
                 projContents.forEach(item => item.classList.add("hidden"));
                 document.getElementById(btn.dataset.project).classList.remove("hidden");
