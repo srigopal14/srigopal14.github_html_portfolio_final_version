@@ -4,260 +4,153 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sriya Gopalan | Portfolio</title>
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+
     <style>
-        /* Custom font and body reset */
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-        }
-        /* Accessibility and list reset */
-        #commentsList {
-            list-style: none;
-            padding: 0;
-        }
-        input:focus, textarea:focus, button:focus, a:focus {
-            outline: 2px solid #3b82f6; /* Tailwind blue-500 */
-            outline-offset: 2px;
-        }
+        body { font-family: 'Inter', sans-serif; }
+        .tab-active { background-color: #2563eb; color: white; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
     </style>
 </head>
+
 <body class="bg-gray-50 text-gray-800">
 
-    <div id="messageBox" class="fixed top-4 right-4 text-white p-3 rounded-lg shadow-xl hidden transition-opacity duration-300 z-50" role="alert">
-        </div>
-
-    <header class="bg-blue-600 text-white py-10 px-4 shadow-lg">
-        <div class="max-w-6xl mx-auto text-center">
-            <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl">Sriya's Digital Portfolio</h1>
-            <p class="text-xl mt-2 opacity-90">Web Designer | Digital Artist | Developer</p>
-        </div>
+    <!-- HEADER -->
+    <header class="bg-blue-600 text-white py-10 text-center shadow-lg">
+        <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl">Sriya's Digital Portfolio</h1>
+        <p class="text-xl mt-2 opacity-90">Web Designer • Digital Artist • Developer</p>
     </header>
 
-    <nav class="bg-gray-800 shadow-md sticky top-0 z-10">
-        <ul class="flex justify-center flex-wrap max-w-6xl mx-auto list-none m-0 p-0" aria-label="Main Navigation">
-            <li><a href="#about" class="block py-4 px-6 text-white hover:bg-emerald-500 transition duration-300 font-medium">About</a></li>
-            <li><a href="#projects" class="block py-4 px-6 text-white hover:bg-emerald-500 transition duration-300 font-medium">Projects</a></li>
-            <li><a href="#contact" class="block py-4 px-6 text-white hover:bg-emerald-500 transition duration-300 font-medium">Contact & Comments</a></li>
-        </ul>
-    </nav>
+    <main class="max-w-6xl mx-auto px-4 py-12">
 
-    <main class="max-w-6xl mx-auto px-4">
+        <!-- MAIN TABS -->
+        <div class="flex justify-center mb-10 space-x-4">
+            <button class="tab px-6 py-2 rounded-lg font-semibold bg-gray-200 hover:bg-gray-300" data-tab="about">About</button>
+            <button class="tab px-6 py-2 rounded-lg font-semibold bg-gray-200 hover:bg-gray-300" data-tab="projects">Projects</button>
+            <button class="tab px-6 py-2 rounded-lg font-semibold bg-gray-200 hover:bg-gray-300" data-tab="contact">Contact</button>
+        </div>
 
-        <section id="about" class="py-16 text-center">
-            <h2 class="text-4xl font-bold mb-6 text-blue-600">My Information</h2>
-            <div class="bg-white p-8 rounded-xl shadow-lg">
-                <p class="text-lg leading-relaxed max-w-3xl mx-auto">
-                    Hi, I'm <strong class="text-blue-600">Sriya Gopalan</strong>! I'm a 3rd-year B.A. Design Studies (Graphic Design) student at San Jose State University. 
-                    I'm from the Bay Area of Santa Clara, California, where I completed my 12 years of school. 
-                    My favorite hobbies are sketching, reading, baking, hanging out with friends, and advocating for environmental issues.
+        <!-- ABOUT -->
+        <section id="about" class="tab-content active">
+            <h2 class="text-4xl font-bold text-blue-600 text-center mb-6">About Me</h2>
+            <div class="bg-white p-8 rounded-xl shadow-lg max-w-3xl mx-auto">
+                <p class="text-lg leading-relaxed">
+                    Hi, I'm <strong class="text-blue-600">Sriya Gopalan</strong>, a Design Studies major at San José State University.
+                    I specialize in digital art, web design, and visual storytelling.  
                 </p>
             </div>
         </section>
 
-        <section id="projects" class="py-16">
-            <h2 class="text-4xl font-bold mb-10 text-center text-blue-600">Featured Projects</h2>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                <div class="project bg-white p-4 rounded-xl shadow-lg border-2 border-transparent hover:border-blue-600 hover:shadow-2xl transform hover:-translate-y-1 transition duration-300 ease-in-out">
-                    <a href="Codes/2-axis-music-logos.html" aria-label="View details for 2 Axis Music Logos" class="block group">
-                        <img src="Images/ART-74 - 2_Axis_Music Logos.jpg" alt="2 Axis Music Logos" class="w-full h-auto object-cover rounded-lg mb-4 transition transform group-hover:scale-[1.02] duration-300" onerror="this.onerror=null; this.src='https://placehold.co/300x200/10B981/ffffff?text=Logo+Design';">
-                    </a>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">2 Axis Music Logos</h3>
-                    <p class="text-sm text-gray-500 mb-4">
-                        Exploration of symmetrical and asymmetrical logo design principles.
-                    </p>
-                    <a href="Codes/2-axis-music-logos.html" class="inline-block bg-emerald-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-emerald-600 transition duration-300">View Project</a>
-                </div>
-                
-                <div class="project bg-white p-4 rounded-xl shadow-lg border-2 border-transparent hover:border-blue-600 hover:shadow-2xl transform hover:-translate-y-1 transition duration-300 ease-in-out">
-                    <a href="Codes/Inside_Out_Meme_Final.html" aria-label="View details for Inside Out Meme Final" class="block group">
-                        <img src="Images/ART-74 - Meme.jpg" alt="Inside Out Meme Final" class="w-full h-auto object-cover rounded-lg mb-4 transition transform group-hover:scale-[1.02] duration-300" onerror="this.onerror=null; this.src='https://placehold.co/300x200/F59E0B/ffffff?text=Digital+Art';">
-                    </a>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Inside Out Meme Final</h3>
-                    <p class="text-sm text-gray-500 mb-4">
-                        A creative project focusing on digital storytelling and visual communication.
-                    </p>
-                    <a href="Codes/Inside_Out_Meme_Final.html" class="inline-block bg-emerald-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-emerald-600 transition duration-300">View Project</a> 
+        <!-- PROJECTS -->
+        <section id="projects" class="tab-content">
+            <h2 class="text-4xl font-bold text-blue-600 text-center mb-8">My Projects</h2>
+
+            <!-- Project Tabs -->
+            <div class="flex flex-wrap justify-center mb-6 gap-3">
+                <button class="project-tab px-4 py-2 bg-gray-200 rounded-lg font-semibold" data-project="p1">2 Axis Music Logos</button>
+                <button class="project-tab px-4 py-2 bg-gray-200 rounded-lg font-semibold" data-project="p2">Inside Out Meme</button>
+                <button class="project-tab px-4 py-2 bg-gray-200 rounded-lg font-semibold" data-project="p3">Boba Glitched 1</button>
+                <button class="project-tab px-4 py-2 bg-gray-200 rounded-lg font-semibold" data-project="p4">Boba Glitched 2</button>
+                <button class="project-tab px-4 py-2 bg-gray-200 rounded-lg font-semibold" data-project="p5">Boba Glitched 3</button>
+                <button class="project-tab px-4 py-2 bg-gray-200 rounded-lg font-semibold" data-project="p6">Net Art</button>
+            </div>
+
+            <!-- Project Content -->
+            <div class="bg-white p-8 rounded-xl shadow-lg">
+
+                <div id="p1" class="project-content active">
+                    <h3 class="text-2xl font-bold mb-3">2 Axis Music Logos</h3>
+                    <p class="mb-4">A logo design exploration based on axis symmetry.</p>
+                    <a href="Codes/2-axis-music-logos.html" class="text-blue-600 font-semibold">View Project →</a>
                 </div>
 
-                <div class="project bg-white p-4 rounded-xl shadow-lg border-2 border-transparent hover:border-blue-600 hover:shadow-2xl transform hover:-translate-y-1 transition duration-300 ease-in-out">
-                    <a href="Codes/Boba_Glitched_1.html" aria-label="View details for Boba Glitched Part 1" class="block group">
-                        <img src="Images/Boba Glitched - Part 1.jpg" alt="Boba Glitched 1" class="w-full h-auto object-cover rounded-lg mb-4 transition transform group-hover:scale-[1.02] duration-300" onerror="this.onerror=null; this.src='https://placehold.co/300x200/EF4444/ffffff?text=Glitched+Aesthetic';">
-                    </a>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Boba Glitched 1</h3>
-                    <p class="text-sm text-gray-500 mb-4">
-                        Part one of an experimental series on glitch art and digital distortion.
-                    </p>
-                    <a href="Codes/Boba_Glitched_1.html" class="inline-block bg-emerald-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-emerald-600 transition duration-300">View Project</a>
-                </div>
-                
-                <div class="project bg-white p-4 rounded-xl shadow-lg border-2 border-transparent hover:border-blue-600 hover:shadow-2xl transform hover:-translate-y-1 transition duration-300 ease-in-out">
-                    <a href="Codes/Boba_Glitched_2.html" aria-label="View details for Boba Glitched Part 2" class="block group">
-                        <img src="Images/Boba Glitched - Part 2.jpg" alt="Boba Glitched 2" class="w-full h-auto object-cover rounded-lg mb-4 transition transform group-hover:scale-[1.02] duration-300" onerror="this.onerror=null; this.src='https://placehold.co/300x200/EF4444/ffffff?text=Glitched+Aesthetic';">
-                    </a>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Boba Glitched 2</h3>
-                    <p class="text-sm text-gray-500 mb-4">
-                        Continuation of the Boba Glitched series, exploring new visual effects.
-                    </p>
-                    <a href=" odes/Boba_Glitched_2.html" class="inline-block bg-emerald-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-emerald-600 transition duration-300">View Project</a>
+                <div id="p2" class="project-content hidden">
+                    <h3 class="text-2xl font-bold mb-3">Inside Out Meme Final</h3>
+                    <p class="mb-4">A creative project combining digital editing and humor.</p>
+                    <a href="Codes/Inside_Out_Meme_Final.html" class="text-blue-600 font-semibold">View Project →</a>
                 </div>
 
-                <div class="project bg-white p-4 rounded-xl shadow-lg border-2 border-transparent hover:border-blue-600 hover:shadow-2xl transform hover:-translate-y-1 transition duration-300 ease-in-out">
-                    <a href="Codes/Boba_Glitched_3.html" aria-label="View details for Boba Glitched Part 3" class="block group">
-                        <img src="Images/Boba Glitched - Part 3.jpg" alt="Boba Glitched 3" class="w-full h-auto object-cover rounded-lg mb-4 transition transform group-hover:scale-[1.02] duration-300" onerror="this.onerror=null; this.src='https://placehold.co/300x200/EF4444/ffffff?text=Glitched+Aesthetic';">
-                    </a>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Boba Glitched 3</h3>
-                    <p class="text-sm text-gray-500 mb-4">
-                        The final installment, integrating complex glitch techniques.
-                    </p>
-                    <a href="Codes/Boba_Glitched_3.html" class="inline-block bg-emerald-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-emerald-600 transition duration-300">View Project</a>
+                <div id="p3" class="project-content hidden">
+                    <h3 class="text-2xl font-bold mb-3">Boba Glitched 1</h3>
+                    <p class="mb-4">Glitch art experiment with distortion effects.</p>
+                    <a href="Codes/Boba_Glitched_1.html" class="text-blue-600 font-semibold">View Project →</a>
                 </div>
 
-                <div class="project bg-white p-4 rounded-xl shadow-lg border-2 border-transparent hover:border-blue-600 hover:shadow-2xl transform hover:-translate-y-1 transition duration-300 ease-in-out">
-                    <a href="Codes/net_art.html" aria-label="View details for Net Art Github" class="block group">
-                        <img src="Images/Sriya_Gopalan_Net_Art_Github.jpg" alt="Net Art Github" class="w-full h-auto object-cover rounded-lg mb-4 transition transform group-hover:scale-[1.02] duration-300" onerror="this.onerror=null; this.src='https://placehold.co/300x200/3B82F6/ffffff?text=Web+Experience';">
-                    </a>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Net Art Github</h3>
-                    <p class="text-sm text-gray-500 mb-4">
-                        A 10-page portfolio built using GitHub to showcase college artwork and presentations.
-                    </p>
-                    <a href="Codes/net_art.html" class="inline-block bg-emerald-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-emerald-600 transition duration-300">View Project</a>
+                <div id="p4" class="project-content hidden">
+                    <h3 class="text-2xl font-bold mb-3">Boba Glitched 2</h3>
+                    <p class="mb-4">Second installment of the glitch art series.</p>
+                    <a href="Codes/Boba_Glitched_2.html" class="text-blue-600 font-semibold">View Project →</a>
                 </div>
-                
-                <div class="project bg-white p-4 rounded-xl shadow-lg border-2 border-transparent hover:border-blue-600 hover:shadow-2xl transform hover:-translate-y-1 transition duration-300 ease-in-out">
-                    <a href="Codes/new_art_city.html" aria-label="View details for New Art City" class="block group">
-                        <img src="Images/Sriya_Gopalan_New_Art_City.jpg" alt="New Art City" class="w-full h-auto object-cover rounded-lg mb-4 transition transform group-hover:scale-[1.02] duration-300" onerror="this.onerror=null; this.src='https://placehold.co/300x200/3B82F6/ffffff?text=Virtual+Space';">
-                    </a>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">New Art City</h3>
-                    <p class="text-sm text-gray-500 mb-4">
-                        A virtual exhibition space built using custom 3D models from Blender.
-                    </p>
-                    <a href="Codes/new_art_city.html" class="inline-block bg-emerald-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-emerald-600 transition duration-300">View Project</a>
+
+                <div id="p5" class="project-content hidden">
+                    <h3 class="text-2xl font-bold mb-3">Boba Glitched 3</h3>
+                    <p class="mb-4">Final entry of the Boba glitch collection.</p>
+                    <a href="Codes/Boba_Glitched_3.html" class="text-blue-600 font-semibold">View Project →</a>
                 </div>
-                
+
+                <div id="p6" class="project-content hidden">
+                    <h3 class="text-2xl font-bold mb-3">Net Art GitHub Project</h3>
+                    <p class="mb-4">A multi-page interactive art experience built with HTML/CSS.</p>
+                    <a href="Codes/net_art.html" class="text-blue-600 font-semibold">View Project →</a>
+                </div>
+
             </div>
         </section>
 
-        <section id="contact" class="py-16">
-            <h2 class="text-4xl font-bold mb-10 text-center text-blue-600">Contact & Comments</h2>
-
-            <div class="grid md:grid-cols-2 gap-12 bg-white p-8 rounded-xl shadow-lg">
-                <div>
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-700">Feel Free to Reach Out:</h3>
-                    <form id="contactForm" action="mailto:sriya.svg@gmail.com" method="post" enctype="text/plain" class="space-y-4">
-                        <div>
-                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name:</label>
-                            <input type="text" id="name" name="name" required class="w-full border border-gray-300 p-2 rounded-lg focus:ring-blue-500 focus:border-blue-500">
-                        </div>
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email:</label>
-                            <input type="email" id="email" name="email" required class="w-full border border-gray-300 p-2 rounded-lg focus:ring-blue-500 focus:border-blue-500">
-                        </div>
-                        <div>
-                            <input type="submit" value="Send Email" class="w-full bg-blue-600 text-white font-bold py-2 rounded-lg cursor-pointer hover:bg-blue-700 transition duration-300">
-                        </div>
-                    </form>
-                </div>
-
-                <div>
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-700">Leave a Comment:</h3>
-                    <form id="commentForm" class="space-y-4">
-                        <div>
-                            <label for="commentName" class="block text-sm font-medium text-gray-700 mb-1">Name:</label>
-                            <input type="text" id="commentName" required class="w-full border border-gray-300 p-2 rounded-lg focus:ring-emerald-500 focus:border-emerald-500">
-                        </div>
-                        <div>
-                            <label for="commentText" class="block text-sm font-medium text-gray-700 mb-1">Comment:</label>
-                            <textarea id="commentText" rows="4" required class="w-full border border-gray-300 p-2 rounded-lg focus:ring-emerald-500 focus:border-emerald-500"></textarea>
-                        </div>
-                        <div>
-                            <button type="submit" class="w-full bg-emerald-500 text-white font-bold py-2 rounded-lg cursor-pointer hover:bg-emerald-600 transition duration-300">Post Comment</button>
-                        </div>
-                    </form>
-
-                    <div id="commentsSection" class="mt-8">
-                        <h4 class="text-xl font-semibold mb-3 border-b pb-2">Recent Comments:</h4>
-                        <ul id="commentsList" role="list" class="space-y-3">
-                            <li class="bg-gray-100 p-3 rounded-lg border border-gray-200" role="listitem"><strong>Anon User</strong>: <span>Looks great! Love the boba glitch art.</span></li>
-                        </ul>
-                    </div>
-                </div>
+        <!-- CONTACT -->
+        <section id="contact" class="tab-content">
+            <h2 class="text-4xl font-bold text-blue-600 text-center mb-6">Contact Me</h2>
+            <div class="bg-white p-8 rounded-xl shadow-lg max-w-xl mx-auto">
+                <form action="mailto:sriya.svg@gmail.com" method="post" enctype="text/plain" class="space-y-4">
+                    <input type="text" name="name" placeholder="Your Name" class="w-full p-3 border rounded-lg" required>
+                    <input type="email" name="email" placeholder="Your Email" class="w-full p-3 border rounded-lg" required>
+                    <textarea name="message" placeholder="Message" rows="4" class="w-full p-3 border rounded-lg" required></textarea>
+                    <button class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700">Send Email</button>
+                </form>
             </div>
         </section>
 
     </main>
 
-    <footer class="bg-gray-800 text-white text-center py-6 mt-10">
-        <p class="text-sm">&copy; 2025 Sriya Gopalan. All rights reserved.</p>
+    <!-- FOOTER -->
+    <footer class="bg-gray-800 text-white py-6 text-center">
+        © 2025 Sriya Gopalan — All Rights Reserved.
     </footer>
 
+    <!-- JS for Tabs -->
     <script>
-        const commentForm = document.getElementById('commentForm');
-        const commentsList = document.getElementById('commentsList');
-        const messageBox = document.getElementById('messageBox');
+        // Main page tabs
+        const tabs = document.querySelectorAll(".tab");
+        const sections = document.querySelectorAll(".tab-content");
 
-        function showMessage(message, type) {
-            // Reset classes
-            messageBox.classList.remove('bg-green-500', 'bg-red-500', 'bg-blue-500');
+        tabs.forEach(tab => {
+            tab.addEventListener("click", () => {
+                tabs.forEach(t => t.classList.remove("tab-active"));
+                tab.classList.add("tab-active");
 
-            if (type === 'success') {
-                messageBox.classList.add('bg-green-500');
-            } else if (type === 'error') {
-                messageBox.classList.add('bg-red-500');
-            } else {
-                messageBox.classList.add('bg-blue-500'); 
-            }
+                sections.forEach(sec => sec.classList.remove("active"));
+                document.getElementById(tab.dataset.tab).classList.add("active");
+            });
+        });
 
-            messageBox.textContent = message;
-            // Show the element
-            messageBox.classList.remove('hidden', 'opacity-0');
-            messageBox.classList.add('opacity-100');
+        // Project tabs
+        const projTabs = document.querySelectorAll(".project-tab");
+        const projContents = document.querySelectorAll(".project-content");
 
-            setTimeout(() => {
-                // Start fade out
-                messageBox.classList.remove('opacity-100');
-                messageBox.classList.add('opacity-0');
+        projTabs.forEach(btn => {
+            btn.addEventListener("click", () => {
+                projTabs.forEach(b => b.classList.remove("tab-active"));
+                btn.classList.add("tab-active");
 
-                // Hide completely after fade out animation (300ms duration)
-                setTimeout(() => {
-                    messageBox.classList.add('hidden');
-                    messageBox.classList.remove('opacity-0');
-                }, 300); 
-            }, 2000); // Display for 2 seconds
-        }
-
-        commentForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const nameInput = document.getElementById('commentName');
-            const textInput = document.getElementById('commentText');
-
-            const name = nameInput.value.trim();
-            const text = textInput.value.trim();
-
-            if (!name || !text) {
-                if (!name) { nameInput.focus(); } else { textInput.focus(); }
-                showMessage("Please fill out both fields.", 'error');
-                return;
-            }
-
-            // Create the new comment list item
-            const li = document.createElement('li');
-            li.classList.add('bg-gray-100', 'p-3', 'rounded-lg', 'border', 'border-gray-200');
-            li.setAttribute('role', 'listitem');
-            li.innerHTML = `<strong>${name}</strong>: <span>${text}</span>`;
-            
-            // Prepend the new comment to the top of the list
-            commentsList.prepend(li);
-
-            // Clear form fields
-            nameInput.value = '';
-            textInput.value = '';
-            
-            // Show success message
-            showMessage('Comment posted successfully!', 'success'); 
+                projContents.forEach(item => item.classList.add("hidden"));
+                document.getElementById(btn.dataset.project).classList.remove("hidden");
+            });
         });
     </script>
 
