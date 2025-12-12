@@ -13,17 +13,20 @@
 
     <style>
         body { font-family: 'Inter', sans-serif; }
+        
         .tab-active {
-            @apply bg-blue-600 text-white shadow-lg;
+            @apply bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-lg transform scale-105;
         }
+
         .tab-content { display: none; }
-        .tab-content.active { display: block; animation: fadeIn 0.4s ease-in-out; }
+        .tab-content.active { display: block; animation: fadeIn 0.5s ease-in-out; }
+
         .project-tab-active {
-            @apply bg-blue-600 text-white shadow-lg;
+            @apply bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-lg transform scale-105;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px);}
+            from { opacity: 0; transform: translateY(15px);}
             to { opacity: 1; transform: translateY(0);}
         }
     </style>
@@ -32,7 +35,7 @@
 <body class="bg-gray-50 text-gray-800">
 
     <!-- HEADER -->
-    <header class="bg-blue-600 text-white py-12 text-center shadow-md">
+    <header class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-16 text-center shadow-lg">
         <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight">Sriya's Digital Portfolio</h1>
         <p class="text-xl mt-2 opacity-90">Web Designer • Digital Artist • Developer</p>
     </header>
@@ -41,15 +44,15 @@
 
         <!-- MAIN TABS -->
         <div class="flex justify-center mb-12 space-x-4 flex-wrap">
-            <button class="tab px-6 py-3 rounded-xl font-semibold bg-gray-200 hover:bg-gray-300 transition-colors" data-tab="about">About</button>
-            <button class="tab px-6 py-3 rounded-xl font-semibold bg-gray-200 hover:bg-gray-300 transition-colors" data-tab="projects">Projects</button>
-            <button class="tab px-6 py-3 rounded-xl font-semibold bg-gray-200 hover:bg-gray-300 transition-colors" data-tab="contact">Contact</button>
+            <button class="tab px-6 py-3 rounded-xl font-semibold bg-gray-200 hover:bg-gray-300 transition-all duration-300" data-tab="about">About</button>
+            <button class="tab px-6 py-3 rounded-xl font-semibold bg-gray-200 hover:bg-gray-300 transition-all duration-300" data-tab="projects">Projects</button>
+            <button class="tab px-6 py-3 rounded-xl font-semibold bg-gray-200 hover:bg-gray-300 transition-all duration-300" data-tab="contact">Contact</button>
         </div>
 
         <!-- ABOUT -->
         <section id="about" class="tab-content active">
             <h2 class="text-4xl font-bold text-blue-600 text-center mb-6">About Me</h2>
-            <div class="bg-white p-10 rounded-2xl shadow-xl max-w-3xl mx-auto text-center">
+            <div class="bg-white p-10 rounded-3xl shadow-xl max-w-3xl mx-auto text-center hover:shadow-2xl transition-shadow duration-300">
                 <p class="text-lg leading-relaxed">
                     Hi, I'm <strong class="text-blue-600">Sriya Gopalan</strong>! I'm a 3rd-year B.A. Design Studies (Graphic Design) student at San Jose State University. 
                     I'm from the Bay Area of Santa Clara, California. My favorite hobbies are sketching, reading, baking, hanging out with friends, and advocating for environmental issues.
@@ -59,54 +62,54 @@
 
         <!-- PROJECTS -->
         <section id="projects" class="tab-content">
-            <h2 class="text-4xl font-bold text-blue-600 text-center mb-8">My Projects</h2>
+            <h2 class="text-4xl font-bold text-blue-600 text-center mb-10">My Projects</h2>
 
             <!-- Project Tabs -->
             <div class="flex flex-wrap justify-center gap-4 mb-8">
-                <button class="project-tab px-5 py-2 rounded-xl font-semibold bg-gray-200 hover:bg-gray-300 transition-colors" data-project="p1">2 Axis Music Logos</button>
-                <button class="project-tab px-5 py-2 rounded-xl font-semibold bg-gray-200 hover:bg-gray-300 transition-colors" data-project="p2">Inside Out Meme</button>
-                <button class="project-tab px-5 py-2 rounded-xl font-semibold bg-gray-200 hover:bg-gray-300 transition-colors" data-project="p3">Boba Glitched 1</button>
-                <button class="project-tab px-5 py-2 rounded-xl font-semibold bg-gray-200 hover:bg-gray-300 transition-colors" data-project="p4">Boba Glitched 2</button>
-                <button class="project-tab px-5 py-2 rounded-xl font-semibold bg-gray-200 hover:bg-gray-300 transition-colors" data-project="p5">Boba Glitched 3</button>
-                <button class="project-tab px-5 py-2 rounded-xl font-semibold bg-gray-200 hover:bg-gray-300 transition-colors" data-project="p6">Net Art</button>
-                <button class="project-tab px-5 py-2 rounded-xl font-semibold bg-gray-200 hover:bg-gray-300 transition-colors" data-project="p7">DIY p5.js Sketch</button>
+                <button class="project-tab px-5 py-2 rounded-xl font-semibold bg-gray-200 hover:bg-gray-300 transition-all duration-300" data-project="p1">2 Axis Music Logos</button>
+                <button class="project-tab px-5 py-2 rounded-xl font-semibold bg-gray-200 hover:bg-gray-300 transition-all duration-300" data-project="p2">Inside Out Meme</button>
+                <button class="project-tab px-5 py-2 rounded-xl font-semibold bg-gray-200 hover:bg-gray-300 transition-all duration-300" data-project="p3">Boba Glitched 1</button>
+                <button class="project-tab px-5 py-2 rounded-xl font-semibold bg-gray-200 hover:bg-gray-300 transition-all duration-300" data-project="p4">Boba Glitched 2</button>
+                <button class="project-tab px-5 py-2 rounded-xl font-semibold bg-gray-200 hover:bg-gray-300 transition-all duration-300" data-project="p5">Boba Glitched 3</button>
+                <button class="project-tab px-5 py-2 rounded-xl font-semibold bg-gray-200 hover:bg-gray-300 transition-all duration-300" data-project="p6">Net Art</button>
+                <button class="project-tab px-5 py-2 rounded-xl font-semibold bg-gray-200 hover:bg-gray-300 transition-all duration-300" data-project="p7">DIY p5.js Sketch</button>
             </div>
 
             <!-- Project Content -->
-            <div class="bg-white p-10 rounded-2xl shadow-xl space-y-6">
-                <div id="p1" class="project-content active">
-                    <h3 class="text-2xl font-bold text-blue-600">2 Axis Music Logos</h3>
-                    <p>A logo design exploration based on axis symmetry.</p>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div id="p1" class="project-content active bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                    <h3 class="text-2xl font-bold text-blue-600 mb-2">2 Axis Music Logos</h3>
+                    <p class="mb-3">A logo design exploration based on axis symmetry.</p>
                     <a href="Codes/2-axis-music-logos.html" class="text-blue-600 font-semibold hover:underline">View Project →</a>
                 </div>
-                <div id="p2" class="project-content hidden">
-                    <h3 class="text-2xl font-bold text-blue-600">Inside Out Meme Final</h3>
-                    <p>A creative project combining digital editing and humor.</p>
+                <div id="p2" class="project-content hidden bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                    <h3 class="text-2xl font-bold text-blue-600 mb-2">Inside Out Meme Final</h3>
+                    <p class="mb-3">A creative project combining digital editing and humor.</p>
                     <a href="Codes/Inside_Out_Meme_Final.html" class="text-blue-600 font-semibold hover:underline">View Project →</a>
                 </div>
-                <div id="p3" class="project-content hidden">
-                    <h3 class="text-2xl font-bold text-blue-600">Boba Glitched 1</h3>
-                    <p>Glitch art experiment with distortion effects.</p>
+                <div id="p3" class="project-content hidden bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                    <h3 class="text-2xl font-bold text-blue-600 mb-2">Boba Glitched 1</h3>
+                    <p class="mb-3">Glitch art experiment with distortion effects.</p>
                     <a href="Codes/Boba_Glitched_1.html" class="text-blue-600 font-semibold hover:underline">View Project →</a>
                 </div>
-                <div id="p4" class="project-content hidden">
-                    <h3 class="text-2xl font-bold text-blue-600">Boba Glitched 2</h3>
-                    <p>Second installment of the glitch art series.</p>
+                <div id="p4" class="project-content hidden bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                    <h3 class="text-2xl font-bold text-blue-600 mb-2">Boba Glitched 2</h3>
+                    <p class="mb-3">Second installment of the glitch art series.</p>
                     <a href="Codes/Boba_Glitched_2.html" class="text-blue-600 font-semibold hover:underline">View Project →</a>
                 </div>
-                <div id="p5" class="project-content hidden">
-                    <h3 class="text-2xl font-bold text-blue-600">Boba Glitched 3</h3>
-                    <p>Final entry of the Boba glitch collection.</p>
+                <div id="p5" class="project-content hidden bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                    <h3 class="text-2xl font-bold text-blue-600 mb-2">Boba Glitched 3</h3>
+                    <p class="mb-3">Final entry of the Boba glitch collection.</p>
                     <a href="Codes/Boba_Glitched_3.html" class="text-blue-600 font-semibold hover:underline">View Project →</a>
                 </div>
-                <div id="p6" class="project-content hidden">
-                    <h3 class="text-2xl font-bold text-blue-600">Net Art GitHub Project</h3>
-                    <p>A multi-page interactive art experience built with HTML/CSS.</p>
+                <div id="p6" class="project-content hidden bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                    <h3 class="text-2xl font-bold text-blue-600 mb-2">Net Art GitHub Project</h3>
+                    <p class="mb-3">A multi-page interactive art experience built with HTML/CSS.</p>
                     <a href="Codes/net_art.html" class="text-blue-600 font-semibold hover:underline">View Project →</a>
                 </div>
-                <div id="p7" class="project-content hidden">
-                    <h3 class="text-2xl font-bold text-blue-600">DIY p5.js Sketch</h3>
-                    <p>An interactive p5.js sketch embedded into its own page.</p>
+                <div id="p7" class="project-content hidden bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                    <h3 class="text-2xl font-bold text-blue-600 mb-2">DIY p5.js Sketch</h3>
+                    <p class="mb-3">An interactive p5.js sketch embedded into its own page.</p>
                     <a href="Codes/diy_ps.html" class="text-blue-600 font-semibold hover:underline">View Project →</a>
                 </div>
             </div>
@@ -115,12 +118,12 @@
         <!-- CONTACT -->
         <section id="contact" class="tab-content">
             <h2 class="text-4xl font-bold text-blue-600 text-center mb-6">Contact Me</h2>
-            <div class="bg-white p-10 rounded-2xl shadow-xl max-w-xl mx-auto">
+            <div class="bg-white p-10 rounded-3xl shadow-xl max-w-xl mx-auto hover:shadow-2xl transition-shadow duration-300">
                 <form action="mailto:sriya.svg@gmail.com" method="post" enctype="text/plain" class="space-y-4">
-                    <input type="text" name="name" placeholder="Your Name" class="w-full p-3 border rounded-lg" required>
-                    <input type="email" name="email" placeholder="Your Email" class="w-full p-3 border rounded-lg" required>
-                    <textarea name="message" placeholder="Message" rows="4" class="w-full p-3 border rounded-lg" required></textarea>
-                    <button class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors">Send Email</button>
+                    <input type="text" name="name" placeholder="Your Name" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-400" required>
+                    <input type="email" name="email" placeholder="Your Email" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-400" required>
+                    <textarea name="message" placeholder="Message" rows="4" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-400" required></textarea>
+                    <button class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3 rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300">Send Email</button>
                 </form>
             </div>
         </section>
