@@ -4,41 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inside Out Meme Final | Sriya Gopalan Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.7;
+            background-color: #f0fdf4; /* Light green background for body */
         }
-        .prose p {
-            margin-bottom: 1rem;
+        .project-header {
+            background-color: #16a34a; /* Green header */
+            color: white;
+        }
+        .project-section {
+            background-color: white;
+            border-radius: 2rem;
+            box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+            padding: 2rem;
+            transition: box-shadow 0.3s ease-in-out;
+        }
+        .project-section:hover {
+            box-shadow: 0 1rem 2rem rgba(0,0,0,0.25);
+        }
+        .project-title-green {
+            color: #16a34a; /* Green text */
+            font-weight: bold;
+        }
+        .description-green p {
+            color: #16a34a;
+        }
+        .btn-back {
+            background-color: #16a34a;
+            color: white;
+            font-weight: 600;
+            border-radius: 2rem;
+            transition: all 0.3s ease-in-out;
         }
         .btn-back:hover {
             background-color: #059669;
             transform: scale(1.05);
+        }
+        .project-image img {
+            border-radius: 1rem;
+            transition: transform 0.3s ease-in-out;
         }
         .project-image img:hover {
             transform: scale(1.03);
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body>
 
     <!-- Header -->
-    <header class="bg-blue-600 text-white py-12 shadow-lg">
-        <div class="max-w-6xl mx-auto text-center">
-            <h1 class="text-4xl font-extrabold tracking-tight">Inside Out Meme Final</h1>
-            <p class="mt-2 text-lg opacity-90">Project Details</p>
+    <header class="project-header text-center py-5 mb-4">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Inside Out Meme Final</h1>
+            <p class="lead opacity-75">Project Details</p>
         </div>
     </header>
 
     <!-- Navigation / Back Link -->
-    <nav class="bg-gray-800 shadow-md">
-        <div class="max-w-6xl mx-auto py-3 px-4">
-            <a href="../index.html#projects" class="text-white hover:text-emerald-400 transition duration-300 font-medium flex items-center">
-                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+    <nav class="bg-dark py-2 mb-4">
+        <div class="container">
+            <a href="../index.html#projects" class="text-white text-decoration-none d-flex align-items-center">
+                <svg class="bi bi-arrow-left me-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 1-.5.5H2.707l4.147 4.146a.5.5 0 0 1-.708.708l-5-5a.5.5 0 0 1 0-.708l5-5a.5.5 0 0 1 .708.708L2.707 7.5H14.5A.5.5 0 0 1 15 8z"/>
                 </svg>
                 Back to Portfolio
             </a>
@@ -46,28 +77,28 @@
     </nav>
 
     <!-- Main Content -->
-    <main class="max-w-4xl mx-auto px-4 py-12">
+    <main class="container mb-5">
 
-        <div class="bg-white p-8 rounded-3xl shadow-2xl hover:shadow-3xl transition-shadow duration-500">
+        <div class="project-section mx-auto">
 
-            <h2 class="text-4xl font-bold mb-8 text-blue-600 text-center">The Inside Scoop</h2>
+            <h2 class="text-center project-title-green mb-5">The Inside Scoop</h2>
 
             <!-- Project Image -->
-            <figure class="project-image mb-10 border border-gray-200 rounded-2xl overflow-hidden transition-transform duration-300">
+            <figure class="project-image mb-4">
                 <img 
                     src="../Images/ART-74 - Meme.jpg" 
                     alt="Inside Out Meme about using ChatGPT for assignments" 
-                    class="w-full h-auto object-cover rounded-2xl transition-transform duration-300"
+                    class="img-fluid w-100"
                     onerror="this.onerror=null; this.src='https://placehold.co/600x400/F59E0B/ffffff?text=Image+Not+Found';"
                 >
-                <figcaption class="p-3 text-sm text-center text-gray-500 bg-gray-50">
+                <figcaption class="text-center text-muted mt-2">
                     Image: ART-74 - Meme.jpg
                 </figcaption>
             </figure>
 
             <!-- Project Description -->
-            <div class="prose max-w-none">
-                <h3 class="text-2xl font-semibold mb-4 text-gray-700">Description</h3>
+            <div class="description-green">
+                <h3 class="project-title-green mb-3">Description</h3>
                 <p>
                     This meme explores the <strong>trend of using ChatGPT or AI for completing assignments</strong> in school. It's based on a popular <em>Inside Out</em> Characters meme: "Do you ever look at someone and wonder what is going on inside their head?".
                 </p>
@@ -80,10 +111,10 @@
             </div>
 
             <!-- Back Button -->
-            <div class="mt-10 text-center">
-                <a href="../index.html#projects" class="inline-flex items-center bg-emerald-500 text-white font-semibold py-3 px-6 rounded-2xl hover:bg-emerald-600 transition duration-300 shadow-md hover:shadow-lg btn-back">
-                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            <div class="text-center mt-4">
+                <a href="../index.html#projects" class="btn btn-back d-inline-flex align-items-center px-4 py-2">
+                    <svg class="bi bi-arrow-left me-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M15 8a.5.5 0 0 1-.5.5H2.707l4.147 4.146a.5.5 0 0 1-.708.708l-5-5a.5.5 0 0 1 0-.708l5-5a.5.5 0 0 1 .708.708L2.707 7.5H14.5A.5.5 0 0 1 15 8z"/>
                     </svg>
                     Return to Projects
                 </a>
@@ -94,9 +125,11 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white text-center py-6 mt-12">
-        <p class="text-sm">&copy; 2025 Sriya Gopalan. All rights reserved.</p>
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+        <p class="mb-0">&copy; 2025 Sriya Gopalan. All rights reserved.</p>
     </footer>
 
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
