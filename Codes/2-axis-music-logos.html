@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2 Axis Music Logos | Sriya Gopalan Portfolio</title>
+  <title>2 Axis Music Logos | Project Details</title>
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -14,28 +14,33 @@
   <style>
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #f8f9fa;
+      background-color: #f0fdf4; /* Light green background */
     }
 
-    header {
-      background: linear-gradient(to right, #3b82f6, #6366f1);
+    /* Header */
+    .project-header {
+      background-color: #f87171; /* Light red header */
       color: white;
-      padding: 5rem 0;
       text-align: center;
+      padding: 5rem 0;
     }
 
-    .btn-back {
-      background-color: #6c757d;
+    /* Back nav */
+    .nav-back {
+      background-color: #000;
+    }
+    .nav-back a {
       color: white;
-      transition: all 0.3s ease;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      padding: 0.5rem 1rem;
+    }
+    .nav-back a:hover {
+      color: #f87171; /* light red hover */
     }
 
-    .btn-back:hover {
-      background: linear-gradient(90deg, #3b82f6, #6366f1);
-      color: white;
-      transform: scale(1.05);
-    }
-
+    /* Project card */
     .project-card {
       background-color: white;
       border-radius: 2rem;
@@ -45,12 +50,12 @@
       max-width: 900px;
       transition: transform 0.3s, box-shadow 0.3s;
     }
-
     .project-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 1rem 2.5rem rgba(0,0,0,0.2);
     }
 
+    /* Project images */
     .project-image img {
       border-radius: 1.5rem;
       border: 4px solid #f1f1f1;
@@ -59,17 +64,22 @@
       box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
       transition: transform 0.3s, box-shadow 0.3s;
     }
-
     .project-image img:hover {
       transform: scale(1.05);
       box-shadow: 0 0.75rem 1.5rem rgba(0,0,0,0.2);
     }
 
-    /* Bold blue headers */
-    .text-primary {
-      font-weight: 700;
+    /* Light red headers */
+    .project-title-red {
+      color: #f87171; /* light red */
+      font-weight: bold;
     }
 
+    .description-black p {
+      color: #000; /* description black */
+    }
+
+    /* Footer */
     footer {
       background-color: #343a40;
       color: white;
@@ -81,37 +91,44 @@
 <body>
 
   <!-- Header -->
-  <header>
+  <header class="project-header">
     <div class="container">
-      <h1 class="fw-bold">Sriya Gopalan's Portfolio</h1>
-      <p class="lead mt-2">Showcasing Creative Typography & Digital Design</p>
+      <h1 class="fw-bold">2 Axis Music Logos</h1>
+      <p class="lead mt-2">Creative Typography & Color</p>
     </div>
   </header>
 
-  <!-- Back Button -->
-  <div class="text-center mt-4">
-    <a href="../index.html" class="btn btn-back px-4 py-2 rounded-pill">&larr; Back to Portfolio</a>
+  <!-- Back Button (black) -->
+  <div class="nav-back">
+    <div class="container">
+      <a href="../index.html">
+        <svg class="bi bi-arrow-left me-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M15 8a.5.5 0 0 1-.5.5H2.707l4.147 4.146a.5.5 0 0 1-.708.708l-5-5a.5.5 0 0 1 0-.708l5-5a.5.5 0 0 1 .708.708L2.707 7.5H14.5A.5.5 0 0 1 15 8z"/>
+        </svg>
+        Back to Portfolio
+      </a>
+    </div>
   </div>
 
   <!-- Main Project Card -->
   <div class="project-card">
 
     <!-- Project Title -->
-    <h2 class="text-center text-primary mb-5">2 Axis Music Logos: Creative Typography & Color</h2>
+    <h2 class="text-center project-title-red mb-5">2 Axis Music Logos: Creative Typography & Color</h2>
 
     <!-- Project Image -->
     <div class="project-image text-center mb-5">
       <img src="../Images/ART-74 - 2_Axis_Music Logos.jpg" 
            alt="The finalized logo designs for Axis Music, incorporating creative typography and color."
-           onerror="this.onerror=null; this.src='https://placehold.co/600x400/10B981/ffffff?text=2+Axis+Logos+Not+Found';">
+           onerror="this.onerror=null; this.src='https://placehold.co/600x400/F87171/ffffff?text=2+Axis+Logos+Not+Found';">
     </div>
 
     <!-- Project Description -->
-    <div class="project-description">
+    <div class="description-black">
 
       <!-- Project Overview -->
       <section class="mb-5 border-bottom pb-4">
-        <h3 class="h4 text-primary mb-3">Project Overview</h3>
+        <h3 class="project-title-red mb-3">Project Overview</h3>
         <p>
           I designed a music logo for a brand called <strong>"Axis Music"</strong>. The concept integrates music notes into letterforms, creating a playful and unique brand identity that combines musical structure with visual creativity.
         </p>
@@ -119,7 +136,7 @@
 
       <!-- Design & Execution -->
       <section class="mb-5 border-bottom pb-4">
-        <h3 class="h4 text-primary mb-3">Design & Execution</h3>
+        <h3 class="project-title-red mb-3">Design & Execution</h3>
         <ul class="list-unstyled ps-3">
           <li class="mb-2"><strong>Conceptual Design:</strong> The logo merges music notes with letters to create a memorable and imaginative brand mark.</li>
           <li class="mb-2"><strong>Typography:</strong> One logo uses a clean, professional font, while the "music" element in the creative version features a cursive style for artistic emphasis.</li>
@@ -130,7 +147,7 @@
 
       <!-- Reflections -->
       <section>
-        <h3 class="h4 text-primary mb-3">Reflections</h3>
+        <h3 class="project-title-red mb-3">Reflections</h3>
         <p>
           The final logos successfully balance creative artistry and professional clarity. They reflect the brand’s playful energy while maintaining readability and impact. This project was a rewarding exercise in visual storytelling and design experimentation.
         </p>
