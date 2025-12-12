@@ -14,7 +14,6 @@
   <style>
     body {
       font-family: 'Inter', sans-serif;
-      line-height: 1.7;
       background-color: #f8f9fa;
     }
 
@@ -23,10 +22,6 @@
       color: white;
       padding: 5rem 0;
       text-align: center;
-    }
-
-    header h1 {
-      font-weight: 800;
     }
 
     .btn-back {
@@ -41,28 +36,19 @@
       transform: scale(1.05);
     }
 
-    main {
+    .project-card {
       background-color: white;
       border-radius: 2rem;
       box-shadow: 0 0.75rem 2rem rgba(0,0,0,0.15);
       padding: 3rem 2rem;
       margin: 3rem auto;
       max-width: 900px;
-      transition: all 0.3s ease;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
-    main:hover {
+    .project-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 1rem 2.5rem rgba(0,0,0,0.2);
-    }
-
-    .project-description ul {
-      list-style: disc;
-      padding-left: 1.5rem;
-    }
-
-    .project-description li {
-      margin-bottom: 0.5rem;
     }
 
     .project-image img {
@@ -79,16 +65,16 @@
       box-shadow: 0 0.75rem 1.5rem rgba(0,0,0,0.2);
     }
 
+    /* Bold blue headers */
+    .text-primary {
+      font-weight: 700;
+    }
+
     footer {
       background-color: #343a40;
       color: white;
       padding: 1.5rem 0;
       text-align: center;
-    }
-
-    /* Make blue headings bold */
-    .text-primary {
-      font-weight: 700; /* Bold */
     }
   </style>
 </head>
@@ -96,19 +82,21 @@
 
   <!-- Header -->
   <header>
-    <div class="container text-center">
-      <h1>Sriya Gopalan's Portfolio</h1>
+    <div class="container">
+      <h1 class="fw-bold">Sriya Gopalan's Portfolio</h1>
       <p class="lead mt-2">Showcasing Creative Typography & Digital Design</p>
     </div>
   </header>
 
-  <!-- Navigation / Back Button -->
+  <!-- Back Button -->
   <div class="text-center mt-4">
-    <a href="../index.html" class="btn btn-back px-4 py-2 mb-4 rounded-pill">&larr; Back to Portfolio</a>
+    <a href="../index.html" class="btn btn-back px-4 py-2 rounded-pill">&larr; Back to Portfolio</a>
   </div>
 
-  <!-- Main Content -->
-  <main>
+  <!-- Main Project Card -->
+  <div class="project-card">
+
+    <!-- Project Title -->
     <h2 class="text-center text-primary mb-5">2 Axis Music Logos: Creative Typography & Color</h2>
 
     <!-- Project Image -->
@@ -121,7 +109,7 @@
     <!-- Project Description -->
     <div class="project-description">
 
-      <!-- Overview -->
+      <!-- Project Overview -->
       <section class="mb-5 border-bottom pb-4">
         <h3 class="h4 text-primary mb-3">Project Overview</h3>
         <p>
@@ -132,11 +120,11 @@
       <!-- Design & Execution -->
       <section class="mb-5 border-bottom pb-4">
         <h3 class="h4 text-primary mb-3">Design & Execution</h3>
-        <ul>
-          <li><strong>Conceptual Design:</strong> The logo merges music notes with letters to create a memorable and imaginative brand mark.</li>
-          <li><strong>Typography:</strong> One logo uses a clean, professional font, while the "music" element in the creative version features a cursive style for artistic emphasis.</li>
-          <li><strong>Color Palette:</strong> Vibrant, playful colors enhance energy and visual impact.</li>
-          <li><strong>Tools Used:</strong> Adobe Illustrator for scalable, high-quality graphics.</li>
+        <ul class="list-unstyled ps-3">
+          <li class="mb-2"><strong>Conceptual Design:</strong> The logo merges music notes with letters to create a memorable and imaginative brand mark.</li>
+          <li class="mb-2"><strong>Typography:</strong> One logo uses a clean, professional font, while the "music" element in the creative version features a cursive style for artistic emphasis.</li>
+          <li class="mb-2"><strong>Color Palette:</strong> Vibrant, playful colors enhance energy and visual impact.</li>
+          <li class="mb-2"><strong>Tools Used:</strong> Adobe Illustrator for scalable, high-quality graphics.</li>
         </ul>
       </section>
 
@@ -149,7 +137,7 @@
       </section>
 
     </div>
-  </main>
+  </div>
 
   <!-- Footer -->
   <footer>
