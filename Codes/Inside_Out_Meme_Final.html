@@ -11,11 +11,24 @@
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.7;
-            background-color: #f0fdf4; /* Light green background for body */
+            background-color: #f0fdf4; /* Light green background */
         }
         .project-header {
             background-color: #16a34a; /* Green header */
             color: white;
+        }
+        .nav-back {
+            background-color: #000; /* Black back link */
+        }
+        .nav-back a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+        }
+        .nav-back a:hover {
+            color: #16a34a; /* Green hover */
         }
         .project-section {
             background-color: white;
@@ -28,11 +41,11 @@
             box-shadow: 0 1rem 2rem rgba(0,0,0,0.25);
         }
         .project-title-green {
-            color: #16a34a; /* Green text */
+            color: #16a34a; /* Green and bold */
             font-weight: bold;
         }
-        .description-green p {
-            color: #16a34a;
+        .description-black p {
+            color: #000; /* Description text black */
         }
         .btn-back {
             background-color: #16a34a;
@@ -57,31 +70,31 @@
 <body>
 
     <!-- Header -->
-    <header class="project-header text-center py-5 mb-4">
+    <header class="project-header text-center py-5">
         <div class="container">
             <h1 class="display-4 fw-bold">Inside Out Meme Final</h1>
             <p class="lead opacity-75">Project Details</p>
         </div>
     </header>
 
-    <!-- Navigation / Back Link -->
-    <nav class="bg-dark py-2 mb-4">
+    <!-- Navigation / Back Link right after header -->
+    <div class="nav-back">
         <div class="container">
-            <a href="../index.html#projects" class="text-white text-decoration-none d-flex align-items-center">
+            <a href="../index.html#projects">
                 <svg class="bi bi-arrow-left me-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M15 8a.5.5 0 0 1-.5.5H2.707l4.147 4.146a.5.5 0 0 1-.708.708l-5-5a.5.5 0 0 1 0-.708l5-5a.5.5 0 0 1 .708.708L2.707 7.5H14.5A.5.5 0 0 1 15 8z"/>
                 </svg>
                 Back to Portfolio
             </a>
         </div>
-    </nav>
+    </div>
 
     <!-- Main Content -->
-    <main class="container mb-5">
+    <main class="container my-5">
 
         <div class="project-section mx-auto">
 
-            <h2 class="text-center project-title-green mb-5">The Inside Scoop</h2>
+            <h2 class="text-center project-title-green mb-4">The Inside Scoop</h2>
 
             <!-- Project Image -->
             <figure class="project-image mb-4">
@@ -97,7 +110,7 @@
             </figure>
 
             <!-- Project Description -->
-            <div class="description-green">
+            <div class="description-black">
                 <h3 class="project-title-green mb-3">Description</h3>
                 <p>
                     This meme explores the <strong>trend of using ChatGPT or AI for completing assignments</strong> in school. It's based on a popular <em>Inside Out</em> Characters meme: "Do you ever look at someone and wonder what is going on inside their head?".
@@ -110,7 +123,7 @@
                 </p>
             </div>
 
-            <!-- Back Button -->
+            <!-- Bottom Back Button -->
             <div class="text-center mt-4">
                 <a href="../index.html#projects" class="btn btn-back d-inline-flex align-items-center px-4 py-2">
                     <svg class="bi bi-arrow-left me-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
