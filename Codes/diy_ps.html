@@ -15,40 +15,90 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
 
   <style>
-    body { font-family: 'Inter', sans-serif; background-color: #f8f9fa; line-height: 1.7; }
-    .project-header { background-color: #2563eb; color: white; text-align: center; padding: 5rem 0; }
+    html { scroll-behavior: smooth; }
 
-    /* Centered Back navigation */
-    .nav-back { background-color: #000; text-align: center; }
-    .nav-back a { 
-      display: inline-block; 
-      color: white; 
-      text-decoration: none; 
-      padding: 0.5rem 1rem; 
-      transition: color 0.3s; 
-    }
-    .nav-back a:hover { color: #2563eb; }
-
-    .project-section { 
-      background-color: #fff; 
-      border-radius: 2rem; 
-      box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15); 
-      padding: 2rem; 
-      max-width: 900px; 
-      margin: 3rem auto; 
-    }
-    .project-title { color: #2563eb; font-weight: bold; text-align: center; }
-
-    #sketch-holder canvas { 
-      border: 2px solid #2563eb; 
-      border-radius: 0.5rem; 
-      display: block; 
-      margin: 1rem auto; 
-      max-width: 100%; 
-      height: auto; 
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8f9fa;
+      line-height: 1.7;
+      margin: 0;
+      padding: 0;
+      color: #000;
     }
 
-    footer { background-color: #343a40; color: white; text-align: center; padding: 1.5rem 0; }
+    /* Header */
+    .project-header {
+      background-color: #1b3a6b;
+      color: white;
+      text-align: center;
+      padding: 5rem 0;
+    }
+
+    /* Back navigation */
+    .nav-back {
+      background-color: #000;
+      text-align: center;
+      padding: 1rem 0;
+    }
+    .nav-back a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      transition: color 0.3s, transform 0.3s;
+    }
+    .nav-back a:hover {
+      color: #2563eb;
+      transform: scale(1.05);
+    }
+
+    /* Project card */
+    .project-section {
+      background-color: #ffffff;
+      border-radius: 2rem;
+      box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+      padding: 2rem;
+      max-width: 900px;
+      margin: 3rem auto;
+    }
+
+    /* Titles */
+    .project-title {
+      color: #1b3a6b;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Instructions (BLACK TEXT) */
+    .instructions ul {
+      padding-left: 1.5rem;
+      color: #000;
+      font-weight: 500;
+    }
+    .instructions li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Canvas */
+    #sketch-holder canvas {
+      border: 2px solid #2563eb;
+      border-radius: 0.75rem;
+      display: block;
+      margin: 1.5rem auto;
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #343a40;
+      color: white;
+      text-align: center;
+      padding: 1.5rem 0;
+    }
   </style>
 </head>
 <body>
@@ -59,31 +109,36 @@
     <p class="lead opacity-75">Interactive Drawing Tool</p>
   </header>
 
-  <!-- Centered Back navigation -->
+  <!-- Back navigation -->
   <div class="nav-back">
     <a href="../index.html#projects">← Back to Portfolio</a>
   </div>
 
   <!-- Main content -->
   <main class="project-section">
-    <h2 class="project-title mb-4">Instructions</h2>
-    <ul style="padding-left:1.5rem;">
-      <li>Press keys <strong>1–8</strong> to choose a drawing tool</li>
-      <li>Press <strong>x</strong> to clear the screen</li>
-      <li>Press <strong>p</strong> to save a screenshot</li>
-      <li>Click & drag your mouse to draw</li>
-    </ul>
+    <h2 class="project-title">Instructions</h2>
+
+    <div class="instructions">
+      <ul>
+        <li>Press keys <strong>1–8</strong> to choose a drawing tool</li>
+        <li>Press <strong>X</strong> to clear the screen</li>
+        <li>Press <strong>P</strong> to save a screenshot</li>
+        <li>Click & drag your mouse to draw</li>
+      </ul>
+    </div>
 
     <div id="sketch-holder"></div>
   </main>
 
+  <!-- Footer -->
   <footer>
     © 2025 Sriya Gopalan — All Rights Reserved.
   </footer>
 
+  <!-- p5.js Sketch -->
   <script>
     let img;
-    let initials ='jm';
+    let initials = 'jm';
     let choice = '1';
     let screenbg = 250;
     let lastscreenshot = 61;
@@ -110,49 +165,51 @@
 
     function newkeyChoice(toolChoice) {
       if (toolChoice == '1') {
-        stroke(0, 0, 255); strokeWeight(12); line(mouseX, mouseY, pmouseX, pmouseY);
+        stroke(0, 0, 255); strokeWeight(12);
+        line(mouseX, mouseY, pmouseX, pmouseY);
       } 
       else if (toolChoice == '2') {
-        stroke(70, 130, 255); strokeWeight(24); line(mouseX, mouseY, pmouseX, pmouseY);
+        stroke(70, 130, 255); strokeWeight(24);
+        line(mouseX, mouseY, pmouseX, pmouseY);
       } 
       else if (toolChoice == '3') {
-        stroke(0, 100, 0); strokeWeight(2); 
-        for (let i=0; i<5; i++){
-          let xOffset = random(-3,3);
-          let yOffset = random(-10,0);
-          line(mouseX+xOffset, mouseY, mouseX+xOffset, mouseY+yOffset);
+        stroke(0, 100, 0); strokeWeight(2);
+        for (let i = 0; i < 5; i++) {
+          line(mouseX + random(-3,3), mouseY, mouseX, mouseY + random(-10,0));
         }
       } 
       else if (toolChoice == '4') {
         noStroke(); fill(34,139,34);
-        triangle(mouseX, mouseY-40, mouseX-20, mouseY+15, mouseX+15, mouseY+15);
-        fill(139,69,19); rect(mouseX-5, mouseY+15, 10, 30);
+        triangle(mouseX, mouseY - 40, mouseX - 20, mouseY + 15, mouseX + 15, mouseY + 15);
+        fill(139,69,19); rect(mouseX - 5, mouseY + 15, 10, 30);
       } 
       else if (toolChoice == '5') {
         noStroke(); fill(255,80,100); ellipse(mouseX, mouseY, 50, 30);
-        fill(240,220,180); rect(mouseX-8, mouseY+5, 16,25,5);
-        fill(255); ellipse(mouseX-10, mouseY-5,7,5); ellipse(mouseX+8, mouseY-3,6,4); ellipse(mouseX, mouseY+2,5,4);
+        fill(240,220,180); rect(mouseX - 8, mouseY + 5, 16, 25, 5);
       } 
       else if (toolChoice == '6') {
-        stroke(255,215,0); strokeWeight(12); line(mouseX, mouseY, pmouseX, pmouseY);
+        stroke(255,215,0); strokeWeight(12);
+        line(mouseX, mouseY, pmouseX, pmouseY);
       } 
       else if (toolChoice == '7') {
-        stroke(255,140,0); strokeWeight(12); line(mouseX, mouseY, pmouseX, pmouseY);
+        stroke(255,140,0); strokeWeight(12);
+        line(mouseX, mouseY, pmouseX, pmouseY);
       } 
       else if (toolChoice == '8') {
-        stroke(64,244,208); strokeWeight(12); line(mouseX, mouseY, pmouseX, pmouseY);
+        stroke(64,244,208); strokeWeight(12);
+        line(mouseX, mouseY, pmouseX, pmouseY);
       }
     }
 
     function clear_print() {
-      if (key=='x'||key=='X') background(screenbg);
-      else if (key=='p'||key=='P') saveme();
+      if (key == 'x' || key == 'X') background(screenbg);
+      else if (key == 'p' || key == 'P') saveme();
     }
 
     function saveme() {
       let filename = initials + day() + hour() + minute() + second();
       if (second() != lastscreenshot) {
-        saveCanvas(filename, 'jpg'); key="";
+        saveCanvas(filename, 'jpg');
       }
       lastscreenshot = second();
     }
