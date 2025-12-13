@@ -37,16 +37,13 @@
       text-align: center;
     }
 
-    /* Project button style */
-    .btn-project {
-      margin-top: 0.5rem;
-      font-weight: 600;
-    }
-
-    /* Tabs spacing */
-    #projectTabs .nav-link {
-      margin-bottom: 0.5rem;
-      margin-right: 0.5rem;
+    #p5js-container canvas {
+      border: 2px solid #2563eb;
+      border-radius: 0.5rem;
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
     }
   </style>
 </head>
@@ -123,52 +120,58 @@
             <div class="card project-card mb-3 p-4 text-center">
               <h5 class="text-primary fw-bold mb-2">2 Axis Music Logos</h5>
               <p>A logo design exploration based on axis symmetry.</p>
-              <a href="Codes/2-axis-music-logos.html" class="btn btn-outline-primary btn-project">View Project →</a>
+              <a href="Codes/2-axis-music-logos.html" class="btn btn-outline-primary mt-2 fw-semibold">View Project →</a>
             </div>
           </div>
           <div class="tab-pane fade" id="p2">
             <div class="card project-card mb-3 p-4 text-center">
               <h5 class="text-primary fw-bold mb-2">Inside Out Meme Final</h5>
               <p>A creative project combining digital editing and humor.</p>
-              <a href="Codes/Inside_Out_Meme_Final.html" class="btn btn-outline-primary btn-project">View Project →</a>
+              <a href="Codes/Inside_Out_Meme_Final.html" class="btn btn-outline-primary mt-2 fw-semibold">View Project →</a>
             </div>
           </div>
           <div class="tab-pane fade" id="p3">
             <div class="card project-card mb-3 p-4 text-center">
               <h5 class="text-primary fw-bold mb-2">Boba Glitched 1</h5>
               <p>Glitch art experiment with distortion effects.</p>
-              <a href="Codes/Boba_Glitched_1.html" class="btn btn-outline-primary btn-project">View Project →</a>
+              <a href="Codes/Boba_Glitched_1.html" class="btn btn-outline-primary mt-2 fw-semibold">View Project →</a>
             </div>
           </div>
           <div class="tab-pane fade" id="p4">
             <div class="card project-card mb-3 p-4 text-center">
               <h5 class="text-primary fw-bold mb-2">Boba Glitched 2</h5>
               <p>Second installment of the glitch art series.</p>
-              <a href="Codes/Boba_Glitched_2.html" class="btn btn-outline-primary btn-project">View Project →</a>
+              <a href="Codes/Boba_Glitched_2.html" class="btn btn-outline-primary mt-2 fw-semibold">View Project →</a>
             </div>
           </div>
           <div class="tab-pane fade" id="p5">
             <div class="card project-card mb-3 p-4 text-center">
               <h5 class="text-primary fw-bold mb-2">Boba Glitched 3</h5>
               <p>Final entry of the Boba glitch collection.</p>
-              <a href="Codes/Boba_Glitched_3.html" class="btn btn-outline-primary btn-project">View Project →</a>
+              <a href="Codes/Boba_Glitched_3.html" class="btn btn-outline-primary mt-2 fw-semibold">View Project →</a>
             </div>
           </div>
           <div class="tab-pane fade" id="p6">
             <div class="card project-card mb-3 p-4 text-center">
               <h5 class="text-primary fw-bold mb-2">Net Art GitHub Project</h5>
               <p>A multi-page interactive art experience built with HTML/CSS.</p>
-              <a href="Codes/net_art.html" class="btn btn-outline-primary btn-project">View Project →</a>
+              <a href="Codes/net_art.html" class="btn btn-outline-primary mt-2 fw-semibold">View Project →</a>
             </div>
           </div>
           <div class="tab-pane fade" id="p7">
             <div class="card project-card mb-3 p-4 text-center">
               <h5 class="text-primary fw-bold mb-2">DIY p5.js Sketch</h5>
-              <p>An interactive p5.js self-portrait sketch.</p>
-              <a href="Codes/diy_code_self_portrait.html" class="btn btn-outline-primary btn-project">View Project →</a>
+              <p>An interactive p5.js self-portrait sketch embedded below.</p>
+
+              <!-- Sketch container -->
+              <div id="p5js-container" class="mx-auto" style="max-width: 600px; border: 1px solid #ccc;"></div>
+
+              <!-- Optional external link -->
+              <a href="Codes/diy_code_self_portrait.html" class="btn btn-outline-primary btn-project mt-3">Open Full Project →</a>
             </div>
           </div>
         </div>
+
       </div>
 
       <!-- CONTACT -->
@@ -202,5 +205,47 @@
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- p5.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.7.0/lib/p5.min.js"></script>
+
+  <!-- DIY p5.js sketch -->
+  <script>
+    const sketch = (p) => {
+      p.setup = function() {
+        const container = document.getElementById('p5js-container');
+        const canvas = p.createCanvas(container.offsetWidth, 400);
+        canvas.parent('p5js-container');
+        p.background(240);
+        p.angleMode(p.DEGREES);
+      };
+
+      p.draw = function() {
+        p.background(240);
+
+        // Face
+        p.fill(255, 220, 180);
+        p.ellipse(p.width/2, p.height/2, 150, 200);
+
+        // Eyes
+        p.fill(0);
+        p.ellipse(p.width/2 - 35, p.height/2 - 20, 20, 20);
+        p.ellipse(p.width/2 + 35, p.height/2 - 20, 20, 20);
+
+        // Mouth
+        p.stroke(0);
+        p.noFill();
+        p.arc(p.width/2, p.height/2 + 40, 80, 50, 0, p.PI);
+
+        // Interactive circle
+        p.fill(100, 150, 255, 150);
+        p.noStroke();
+        p.ellipse(p.mouseX, p.mouseY, 30, 30);
+      };
+    };
+
+    new p5(sketch);
+  </script>
+
 </body>
 </html>
