@@ -22,7 +22,7 @@
     .nav-back a:hover { color: #2563eb; }
     .project-section { background-color: #fff; border-radius: 2rem; box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15); padding: 2rem; max-width: 900px; margin: 3rem auto; text-align: center; }
     #game-canvas canvas { 
-      border: none; /* removed blue border */
+      border: none;
       border-radius: 0.5rem; 
       display: block; 
       margin: 1rem auto; 
@@ -50,7 +50,7 @@
   <!-- Main content -->
   <main class="project-section">
     <h2 class="project-title mb-4" style="color:#2563eb; font-weight:700;">Instructions</h2>
-    <ul style="padding-left:1.5rem; text-align: left; color:#2563eb; font-weight:700;">
+    <ul style="padding-left:1.5rem; text-align: left; color:black; font-weight:400;">
       <li>Click the colorful bubbles to pop them.</li>
       <li>Avoid the red bombs or you'll lose a life!</li>
       <li>Some bubbles give extra points or bonus time.</li>
@@ -118,7 +118,6 @@
     }
 
     function mousePressed(){
-      // PLAY BUTTON
       if(!gameStarted){
         if(mouseX > width/2-90 && mouseX < width/2+90 && mouseY > height/2-30 && mouseY < height/2+30){
           gameStarted = true; startGame();
@@ -126,7 +125,6 @@
         return;
       }
 
-      // PLAY AGAIN BUTTON
       if(gameWon || gameLost){
         if(mouseX > width/2-90 && mouseX < width/2+90 && mouseY > height/2+60 && mouseY < height/2+100){
           startGame();
@@ -134,7 +132,6 @@
         return;
       }
 
-      // Game object clicks
       for(let i = objects.length-1; i >= 0; i--){
         if(objects[i].isClicked(mouseX, mouseY)){
           if(objects[i].isBomb){
@@ -192,9 +189,6 @@
       drawButton(width/2, height/2 + 80, 180, 40, "PLAY AGAIN");
     }
 
-    // ===========================
-    // GameObject Class
-    // ===========================
     class GameObject{
       constructor(){ this.reset(); }
       move(){ this.y -= this.speed; if(this.y < -this.r) this.reset(); }
