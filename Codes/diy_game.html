@@ -15,7 +15,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
 
   <style>
-    body { font-family: 'Inter', sans-serif; background-color: #f8f9fa; line-height: 1.7; }
+    body { 
+      font-family: 'Inter', sans-serif; 
+      background-color: #f8f9fa; 
+      line-height: 1.7; 
+      margin: 0; 
+      padding: 0; 
+    }
 
     .project-header { 
       background-color: #2563eb; 
@@ -24,17 +30,19 @@
       padding: 5rem 0; 
     }
 
-    /* Centered Back navigation */
-    .nav-back { 
-      background-color: #000; 
-      text-align: center; /* centers the link */
+    /* Centered Back navigation matching other projects */
+    .nav-back {
+      background-color: #000;
+      text-align: center;
+      padding: 0.5rem 0;
     }
-    .nav-back a { 
-      display: inline-block; 
-      color: white; 
-      text-decoration: none; 
-      padding: 0.5rem 1rem; 
-      transition: color 0.3s; 
+    .nav-back a {
+      display: inline-block;
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.3s;
     }
     .nav-back a:hover { color: #2563eb; }
 
@@ -48,8 +56,14 @@
       text-align: center; 
     }
 
+    .project-title {
+      color: #2563eb;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
     #game-canvas canvas { 
-      border: none;
       border-radius: 0.5rem; 
       display: block; 
       margin: 1rem auto; 
@@ -80,7 +94,7 @@
 
   <!-- Main content -->
   <main class="project-section">
-    <h2 class="project-title mb-4" style="color:#2563eb; font-weight:700;">Instructions</h2>
+    <h2 class="project-title">Instructions</h2>
     <ul style="padding-left:1.5rem; text-align: left; color:black; font-weight:400;">
       <li>Click the colorful bubbles to pop them.</li>
       <li>Avoid the red bombs or you'll lose a life!</li>
