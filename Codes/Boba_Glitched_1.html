@@ -18,12 +18,13 @@
       font-family: 'Inter', sans-serif;
       line-height: 1.7;
       background-color: #f8f9fa;
+      color: #000; /* ensure main text is black */
     }
 
     /* Header */
     .project-header {
-      background-color: #FFD700; /* golden yellow */
-      color: #000;
+      background-color: #1b3a6b; /* blue header */
+      color: white;
       text-align: center;
       padding: 5rem 0;
     }
@@ -44,7 +45,7 @@
       transition: color 0.3s, transform 0.3s;
     }
     .nav-back a:hover {
-      color: #FFD700;
+      color: #1b3a6b; /* blue hover */
       transform: scale(1.05);
     }
 
@@ -63,8 +64,11 @@
       box-shadow: 0 1rem 2rem rgba(0,0,0,0.25);
     }
 
-    /* Golden yellow headers */
-    .project-title-gold { color: #FFD700; font-weight: bold; }
+    /* Blue headers */
+    .project-title-blue { 
+      color: #1b3a6b; 
+      font-weight: bold; 
+    }
 
     /* Description text */
     .description-black p, .description-black li { color: #000; }
@@ -93,16 +97,16 @@
     }
 
     /* Buttons */
-    .btn-gold {
-      background-color: #FFD700;
-      color: #000;
+    .btn-blue {
+      background-color: #1b3a6b;
+      color: #fff;
       font-weight: 600;
       transition: all 0.3s ease;
     }
-    .btn-gold:hover {
-      background-color: #e6c200;
+    .btn-blue:hover {
+      background-color: #16305a;
       transform: scale(1.05);
-      color: #000;
+      color: #fff;
     }
   </style>
 </head>
@@ -131,37 +135,37 @@
     <div class="project-section mx-auto">
 
       <!-- Project title -->
-      <h2 class="text-center project-title-gold mb-4">Boba Glitched 1: Data Bending & Glitch Art</h2>
+      <h2 class="text-center project-title-blue mb-4">Boba Glitched 1: Data Bending & Glitch Art</h2>
 
       <!-- Project image -->
       <figure class="project-image mb-4 text-center">
         <img src="../Images/Boba Glitched - Part 1.jpg" 
              alt="Boba Glitched 1 Artwork with intentional digital distortion."
              class="img-fluid w-100"
-             onerror="this.onerror=null; this.src='https://placehold.co/600x400/FFD700/000000?text=Boba+Glitched+1+Not+Found';">
+             onerror="this.onerror=null; this.src='https://placehold.co/600x400/1b3a6b/ffffff?text=Boba+Glitched+1+Not+Found';">
         <figcaption class="text-center text-muted mt-2">Image: Boba Glitched - Part 1.jpg</figcaption>
       </figure>
 
       <!-- Project description -->
       <div class="description-black">
-        <h3 class="project-title-gold mb-3">Project Overview</h3>
+        <h3 class="project-title-blue mb-3">Project Overview</h3>
         <p>This project is the first in an experimental digital art series, focusing on <strong>glitch art</strong> created by manually manipulating a file's code, also called <strong>data bending</strong>.</p>
 
-        <h3 class="project-title-gold mb-3">Design & Execution</h3>
+        <h3 class="project-title-blue mb-3">Design & Execution</h3>
         <ul>
           <li>Used <strong>TextEdit</strong> to manipulate JPEG files directly.</li>
           <li>Copied and pasted sections after ~20% to avoid corrupting the header.</li>
           <li>Observed glitch effects in <strong>Preview</strong> and refined the result.</li>
         </ul>
 
-        <h3 class="project-title-gold mb-3">Reflections</h3>
+        <h3 class="project-title-blue mb-3">Reflections</h3>
         <p>This project explores the intersection of digital errors and creativity. Each image produced unexpected visual patterns, highlighting the beauty of controlled chaos in data manipulation.</p>
       </div>
 
       <!-- Next Project -->
       <div class="text-center mt-5">
         <p class="text-muted mb-3">See the continuation of this experimental series:</p>
-        <a href="Boba_Glitched_2.html" class="btn btn-gold btn-lg rounded-pill shadow">View Boba Glitched 2 →</a>
+        <a href="Boba_Glitched_2.html" class="btn btn-blue btn-lg rounded-pill shadow">View Boba Glitched 2 →</a>
       </div>
 
     </div>
