@@ -15,6 +15,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
 
   <style>
+    html { scroll-behavior: smooth; }
+
     body { 
       font-family: 'Inter', sans-serif; 
       background-color: #f8f9fa; 
@@ -23,6 +25,7 @@
       padding: 0; 
     }
 
+    /* Header */
     .project-header { 
       background-color: #2563eb; 
       color: white; 
@@ -30,24 +33,27 @@
       padding: 5rem 0; 
     }
 
-    /* Centered Back navigation matching other projects */
+    /* Back navigation */
     .nav-back {
       background-color: #000;
       text-align: center;
-      padding: 0.5rem 0;
+      padding: 1rem 0;
     }
     .nav-back a {
-      display: inline-block;
       color: white;
       text-decoration: none;
       font-weight: 500;
-      font-size: 1rem;
-      transition: color 0.3s;
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      transition: color 0.3s, transform 0.3s;
     }
     .nav-back a:hover {
       color: #2563eb;
+      transform: scale(1.05);
     }
 
+    /* Project section card */
     .project-section { 
       background-color: #fff; 
       border-radius: 2rem; 
@@ -57,12 +63,14 @@
       margin: 3rem auto; 
     }
 
+    /* Project titles */
     .project-title { 
       color: #2563eb; 
       font-weight: bold; 
       text-align: center; 
     }
 
+    /* Canvas styling */
     #canvas-holder canvas { 
       border-radius: 0.5rem; 
       display: block; 
@@ -71,11 +79,20 @@
       height: auto; 
     }
 
+    /* Footer */
     footer { 
       background-color: #343a40; 
       color: white; 
       text-align: center; 
       padding: 1.5rem 0; 
+    }
+
+    /* Instruction list styling */
+    .instructions ul {
+      padding-left: 1.5rem;
+    }
+    .instructions li {
+      margin-bottom: 0.5rem;
     }
   </style>
 </head>
@@ -87,20 +104,27 @@
     <p class="lead opacity-75">Interactive Drawing Tool</p>
   </header>
 
-  <!-- Centered Back navigation -->
+  <!-- Back navigation -->
   <div class="nav-back">
-    <a href="../index.html#projects">← Back to Portfolio</a>
+    <a href="../index.html#projects">
+      <svg class="bi bi-arrow-left me-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M15 8a.5.5 0 0 1-.5.5H2.707l4.147 4.146a.5.5 0 0 1-.708.708l-5-5a.5.5 0 0 1 0-.708l5-5a.5.5 0 0 1 .708.708L2.707 7.5H14.5A.5.5 0 0 1 15 8z"/>
+      </svg>
+      Back to Portfolio
+    </a>
   </div>
 
   <!-- Main content -->
   <main class="project-section">
     <h2 class="project-title mb-4">Instructions</h2>
-    <ul style="padding-left:1.5rem;">
-      <li>Press keys <strong>1–8</strong> to choose a drawing tool</li>
-      <li>Press <strong>x</strong> to clear the canvas</li>
-      <li>Press <strong>p</strong> to save a screenshot</li>
-      <li>Click & drag your mouse to draw</li>
-    </ul>
+    <div class="instructions">
+      <ul>
+        <li>Press keys <strong>1–8</strong> to choose a drawing tool</li>
+        <li>Press <strong>x</strong> to clear the canvas</li>
+        <li>Press <strong>p</strong> to save a screenshot</li>
+        <li>Click & drag your mouse to draw</li>
+      </ul>
+    </div>
 
     <div id="canvas-holder"></div>
   </main>
@@ -110,6 +134,7 @@
     © 2025 Sriya Gopalan — All Rights Reserved.
   </footer>
 
+  <!-- p5.js sketch -->
   <script>
     let img;
     let choice = '1';
@@ -138,7 +163,6 @@
       drawMouth();
     }
 
-    /* Drawing functions */
     function drawBraid() {
       let braidX = 310, braidY = 230;
       let braidSegments = 8, braidWidth = 45, braidHeight = 28;
@@ -178,6 +202,9 @@
       fill("#1B4F72"); triangle(235, 355, 265, 355, 250, 380);
     }
   </script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
