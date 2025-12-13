@@ -43,13 +43,14 @@
 
         /* Project section card */
         .project-section {
-            background-color: white;
+            background-color: #f8f9fa; /* Grey-ish white */
             border-radius: 2rem;
             box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
             padding: 2rem;
-            transition: box-shadow 0.3s ease-in-out;
+            transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
         }
         .project-section:hover {
+            transform: translateY(-5px);
             box-shadow: 0 1rem 2rem rgba(0,0,0,0.25);
         }
 
