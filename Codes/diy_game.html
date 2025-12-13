@@ -23,7 +23,6 @@
     .project-section { background-color: #fff; border-radius: 2rem; box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15); padding: 2rem; max-width: 900px; margin: 3rem auto; text-align: center; }
     #game-canvas canvas { border: 2px solid #2563eb; border-radius: 0.5rem; display: block; margin: 1rem auto; max-width: 100%; height: auto; }
     footer { background-color: #343a40; color: white; text-align: center; padding: 1.5rem 0; }
-    button { cursor: pointer; }
   </style>
 </head>
 <body>
@@ -66,69 +65,26 @@
     let score = 0, totalObjects = 15, winScore = 100, lives = 5;
     let gameWon = false, gameLost = false;
     let timer = 90, MAX_TIME = 90, TIME_BONUS = 10;
-    let playAgainButton, resetButton, startButton;
     let shakeAmount = 0, shakeDuration = 0;
     let gameStarted = false;
 
     function setup() {
       let canvas = createCanvas(600, 400);
       canvas.parent("game-canvas");
-
-      // START button
-      startButton = createButton("PLAY");
-      startButton.position(width / 2 - 50, height / 2 - 20);
-      startButton.style("font-size", "22px");
-      startButton.style("padding", "12px 25px");
-      startButton.mousePressed(startGameFromButton);
-
-      // PLAY AGAIN button
-      playAgainButton = createButton("PLAY AGAIN");
-      playAgainButton.position(width / 2 - 60, height / 2 + 80);
-      playAgainButton.style("font-size", "18px");
-      playAgainButton.style("padding", "10px 20px");
-      playAgainButton.mousePressed(restartGame);
-      playAgainButton.hide();
-
-      // RESET button (optional)
-      resetButton = createButton("RESET");
-      resetButton.position(width / 2 - 35, height / 2 + 80);
-      resetButton.style("font-size", "18px");
-      resetButton.style("padding", "10px 20px");
-      resetButton.mousePressed(restartGame);
-      resetButton.hide();
-    }
-
-    function startGameFromButton() {
-      gameStarted = true;
-      startButton.hide();
-      startGame();
-    }
-
-    function startGame() {
-      objects = [];
-      explosions = [];
-      pops = [];
-      score = 0; lives = 5;
-      gameWon = false; gameLost = false;
-      timer = MAX_TIME;
-      shakeAmount = 0; shakeDuration = 0;
-
-      for (let i = 0; i < totalObjects; i++) {
-        objects.push(new GameObject());
-      }
-
-      playAgainButton.hide();
-      resetButton.hide();
     }
 
     function draw() {
       background(30, 30, 50);
 
       if (!gameStarted) {
+        // DRAW PLAY BUTTON
+        fill(0, 150, 255);
+        rectMode(CENTER);
+        rect(width/2, height/2, 150, 60, 10);
         fill(255);
         textSize(28);
         textAlign(CENTER, CENTER);
-        text("Click PLAY to Start", width / 2, height / 2 - 80);
+        text("PLAY", width/2, height/2);
         return;
       }
 
@@ -169,8 +125,26 @@
     }
 
     function mousePressed() {
-      if (!gameStarted || gameWon || gameLost) return;
+      // PLAY BUTTON CLICK
+      if (!gameStarted) {
+        if (mouseX > width/2 - 75 && mouseX < width/2 + 75 &&
+            mouseY > height/2 - 30 && mouseY < height/2 + 30) {
+          gameStarted = true;
+          startGame();
+        }
+        return;
+      }
 
+      // PLAY AGAIN BUTTON CLICK
+      if (gameWon || gameLost) {
+        if (mouseX > width/2 - 75 && mouseX < width/2 + 75 &&
+            mouseY > height/2 + 60 && mouseY < height/2 + 100) {
+          startGame();
+        }
+        return;
+      }
+
+      // NORMAL GAME CLICK
       for (let i = objects.length - 1; i >= 0; i--) {
         if (objects[i].isClicked(mouseX, mouseY)) {
           if (objects[i].isBomb) {
@@ -192,10 +166,18 @@
       }
     }
 
-    function restartGame() {
-      gameStarted = true;
-      startButton.hide();
-      startGame();
+    function startGame() {
+      objects = [];
+      explosions = [];
+      pops = [];
+      score = 0; lives = 5;
+      gameWon = false; gameLost = false;
+      timer = MAX_TIME;
+      shakeAmount = 0; shakeDuration = 0;
+
+      for (let i = 0; i < totalObjects; i++) {
+        objects.push(new GameObject());
+      }
     }
 
     function displayWinScreen() {
@@ -204,9 +186,14 @@
       textAlign(CENTER, CENTER);
       let bombsHit = 5 - lives;
       let accuracy = bombsHit === 0 ? "100%" : `${100 - bombsHit * 10}%`;
-      text(`YOU POPPED ${score} BUBBLES!\nYOU WIN! 🎉\nBombs clicked: ${bombsHit}\nAccuracy: ${accuracy}\nTime left: ${Math.ceil(timer)}s`, width / 2, height / 2 - 20);
-      playAgainButton.show();
-      resetButton.hide();
+      text(`YOU POPPED ${score} BUBBLES!\nYOU WIN! 🎉\nBombs clicked: ${bombsHit}\nAccuracy: ${accuracy}\nTime left: ${Math.ceil(timer)}s`, width/2, height/2 - 20);
+
+      // PLAY AGAIN BUTTON
+      fill(0, 200, 100);
+      rect(width/2, height/2 + 80, 150, 40, 10);
+      fill(255);
+      textSize(20);
+      text("PLAY AGAIN", width/2, height/2 + 80);
     }
 
     function displayLoseScreen() {
@@ -215,9 +202,14 @@
       textAlign(CENTER, CENTER);
       let bombsHit = 5 - lives;
       let accuracy = bombsHit === 0 ? "100%" : `${max(0, 100 - bombsHit * 20)}%`;
-      text(`YOU POPPED ${score} BUBBLES!\nYOU HIT TOO MANY BOMBS OR TIME RAN OUT 💥\nBombs clicked: ${bombsHit}\nAccuracy: ${accuracy}\nTime left: ${Math.ceil(timer)}s`, width / 2, height / 2 - 20);
-      playAgainButton.show();
-      resetButton.hide();
+      text(`YOU POPPED ${score} BUBBLES!\nYOU HIT TOO MANY BOMBS OR TIME RAN OUT 💥\nBombs clicked: ${bombsHit}\nAccuracy: ${accuracy}\nTime left: ${Math.ceil(timer)}s`, width/2, height/2 - 20);
+
+      // PLAY AGAIN BUTTON
+      fill(0, 200, 100);
+      rect(width/2, height/2 + 80, 150, 40, 10);
+      fill(255);
+      textSize(20);
+      text("PLAY AGAIN", width/2, height/2 + 80);
     }
 
     // ===========================
@@ -253,22 +245,13 @@
       }
     }
 
-    // ===========================
-    // Explosion Class
-    // ===========================
-    class Explosion {
-      constructor(x,y){ this.x=x; this.y=y; this.frames=0; this.maxFrames=12; }
+    class Explosion { constructor(x,y){ this.x=x; this.y=y; this.frames=0; this.maxFrames=12; }
       update(){ this.frames++; let size=this.frames*6; noStroke(); fill(255,150,0,200-this.frames*15); ellipse(this.x,this.y,size); fill(255,50,0,200-this.frames*20); ellipse(this.x,this.y,size*0.7); return this.frames>this.maxFrames; } 
     }
 
-    // ===========================
-    // PopEffect Class
-    // ===========================
-    class PopEffect {
-      constructor(x,y){ this.x=x; this.y=y; this.frames=0; this.maxFrames=10; }
+    class PopEffect { constructor(x,y){ this.x=x; this.y=y; this.frames=0; this.maxFrames=10; }
       update(){ this.frames++; let size=this.frames*3; noFill(); stroke(255,255-this.frames*20); strokeWeight(2); ellipse(this.x,this.y,size); stroke(200,255-this.frames*25); ellipse(this.x,this.y,size*1.5); return this.frames>this.maxFrames; }
     }
-
   </script>
 
 </body>
