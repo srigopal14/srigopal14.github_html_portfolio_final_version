@@ -18,11 +18,12 @@
       font-family: 'Inter', sans-serif;
       line-height: 1.7;
       background-color: #f8f9fa;
+      color: #000;
     }
 
     /* Header */
     .project-header {
-      background-color: #800080; /* purple */
+      background-color: #1b3a6b; /* blue theme */
       color: white;
       text-align: center;
       padding: 5rem 0;
@@ -31,18 +32,24 @@
     /* Back navigation */
     .nav-back {
       background-color: #000;
-      text-align: center; /* center the link */
+      text-align: center;
+      padding: 1rem 0;
     }
     .nav-back a {
-      display: inline-flex;      /* arrow + text on same line */
-      align-items: center;       /* vertical center */
-      justify-content: center;   /* center content inside the link */
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       color: white;
       text-decoration: none;
+      font-weight: 500;
       padding: 0.5rem 1rem;
-      transition: color 0.3s ease;
+      border-radius: 0.5rem;
+      transition: color 0.3s ease, transform 0.3s ease;
     }
-    .nav-back a:hover { color: #800080; } /* purple hover */
+    .nav-back a:hover {
+      color: #2563eb;
+      transform: scale(1.05);
+    }
 
     /* Project section card */
     .project-section {
@@ -59,13 +66,24 @@
       box-shadow: 0 1rem 2rem rgba(0,0,0,0.25);
     }
 
-    /* Bold purple headers */
-    .project-title-red { color: #800080; font-weight: bold; }
+    /* Blue headers */
+    .project-title-blue {
+      color: #1b3a6b;
+      font-weight: 800;
+    }
 
     /* Description text */
-    .description-black p, .description-black li { color: #000; }
-    .description-black ul, .description-black ol { padding-left: 1.5rem; }
-    .description-black li { margin-bottom: 0.5rem; }
+    .description-black p,
+    .description-black li {
+      color: #000;
+    }
+    .description-black ul,
+    .description-black ol {
+      padding-left: 1.5rem;
+    }
+    .description-black li {
+      margin-bottom: 0.5rem;
+    }
 
     /* Project image hover effect */
     .project-image img {
@@ -102,48 +120,48 @@
 
   <!-- Back navigation -->
   <div class="nav-back">
-    <div class="container">
-      <a href="../index.html#projects">
-        <svg class="bi bi-arrow-left me-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M15 8a.5.5 0 0 1-.5.5H2.707l4.147 4.146a.5.5 0 0 1-.708.708l-5-5a.5.5 0 0 1 0-.708l5-5a.5.5 0 0 1 .708.708L2.707 7.5H14.5A.5.5 0 0 1 15 8z"/>
-        </svg>
-        Back to Portfolio
-      </a>
-    </div>
+    <a href="../index.html#projects">
+      <svg class="bi bi-arrow-left me-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M15 8a.5.5 0 0 1-.5.5H2.707l4.147 4.146a.5.5 0 0 1-.708.708l-5-5a.5.5 0 0 1 0-.708l5-5a.5.5 0 0 1 .708.708L2.707 7.5H14.5A.5.5 0 0 1 15 8z"/>
+      </svg>
+      Back to Portfolio
+    </a>
   </div>
 
   <!-- Main content -->
   <main class="project-section">
 
     <!-- Project title -->
-    <h2 class="text-center project-title-red mb-4">Project Overview</h2>
+    <h2 class="text-center project-title-blue mb-4">Project Overview</h2>
 
     <!-- Project image -->
     <figure class="project-image mb-4 text-center">
-      <img src="../Images/Sriya_Gopalan_Net_Art_Github.jpg" 
+      <img src="../Images/Sriya_Gopalan_Net_Art_Github.jpg"
            alt="Screenshot of Net Art Github 10-page website layout"
            class="img-fluid w-100"
-           onerror="this.onerror=null; this.src='https://placehold.co/600x400/800080/ffffff?text=Net+Art+Github+Not+Found';">
-      <figcaption class="text-center text-muted mt-2">Screenshot of the 10-page portfolio</figcaption>
+           onerror="this.onerror=null; this.src='https://placehold.co/600x400/1b3a6b/ffffff?text=Net+Art+Github+Not+Found';">
+      <figcaption class="text-center text-muted mt-2">
+        Screenshot of the 10-page portfolio
+      </figcaption>
     </figure>
 
     <!-- Process & Execution -->
     <section class="description-black mb-5">
-      <h3 class="project-title-red mb-3">Process & Execution</h3>
+      <h3 class="project-title-blue mb-3">Process & Execution</h3>
       <ol class="list-decimal list-inside">
-        <li>Created a 10-page portfolio website with artwork and presentations from college projects.</li>
-        <li>Imported videos and images using GitHub code structure for proper organization.</li>
-        <li>Designed clear headers linking to specific reviews for easy navigation across pages.</li>
-        <li>Tested the portfolio locally and via GitHub Pages for seamless viewing.</li>
-        <li>Reflected on the process to improve workflow for future portfolio projects.</li>
+        <li>Created a 10-page portfolio website showcasing artwork and presentations from college projects.</li>
+        <li>Organized images and videos using GitHub’s folder and file structure.</li>
+        <li>Designed clear headers linking to individual reviews for smooth navigation.</li>
+        <li>Tested the site locally and through GitHub Pages for consistency.</li>
+        <li>Reflected on workflow and structure to improve future portfolio projects.</li>
       </ol>
     </section>
 
     <!-- Reflections -->
     <section class="description-black mb-5">
-      <h3 class="project-title-red mb-3">Reflections</h3>
+      <h3 class="project-title-blue mb-3">Reflections</h3>
       <p>
-        This project allowed me to demonstrate skills in both graphic design and coding, creating a cohesive portfolio experience that highlighted my evolution as a digital artist.
+        This project strengthened my understanding of web-based portfolios by combining design and coding to create a cohesive, accessible presentation of my work as a digital artist.
       </p>
     </section>
 
