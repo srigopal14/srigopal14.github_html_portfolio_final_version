@@ -12,22 +12,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      --primary-color: #dc3545; /* Red for Boba Glitched 1 */
-      --bg-color: #f0fdf4;      /* Light green background */
-    }
-
     html { scroll-behavior: smooth; }
-
     body {
       font-family: 'Inter', sans-serif;
       line-height: 1.7;
-      background-color: var(--bg-color);
+      background-color: #f0fdf4;
     }
 
     /* Header */
     .project-header {
-      background-color: var(--primary-color);
+      background-color: #dc3545;
       color: white;
       text-align: center;
       padding: 5rem 0;
@@ -44,11 +38,11 @@
       align-items: center;
       padding: 0.5rem 1rem;
     }
-    .nav-back a:hover { color: var(--primary-color); }
+    .nav-back a:hover { color: #dc3545; }
 
-    /* Project section */
+    /* Project section card */
     .project-section {
-      background-color: white;
+      background-color: #ffffff;
       border-radius: 2rem;
       box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
       padding: 2rem;
@@ -61,7 +55,7 @@
       box-shadow: 0 1rem 2rem rgba(0,0,0,0.25);
     }
 
-    .project-title-red { color: var(--primary-color); font-weight: bold; }
+    .project-title-red { color: #dc3545; font-weight: bold; }
 
     .description-black p, .description-black li { color: #000; }
     .description-black ul { list-style: disc; padding-left: 1.5rem; }
@@ -69,11 +63,10 @@
 
     /* Project image */
     .project-image img {
-      border-radius: 1.5rem;
-      border: 4px solid #f1f1f1;
+      border-radius: 1rem;
+      box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
       max-width: 100%;
       height: auto;
-      box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
       transition: transform 0.3s, box-shadow 0.3s;
     }
     .project-image img:hover {
@@ -113,43 +106,38 @@
   </div>
 
   <!-- Main content -->
-  <main class="project-section">
+  <main class="container my-5">
+    <div class="project-section mx-auto">
 
-    <!-- Project Image -->
-    <div class="project-image text-center mb-5">
-      <img src="../Images/Boba Glitched - Part 1.jpg" 
-           alt="Boba Glitched 1 Artwork with intentional digital distortion."
-           onerror="this.onerror=null; this.src='https://placehold.co/600x400/DC3545/ffffff?text=Boba+Glitched+1+Not+Found';">
-    </div>
+      <!-- Project title -->
+      <h2 class="text-center project-title-red mb-4">Boba Glitched 1: Data Bending & Glitch Art</h2>
 
-    <!-- Project Description -->
-    <div class="description-black">
-      <section class="mb-5 border-bottom pb-4">
+      <!-- Project image -->
+      <figure class="project-image mb-4 text-center">
+        <img src="../Images/Boba Glitched - Part 1.jpg" 
+             alt="Boba Glitched 1 Artwork with intentional digital distortion."
+             class="img-fluid w-100"
+             onerror="this.onerror=null; this.src='https://placehold.co/600x400/DC3545/ffffff?text=Boba+Glitched+1+Not+Found';">
+        <figcaption class="text-center text-muted mt-2">Image: Boba Glitched - Part 1.jpg</figcaption>
+      </figure>
+
+      <!-- Project description -->
+      <div class="description-black">
         <h3 class="project-title-red mb-3">Project Overview</h3>
         <p>This project is the first in an experimental digital art series, focusing on <strong>glitch art</strong> created by manually manipulating a file's code, also called <strong>data bending</strong>.</p>
-      </section>
 
-      <section class="mb-5 border-bottom pb-4">
         <h3 class="project-title-red mb-3">Design & Execution</h3>
         <ul>
           <li>Used <strong>TextEdit</strong> to manipulate JPEG files directly.</li>
           <li>Copied and pasted sections after ~20% to avoid corrupting the header.</li>
           <li>Observed glitch effects in <strong>Preview</strong> and refined the result.</li>
         </ul>
-      </section>
 
-      <section>
         <h3 class="project-title-red mb-3">Reflections</h3>
         <p>This project explores the intersection of digital errors and creativity. Each image produced unexpected visual patterns, highlighting the beauty of controlled chaos in data manipulation.</p>
-      </section>
-    </div>
+      </div>
 
-    <!-- Next Project -->
-    <div class="text-center mt-5">
-      <p class="text-muted mb-3">See the continuation of this experimental series:</p>
-      <a href="Boba_Glitched_2.html" class="btn btn-danger btn-lg rounded-pill shadow">View Boba Glitched 2 →</a>
     </div>
-
   </main>
 
   <!-- Footer -->
