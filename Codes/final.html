@@ -126,6 +126,15 @@
     <a href="../index.html#projects">← Back to Portfolio</a>
   </div>
 
+  <!-- Project image -->
+  <figure class="project-image mb-4 text-center">
+    <img src="../Images/ART-74 - Priceless Moments.mp4" 
+        alt="The finalized logo designs for Axis Music, incorporating creative typography and color." 
+        class="img-fluid w-100"
+        onerror="this.onerror=null; this.src='https://placehold.co/600x400/1b3a6b/ffffff?text=2+Axis+Logos+Not+Found';">
+    <figcaption class="text-center text-muted mt-2">Final Project: ART-74 - Pricess Moments</figcaption>
+  </figure>
+
   <!-- Main content -->
   <main class="project-section">
     <h2 class="project-title">Thought Process</h2>
@@ -151,89 +160,6 @@
   <footer>
     © 2025 Sriya Gopalan — All Rights Reserved.
   </footer>
-
-  <!-- p5.js Sketch -->
-  <script>
-    function setup() {
-      let canvas = createCanvas(600, 600);
-      canvas.parent('portrait-holder');
-      background(240);
-      angleMode(DEGREES);
-      drawSelfPortrait();
-    }
-
-    function drawSelfPortrait() {
-      drawBraid();
-      drawShirt();
-      drawNeck();
-      drawFace();
-    }
-
-    function drawFace() {
-      drawEars();
-      drawHead();
-      drawHair();
-      drawEyebrows();
-      drawEyes();
-      drawNose();
-      drawMouth();
-      drawEarrings();
-    }
-
-    function drawBraid() {
-      let braidX = 310, braidY = 230;
-      let braidSegments = 8, braidWidth = 45, braidHeight = 28;
-      let taper = 0.9, spacing = 22, sway = 8;
-      fill("#6D3327"); noStroke();
-      for (let i = 0; i < braidSegments; i++) {
-        let y = braidY + i * spacing;
-        let w = braidWidth * pow(taper, i);
-        let h = braidHeight;
-        if (i % 2 === 0) {
-          ellipse(braidX - sway, y, w, h);
-          ellipse(braidX + sway, y + spacing / 2, w * 0.9, h);
-        } else {
-          ellipse(braidX + sway, y, w, h);
-          ellipse(braidX - sway, y + spacing / 2, w * 0.9, h);
-        }
-      }
-      fill("#333"); ellipse(braidX, braidY + braidSegments * spacing + 5, 20, 15);
-    }
-
-    function drawEars() { fill("#C9A270"); noStroke(); arc(320, 250, 30, 50, -90, 90, CHORD); arc(180, 250, 30, 50, 90, 270, CHORD); }
-    function drawEarrings() { fill("#D6B636"); circle(180, 280, 15); circle(320, 280, 15); }
-    function drawHead() { fill("#C9A270"); noStroke(); ellipse(250, 250, 150, 180); }
-    function drawHair() { fill("#6D3327"); noStroke(); arc(250, 215, 141, 141, 180, 360); ellipse(180, 240, 20, 60); ellipse(320, 240, 20, 60); }
-    function drawEyebrows() { noFill(); stroke("#6D3327"); strokeWeight(3); arc(210, 228, 45, 15, 210, 330); arc(290, 228, 45, 15, 210, 330); }
-    function drawEyes() { fill(255); stroke(0); strokeWeight(2); ellipse(210, 232, 20, 12); ellipse(290, 232, 20, 12); fill(0); noStroke(); ellipse(210, 232, 8, 8); ellipse(290, 232, 8, 8); }
-    function drawNose() { fill("#A78357"); noStroke(); triangle(245, 260, 255, 260, 250, 285); ellipse(245, 288, 6, 4); ellipse(255, 288, 6, 4); }
-    function drawMouth() { fill("#E00000"); noStroke(); arc(250, 310, 50, 15, 0, 180); arc(250, 309, 45, 10, 180, 360); }
-    function drawNeck() { fill("#C9A270"); noStroke(); rectMode(CENTER); rect(250, 350, 40, 50, 20); }
-
-    function drawShirt() {
-      fill("#2E86AB"); noStroke();
-      beginShape();
-      vertex(230, 355); 
-      bezierVertex(220, 420, 220, 520, 200, 550); 
-      vertex(300, 550); 
-      bezierVertex(280, 520, 280, 420, 270, 355); 
-      endShape(CLOSE);
-      beginShape();
-      vertex(230, 355); 
-      bezierVertex(200, 370, 170, 420, 185, 470); 
-      vertex(200, 470);
-      bezierVertex(190, 430, 210, 380, 230, 355); 
-      endShape(CLOSE);
-      beginShape();
-      vertex(270, 355); 
-      bezierVertex(300, 370, 330, 420, 315, 470); 
-      vertex(300, 470);
-      bezierVertex(310, 430, 290, 380, 270, 355); 
-      endShape(CLOSE);
-      fill("#1B4F72"); 
-      triangle(235, 355, 265, 355, 250, 380);
-    }
-  </script>
 
 </body>
 </html>
