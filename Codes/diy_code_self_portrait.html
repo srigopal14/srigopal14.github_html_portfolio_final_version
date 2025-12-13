@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DIY Self Portrait | Sriya Gopalan</title>
+  <title>DIY p5.js Self Portrait | Sriya Gopalan</title>
+  <meta name="description" content="Interactive visualization of a self portrait created in p5.js by Sriya Gopalan.">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -27,8 +28,21 @@
       padding: 4rem 1rem;
     }
 
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    header p {
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      color: #e0e0e0;
+    }
+
     #canvas-holder {
-      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       margin: 2rem auto;
     }
 
@@ -38,12 +52,19 @@
       text-align: center;
       padding: 1.5rem 0;
     }
+
+    canvas {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>DIY Self Portrait</h1>
+    <h1>DIY p5.js Self Portrait</h1>
+    <p>Visualization of a self portrait created using p5.js</p>
   </header>
 
   <div id="canvas-holder"></div>
@@ -59,14 +80,13 @@
       background(240);
       angleMode(DEGREES);
 
-      // Draw the portrait
+      // Draw static self-portrait
       drawBraid();
       drawShirt();
       drawNeck();
       drawFace();
     }
 
-    // ==================== STATIC PORTRAIT ====================
     function drawFace() {
       drawEars();
       drawHead();
@@ -122,7 +142,7 @@
       // Left sleeve
       beginShape();
       vertex(230, 355); 
-      bezierVertex(200, 370, 170, 420, 185, 470); // Adjust wrist under sleeve
+      bezierVertex(200, 370, 170, 420, 185, 470); 
       vertex(200, 470);
       bezierVertex(190, 430, 210, 380, 230, 355); 
       endShape(CLOSE);
@@ -130,7 +150,7 @@
       // Right sleeve
       beginShape();
       vertex(270, 355); 
-      bezierVertex(300, 370, 330, 420, 315, 470); // Adjust wrist under sleeve
+      bezierVertex(300, 370, 330, 420, 315, 470); 
       vertex(300, 470);
       bezierVertex(310, 430, 290, 380, 270, 355); 
       endShape(CLOSE);
