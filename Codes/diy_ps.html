@@ -3,10 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DIY p5.js Sketch | Sriya Gopalan</title>
-
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>DIY p5.js Self Portrait | Sriya Gopalan</title>
+  <meta name="description" content="Interactive visualization of a self portrait created in p5.js by Sriya Gopalan.">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -20,10 +18,10 @@
     body {
       font-family: 'Inter', sans-serif;
       background-color: #f8f9fa;
-      line-height: 1.7;
       margin: 0;
       padding: 0;
       color: #000;
+      line-height: 1.7;
     }
 
     /* Header */
@@ -32,6 +30,16 @@
       color: white;
       text-align: center;
       padding: 5rem 0;
+    }
+    .project-header h1 {
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      font-size: 2rem;
+    }
+    .project-header p {
+      font-weight: 500;
+      opacity: 0.85;
+      font-size: 1rem;
     }
 
     /* Back navigation */
@@ -46,7 +54,7 @@
       font-weight: 500;
       display: inline-block;
       padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
+      border-radius: 0; /* no rounded corners */
       transition: color 0.3s, transform 0.3s;
     }
     .nav-back a:hover {
@@ -54,42 +62,25 @@
       transform: scale(1.05);
     }
 
-    /* Project card */
+    /* Project section */
     .project-section {
       background-color: #ffffff;
-      border-radius: 2rem;
-      box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
       padding: 2rem;
       max-width: 900px;
       margin: 3rem auto;
-    }
-
-    /* Titles */
-    .project-title {
-      color: #1b3a6b;
-      font-weight: 800;
       text-align: center;
-      margin-bottom: 1.5rem;
-    }
-
-    /* Instructions (BLACK TEXT) */
-    .instructions ul {
-      padding-left: 1.5rem;
-      color: #000;
-      font-weight: 500;
-    }
-    .instructions li {
-      margin-bottom: 0.5rem;
+      border-radius: 0; /* no rounded corners */
+      box-shadow: none;
     }
 
     /* Canvas */
-    #sketch-holder canvas {
+    #canvas-holder canvas {
       border: 2px solid #2563eb;
-      border-radius: 0.75rem;
       display: block;
-      margin: 1.5rem auto;
+      margin: 2rem auto;
       max-width: 100%;
       height: auto;
+      border-radius: 0; /* no rounded corners */
     }
 
     /* Footer */
@@ -105,8 +96,8 @@
 
   <!-- Header -->
   <header class="project-header">
-    <h1 class="display-4 fw-bold">DIY p5.js Sketch</h1>
-    <p class="lead opacity-75">Interactive Drawing Tool</p>
+    <h1>DIY p5.js Self Portrait</h1>
+    <p>Visualization of a self portrait created using p5.js</p>
   </header>
 
   <!-- Back navigation -->
@@ -114,20 +105,9 @@
     <a href="../index.html#projects">← Back to Portfolio</a>
   </div>
 
-  <!-- Main content -->
+  <!-- Project section -->
   <main class="project-section">
-    <h2 class="project-title">Instructions</h2>
-
-    <div class="instructions">
-      <ul>
-        <li>Press keys <strong>1–8</strong> to choose a drawing tool</li>
-        <li>Press <strong>X</strong> to clear the screen</li>
-        <li>Press <strong>P</strong> to save a screenshot</li>
-        <li>Click & drag your mouse to draw</li>
-      </ul>
-    </div>
-
-    <div id="sketch-holder"></div>
+    <div id="canvas-holder"></div>
   </main>
 
   <!-- Footer -->
@@ -135,83 +115,84 @@
     © 2025 Sriya Gopalan — All Rights Reserved.
   </footer>
 
-  <!-- p5.js Sketch -->
+  <!-- p5.js Script -->
   <script>
-    let img;
-    let initials = 'jm';
-    let choice = '1';
-    let screenbg = 250;
-    let lastscreenshot = 61;
-
-    function preload() {
-      img = loadImage('https://dma-git.github.io/images/74.png');
-    }
-
     function setup() {
-      let canvas = createCanvas(600, 400);
-      canvas.parent("sketch-holder");
-      background(screenbg);
+      let canvas = createCanvas(600, 600); // match original size
+      canvas.parent('canvas-holder');
+      background(240);
+      angleMode(DEGREES);
+
+      // Draw static self-portrait
+      drawBraid();
+      drawShirt();
+      drawNeck();
+      drawFace();
     }
 
-    function draw() {
-      if (keyIsPressed) {
-        choice = key;
-        clear_print();
-      }
-      if (mouseIsPressed) {
-        newkeyChoice(choice);
-      }
+    function drawFace() {
+      drawEars();
+      drawHead();
+      drawHair();
+      drawEyebrows();
+      drawEyes();
+      drawNose();
+      drawMouth();
+      drawEarrings();
     }
 
-    function newkeyChoice(toolChoice) {
-      if (toolChoice == '1') {
-        stroke(0, 0, 255); strokeWeight(12);
-        line(mouseX, mouseY, pmouseX, pmouseY);
-      } 
-      else if (toolChoice == '2') {
-        stroke(70, 130, 255); strokeWeight(24);
-        line(mouseX, mouseY, pmouseX, pmouseY);
-      } 
-      else if (toolChoice == '3') {
-        stroke(0, 100, 0); strokeWeight(2);
-        for (let i = 0; i < 5; i++) {
-          line(mouseX + random(-3,3), mouseY, mouseX, mouseY + random(-10,0));
+    function drawBraid() {
+      let braidX = 310, braidY = 230;
+      let braidSegments = 8, braidWidth = 45, braidHeight = 28;
+      let taper = 0.9, spacing = 22, sway = 8;
+      fill("#6D3327"); noStroke();
+      for (let i = 0; i < braidSegments; i++) {
+        let y = braidY + i * spacing;
+        let w = braidWidth * pow(taper, i);
+        let h = braidHeight;
+        if (i % 2 === 0) {
+          ellipse(braidX - sway, y, w, h);
+          ellipse(braidX + sway, y + spacing / 2, w * 0.9, h);
+        } else {
+          ellipse(braidX + sway, y, w, h);
+          ellipse(braidX - sway, y + spacing / 2, w * 0.9, h);
         }
-      } 
-      else if (toolChoice == '4') {
-        noStroke(); fill(34,139,34);
-        triangle(mouseX, mouseY - 40, mouseX - 20, mouseY + 15, mouseX + 15, mouseY + 15);
-        fill(139,69,19); rect(mouseX - 5, mouseY + 15, 10, 30);
-      } 
-      else if (toolChoice == '5') {
-        noStroke(); fill(255,80,100); ellipse(mouseX, mouseY, 50, 30);
-        fill(240,220,180); rect(mouseX - 8, mouseY + 5, 16, 25, 5);
-      } 
-      else if (toolChoice == '6') {
-        stroke(255,215,0); strokeWeight(12);
-        line(mouseX, mouseY, pmouseX, pmouseY);
-      } 
-      else if (toolChoice == '7') {
-        stroke(255,140,0); strokeWeight(12);
-        line(mouseX, mouseY, pmouseX, pmouseY);
-      } 
-      else if (toolChoice == '8') {
-        stroke(64,244,208); strokeWeight(12);
-        line(mouseX, mouseY, pmouseX, pmouseY);
       }
+      fill("#333"); ellipse(braidX, braidY + braidSegments * spacing + 5, 20, 15);
     }
 
-    function clear_print() {
-      if (key == 'x' || key == 'X') background(screenbg);
-      else if (key == 'p' || key == 'P') saveme();
-    }
+    function drawEars() { fill("#C9A270"); noStroke(); arc(320, 250, 30, 50, -90, 90, CHORD); arc(180, 250, 30, 50, 90, 270, CHORD); }
+    function drawEarrings() { fill("#D6B636"); circle(180, 280, 15); circle(320, 280, 15); }
+    function drawHead() { fill("#C9A270"); noStroke(); ellipse(250, 250, 150, 180); }
+    function drawHair() { fill("#6D3327"); noStroke(); arc(250, 215, 141, 141, 180, 360); ellipse(180, 240, 20, 60); ellipse(320, 240, 20, 60); }
+    function drawEyebrows() { noFill(); stroke("#6D3327"); strokeWeight(3); arc(210, 228, 45, 15, 210, 330); arc(290, 228, 45, 15, 210, 330); }
+    function drawEyes() { fill(255); stroke(0); strokeWeight(2); ellipse(210, 232, 20, 12); ellipse(290, 232, 20, 12); fill(0); noStroke(); ellipse(210, 232, 8, 8); ellipse(290, 232, 8, 8); }
+    function drawNose() { fill("#A78357"); noStroke(); triangle(245, 260, 255, 260, 250, 285); ellipse(245, 288, 6, 4); ellipse(255, 288, 6, 4); }
+    function drawMouth() { fill("#E00000"); noStroke(); arc(250, 310, 50, 15, 0, 180); arc(250, 309, 45, 10, 180, 360); }
+    function drawNeck() { fill("#C9A270"); noStroke(); rectMode(CENTER); rect(250, 350, 40, 50, 20); }
 
-    function saveme() {
-      let filename = initials + day() + hour() + minute() + second();
-      if (second() != lastscreenshot) {
-        saveCanvas(filename, 'jpg');
-      }
-      lastscreenshot = second();
+    function drawShirt() {
+      fill("#2E86AB"); noStroke();
+      beginShape();
+      vertex(230, 355); 
+      bezierVertex(220, 420, 220, 520, 200, 550); 
+      vertex(300, 550); 
+      bezierVertex(280, 520, 280, 420, 270, 355); 
+      endShape(CLOSE);
+      beginShape();
+      vertex(230, 355); 
+      bezierVertex(200, 370, 170, 420, 185, 470); 
+      vertex(200, 470);
+      bezierVertex(190, 430, 210, 380, 230, 355); 
+      endShape(CLOSE);
+      beginShape();
+      vertex(270, 355); 
+      bezierVertex(300, 370, 330, 420, 315, 470); 
+      vertex(300, 470);
+      bezierVertex(310, 430, 290, 380, 270, 355); 
+      endShape(CLOSE);
+      fill("#1B4F72"); 
+      triangle(235, 355, 265, 355, 250, 380);
     }
   </script>
 
