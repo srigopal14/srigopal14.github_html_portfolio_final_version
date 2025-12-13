@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DIY p5.js Self Portrait</title>
+  <title>DIY Self Portrait | Sriya Gopalan</title>
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -11,102 +11,68 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
 
-  <!-- p5.js library -->
-  <script src="https://cdn.jsdelivr.net/npm/p5@1.7.0/lib/p5.min.js"></script>
+  <!-- p5.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
 
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #f8f9fa;
-      margin: 0;
-    }
-
-    header {
-      background: linear-gradient(to right, #3b82f6, #6366f1);
-      color: white;
-      padding: 5rem 1rem;
-      text-align: center;
-    }
-
-    header h1 {
-      font-weight: 800;
-      margin-bottom: 0.5rem;
-    }
-
-    header p {
-      font-size: 1.25rem;
-      margin-bottom: 0;
-    }
-
-    main {
-      padding: 3rem 1rem;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .back-button {
-      margin-bottom: 2rem;
-    }
-
-    canvas {
-      display: block;
-      margin: 0 auto;
-      border: 2px solid #333;
-      max-width: 100%;
-    }
-
-    .tools {
-      margin-top: 2rem;
-      font-size: 1.1rem;
-      text-align: center;
-    }
-
-    footer {
-      background-color: #343a40;
-      color: white;
-      padding: 1.5rem 0;
-      text-align: center;
-      margin-top: 3rem;
-    }
+    body { font-family: 'Inter', sans-serif; background-color: #f8f9fa; line-height: 1.7; }
+    .project-header { background-color: #2563eb; color: white; text-align: center; padding: 5rem 0; }
+    .nav-back { background-color: #000; }
+    .nav-back a { color: white; text-decoration: none; display: flex; align-items: center; padding: 0.5rem 1rem; transition: color 0.3s; }
+    .nav-back a:hover { color: #2563eb; }
+    .project-section { background-color: #fff; border-radius: 2rem; box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15); padding: 2rem; max-width: 900px; margin: 3rem auto; }
+    .project-title { color: #2563eb; font-weight: bold; text-align: center; }
+    #canvas-holder canvas { border: 2px solid #2563eb; border-radius: 0.5rem; display: block; margin: 1rem auto; max-width: 100%; height: auto; }
+    footer { background-color: #343a40; color: white; text-align: center; padding: 1.5rem 0; }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <h1 class="fw-bold">DIY p5.js Self Portrait</h1>
-    <p class="lead">Interactive Drawing Tool</p>
+  <!-- Header -->
+  <header class="project-header">
+    <h1 class="display-4 fw-bold">DIY Self Portrait</h1>
+    <p class="lead opacity-75">Interactive Drawing Tool</p>
   </header>
 
-  <!-- MAIN CONTENT -->
-  <main>
-
-    <!-- Back to Portfolio button -->
-    <div class="text-center back-button">
-      <a href="index.html#projects" class="btn btn-outline-primary fw-semibold">
-        ← Back to Portfolio
-      </a>
+  <!-- Back navigation -->
+  <div class="nav-back">
+    <div class="container">
+      <a href="../index.html#projects">← Back to Portfolio</a>
     </div>
+  </div>
 
-    <!-- Canvas container -->
-    <div id="canvas-container"></div>
+  <!-- Main content -->
+  <main class="project-section">
+    <h2 class="project-title mb-4">Instructions</h2>
+    <ul style="padding-left:1.5rem;">
+      <li>Press keys <strong>1–8</strong> to choose a drawing tool</li>
+      <li>Press <strong>x</strong> to clear the canvas</li>
+      <li>Press <strong>p</strong> to save a screenshot</li>
+      <li>Click & drag your mouse to draw</li>
+    </ul>
 
-    <!-- Tools Used -->
-    <div class="tools">
-      <p><strong>Tools Used:</strong> p5.js, JavaScript, HTML, CSS</p>
-    </div>
+    <div id="canvas-holder"></div>
   </main>
 
-  <!-- FOOTER -->
   <footer>
     © 2025 Sriya Gopalan — All Rights Reserved.
   </footer>
 
   <script>
+    let img;
+    let initials ='jm';
+    let choice = '1';
+    let screenbg = 250;
+    let lastscreenshot = 61;
+
+    function preload() {
+      img = loadImage('https://dma-git.github.io/images/74.png');
+    }
+
     function setup() {
-      let cnv = createCanvas(600, 600);
-      cnv.parent('canvas-container');
-      background(240, 235, 230);
+      let canvas = createCanvas(600, 600);
+      canvas.parent("canvas-holder");
+      background(screenbg);
       angleMode(DEGREES);
 
       drawBraid();
@@ -152,108 +118,22 @@
       ellipse(braidX, braidY + braidSegments * spacing + 5, 20, 15);
     }
 
-    function drawEars() {
-      fill("#C9A270");
-      noStroke();
-      arc(320, 250, 30, 50, -90, 90, CHORD);
-      arc(180, 250, 30, 50, 90, 270, CHORD);
-    }
-
-    function drawEarrings() {
-      fill("#D6B636");
-      circle(180, 280, 15);
-      circle(320, 280, 15);
-    }
-
-    function drawHead() {
-      fill("#C9A270");
-      noStroke();
-      ellipse(250, 250, 150, 180);
-    }
-
-    function drawHair() {
-      fill("#6D3327");
-      noStroke();
-      arc(250, 215, 141, 141, 180, 360);
-      ellipse(180, 240, 20, 60);
-      ellipse(320, 240, 20, 60);
-    }
-
-    function drawEyebrows() {
-      noFill();
-      stroke("#6D3327");
-      strokeWeight(3);
-      arc(210, 228, 45, 15, 210, 330);
-      arc(290, 228, 45, 15, 210, 330);
-    }
-
-    function drawEyes() {
-      fill(255);
-      stroke(0);
-      strokeWeight(2);
-      ellipse(210, 232, 20, 12);
-      ellipse(290, 232, 20, 12);
-
-      fill(0);
-      noStroke();
-      ellipse(210, 232, 8, 8);
-      ellipse(290, 232, 8, 8);
-    }
-
-    function drawNose() {
-      fill("#A78357");
-      noStroke();
-      triangle(245, 260, 255, 260, 250, 285);
-      ellipse(245, 288, 6, 4);
-      ellipse(255, 288, 6, 4);
-    }
-
-    function drawMouth() {
-      fill("#E00000");
-      noStroke();
-      arc(250, 310, 50, 15, 0, 180);
-      arc(250, 309, 45, 10, 180, 360);
-    }
-
-    function drawNeck() {
-      fill("#C9A270");
-      noStroke();
-      rectMode(CENTER);
-      rect(250, 350, 40, 50, 20);
-    }
-
+    function drawEars() { fill("#C9A270"); noStroke(); arc(320, 250, 30, 50, -90, 90, CHORD); arc(180, 250, 30, 50, 90, 270, CHORD); }
+    function drawEarrings() { fill("#D6B636"); circle(180, 280, 15); circle(320, 280, 15); }
+    function drawHead() { fill("#C9A270"); noStroke(); ellipse(250, 250, 150, 180); }
+    function drawHair() { fill("#6D3327"); noStroke(); arc(250, 215, 141, 141, 180, 360); ellipse(180, 240, 20, 60); ellipse(320, 240, 20, 60); }
+    function drawEyebrows() { noFill(); stroke("#6D3327"); strokeWeight(3); arc(210, 228, 45, 15, 210, 330); arc(290, 228, 45, 15, 210, 330); }
+    function drawEyes() { fill(255); stroke(0); strokeWeight(2); ellipse(210, 232, 20, 12); ellipse(290, 232, 20, 12); fill(0); noStroke(); ellipse(210, 232, 8, 8); ellipse(290, 232, 8, 8); }
+    function drawNose() { fill("#A78357"); noStroke(); triangle(245, 260, 255, 260, 250, 285); ellipse(245, 288, 6, 4); ellipse(255, 288, 6, 4); }
+    function drawMouth() { fill("#E00000"); noStroke(); arc(250, 310, 50, 15, 0, 180); arc(250, 309, 45, 10, 180, 360); }
+    function drawNeck() { fill("#C9A270"); noStroke(); rectMode(CENTER); rect(250, 350, 40, 50, 20); }
     function drawShirt() {
-      fill("#2E86AB");
-      noStroke();
-
-      beginShape();
-      vertex(230, 355);
-      bezierVertex(220, 420, 220, 520, 200, 550);
-      vertex(300, 550);
-      bezierVertex(280, 520, 280, 420, 270, 355);
-      endShape(CLOSE);
-
-      beginShape();
-      vertex(230, 355);
-      bezierVertex(200, 370, 170, 420, 175, 470);
-      vertex(195, 470);
-      bezierVertex(190, 430, 210, 380, 230, 355);
-      endShape(CLOSE);
-
-      beginShape();
-      vertex(270, 355);
-      bezierVertex(300, 370, 330, 420, 325, 470);
-      vertex(305, 470);
-      bezierVertex(310, 430, 290, 380, 270, 355);
-      endShape(CLOSE);
-
-      fill("#1B4F72");
-      rectMode(CENTER);
-      rect(185, 478, 30, 10, 2);
-      rect(315, 478, 30, 10, 2);
-
-      fill("#1B4F72");
-      triangle(235, 355, 265, 355, 250, 380);
+      fill("#2E86AB"); noStroke();
+      beginShape(); vertex(230, 355); bezierVertex(220, 420, 220, 520, 200, 550); vertex(300, 550); bezierVertex(280, 520, 280, 420, 270, 355); endShape(CLOSE);
+      beginShape(); vertex(230, 355); bezierVertex(200, 370, 170, 420, 175, 470); vertex(195, 470); bezierVertex(190, 430, 210, 380, 230, 355); endShape(CLOSE);
+      beginShape(); vertex(270, 355); bezierVertex(300, 370, 330, 420, 325, 470); vertex(305, 470); bezierVertex(310, 430, 290, 380, 270, 355); endShape(CLOSE);
+      fill("#1B4F72"); rectMode(CENTER); rect(185, 478, 30, 10, 2); rect(315, 478, 30, 10, 2);
+      fill("#1B4F72"); triangle(235, 355, 265, 355, 250, 380);
     }
   </script>
 
