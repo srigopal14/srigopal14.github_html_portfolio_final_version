@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DIY p5.js Self Portrait | Sriya Gopalan</title>
+  <title>DIY p5.js Self Portrait</title>
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -19,27 +19,33 @@
       font-family: 'Inter', sans-serif;
       background-color: #f8f9fa;
       margin: 0;
-      padding: 0;
     }
 
     header {
       background: linear-gradient(to right, #3b82f6, #6366f1);
       color: white;
-      padding: 4rem 0;
+      padding: 5rem 1rem;
       text-align: center;
     }
 
-    h1 {
+    header h1 {
+      font-weight: 800;
       margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.25rem;
+      margin-bottom: 0;
     }
 
     main {
       padding: 3rem 1rem;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
-    .tools {
-      margin-top: 2rem;
-      font-size: 1.1rem;
+    .back-button {
+      margin-bottom: 2rem;
     }
 
     canvas {
@@ -47,6 +53,12 @@
       margin: 0 auto;
       border: 2px solid #333;
       max-width: 100%;
+    }
+
+    .tools {
+      margin-top: 2rem;
+      font-size: 1.1rem;
+      text-align: center;
     }
 
     footer {
@@ -63,16 +75,24 @@
   <!-- HEADER -->
   <header>
     <h1 class="fw-bold">DIY p5.js Self Portrait</h1>
-    <p class="lead">Interactive digital portrait created with <strong>p5.js</strong></p>
+    <p class="lead">Interactive Drawing Tool</p>
   </header>
 
   <!-- MAIN CONTENT -->
-  <main class="container">
-    <!-- Canvas will render here -->
+  <main>
+
+    <!-- Back to Portfolio button -->
+    <div class="text-center back-button">
+      <a href="index.html#projects" class="btn btn-outline-primary fw-semibold">
+        ← Back to Portfolio
+      </a>
+    </div>
+
+    <!-- Canvas container -->
     <div id="canvas-container"></div>
 
     <!-- Tools Used -->
-    <div class="tools text-center">
+    <div class="tools">
       <p><strong>Tools Used:</strong> p5.js, JavaScript, HTML, CSS</p>
     </div>
   </main>
@@ -83,160 +103,158 @@
   </footer>
 
   <script>
-  function setup() {
-    let cnv = createCanvas(600, 600);
-    cnv.parent('canvas-container');
-    background(240, 235, 230);
-    angleMode(DEGREES);
+    function setup() {
+      let cnv = createCanvas(600, 600);
+      cnv.parent('canvas-container');
+      background(240, 235, 230);
+      angleMode(DEGREES);
 
-    drawBraid();
-    drawEars();
-    drawHead();
-    drawHair();
-    drawShirt();
-    drawNeck();
-    drawEarrings();
-    drawEyebrows();
-    drawEyes();
-    drawNose();
-    drawMouth();
-  }
-
-  // ==================== FUNCTIONS ====================
-
-  function drawBraid() {
-    let braidX = 310;
-    let braidY = 230;
-    let braidSegments = 8;
-    let braidWidth = 45;
-    let braidHeight = 28;
-    let taper = 0.9;
-    let spacing = 22;
-    let sway = 8;
-
-    fill("#6D3327");
-    noStroke();
-    for (let i = 0; i < braidSegments; i++) {
-      let y = braidY + i * spacing;
-      let w = braidWidth * pow(taper, i);
-      let h = braidHeight;
-
-      if (i % 2 === 0) {
-        ellipse(braidX - sway, y, w, h);
-        ellipse(braidX + sway, y + spacing / 2, w * 0.9, h);
-      } else {
-        ellipse(braidX + sway, y, w, h);
-        ellipse(braidX - sway, y + spacing / 2, w * 0.9, h);
-      }
+      drawBraid();
+      drawEars();
+      drawHead();
+      drawHair();
+      drawShirt();
+      drawNeck();
+      drawEarrings();
+      drawEyebrows();
+      drawEyes();
+      drawNose();
+      drawMouth();
     }
 
-    fill("#333333");
-    ellipse(braidX, braidY + braidSegments * spacing + 5, 20, 15);
-  }
+    function drawBraid() {
+      let braidX = 310;
+      let braidY = 230;
+      let braidSegments = 8;
+      let braidWidth = 45;
+      let braidHeight = 28;
+      let taper = 0.9;
+      let spacing = 22;
+      let sway = 8;
 
-  function drawEars() {
-    fill("#C9A270");
-    noStroke();
-    arc(320, 250, 30, 50, -90, 90, CHORD);
-    arc(180, 250, 30, 50, 90, 270, CHORD);
-  }
+      fill("#6D3327");
+      noStroke();
+      for (let i = 0; i < braidSegments; i++) {
+        let y = braidY + i * spacing;
+        let w = braidWidth * pow(taper, i);
+        let h = braidHeight;
 
-  function drawEarrings() {
-    fill("#D6B636");
-    circle(180, 280, 15);
-    circle(320, 280, 15);
-  }
+        if (i % 2 === 0) {
+          ellipse(braidX - sway, y, w, h);
+          ellipse(braidX + sway, y + spacing / 2, w * 0.9, h);
+        } else {
+          ellipse(braidX + sway, y, w, h);
+          ellipse(braidX - sway, y + spacing / 2, w * 0.9, h);
+        }
+      }
 
-  function drawHead() {
-    fill("#C9A270");
-    noStroke();
-    ellipse(250, 250, 150, 180);
-  }
+      fill("#333333");
+      ellipse(braidX, braidY + braidSegments * spacing + 5, 20, 15);
+    }
 
-  function drawHair() {
-    fill("#6D3327");
-    noStroke();
-    arc(250, 215, 141, 141, 180, 360);
-    ellipse(180, 240, 20, 60);
-    ellipse(320, 240, 20, 60);
-  }
+    function drawEars() {
+      fill("#C9A270");
+      noStroke();
+      arc(320, 250, 30, 50, -90, 90, CHORD);
+      arc(180, 250, 30, 50, 90, 270, CHORD);
+    }
 
-  function drawEyebrows() {
-    noFill();
-    stroke("#6D3327");
-    strokeWeight(3);
-    arc(210, 228, 45, 15, 210, 330);
-    arc(290, 228, 45, 15, 210, 330);
-  }
+    function drawEarrings() {
+      fill("#D6B636");
+      circle(180, 280, 15);
+      circle(320, 280, 15);
+    }
 
-  function drawEyes() {
-    fill(255);
-    stroke(0);
-    strokeWeight(2);
-    ellipse(210, 232, 20, 12);
-    ellipse(290, 232, 20, 12);
+    function drawHead() {
+      fill("#C9A270");
+      noStroke();
+      ellipse(250, 250, 150, 180);
+    }
 
-    fill(0);
-    noStroke();
-    ellipse(210, 232, 8, 8);
-    ellipse(290, 232, 8, 8);
-  }
+    function drawHair() {
+      fill("#6D3327");
+      noStroke();
+      arc(250, 215, 141, 141, 180, 360);
+      ellipse(180, 240, 20, 60);
+      ellipse(320, 240, 20, 60);
+    }
 
-  function drawNose() {
-    fill("#A78357");
-    noStroke();
-    triangle(245, 260, 255, 260, 250, 285);
-    ellipse(245, 288, 6, 4);
-    ellipse(255, 288, 6, 4);
-  }
+    function drawEyebrows() {
+      noFill();
+      stroke("#6D3327");
+      strokeWeight(3);
+      arc(210, 228, 45, 15, 210, 330);
+      arc(290, 228, 45, 15, 210, 330);
+    }
 
-  function drawMouth() {
-    fill("#E00000");
-    noStroke();
-    arc(250, 310, 50, 15, 0, 180);
-    arc(250, 309, 45, 10, 180, 360);
-  }
+    function drawEyes() {
+      fill(255);
+      stroke(0);
+      strokeWeight(2);
+      ellipse(210, 232, 20, 12);
+      ellipse(290, 232, 20, 12);
 
-  function drawNeck() {
-    fill("#C9A270");
-    noStroke();
-    rectMode(CENTER);
-    rect(250, 350, 40, 50, 20);
-  }
+      fill(0);
+      noStroke();
+      ellipse(210, 232, 8, 8);
+      ellipse(290, 232, 8, 8);
+    }
 
-  function drawShirt() {
-    fill("#2E86AB");
-    noStroke();
+    function drawNose() {
+      fill("#A78357");
+      noStroke();
+      triangle(245, 260, 255, 260, 250, 285);
+      ellipse(245, 288, 6, 4);
+      ellipse(255, 288, 6, 4);
+    }
 
-    beginShape();
-    vertex(230, 355);
-    bezierVertex(220, 420, 220, 520, 200, 550);
-    vertex(300, 550);
-    bezierVertex(280, 520, 280, 420, 270, 355);
-    endShape(CLOSE);
+    function drawMouth() {
+      fill("#E00000");
+      noStroke();
+      arc(250, 310, 50, 15, 0, 180);
+      arc(250, 309, 45, 10, 180, 360);
+    }
 
-    beginShape();
-    vertex(230, 355);
-    bezierVertex(200, 370, 170, 420, 175, 470);
-    vertex(195, 470);
-    bezierVertex(190, 430, 210, 380, 230, 355);
-    endShape(CLOSE);
+    function drawNeck() {
+      fill("#C9A270");
+      noStroke();
+      rectMode(CENTER);
+      rect(250, 350, 40, 50, 20);
+    }
 
-    beginShape();
-    vertex(270, 355);
-    bezierVertex(300, 370, 330, 420, 325, 470);
-    vertex(305, 470);
-    bezierVertex(310, 430, 290, 380, 270, 355);
-    endShape(CLOSE);
+    function drawShirt() {
+      fill("#2E86AB");
+      noStroke();
 
-    fill("#1B4F72");
-    rectMode(CENTER);
-    rect(185, 478, 30, 10, 2);
-    rect(315, 478, 30, 10, 2);
+      beginShape();
+      vertex(230, 355);
+      bezierVertex(220, 420, 220, 520, 200, 550);
+      vertex(300, 550);
+      bezierVertex(280, 520, 280, 420, 270, 355);
+      endShape(CLOSE);
 
-    fill("#1B4F72");
-    triangle(235, 355, 265, 355, 250, 380);
-  }
+      beginShape();
+      vertex(230, 355);
+      bezierVertex(200, 370, 170, 420, 175, 470);
+      vertex(195, 470);
+      bezierVertex(190, 430, 210, 380, 230, 355);
+      endShape(CLOSE);
+
+      beginShape();
+      vertex(270, 355);
+      bezierVertex(300, 370, 330, 420, 325, 470);
+      vertex(305, 470);
+      bezierVertex(310, 430, 290, 380, 270, 355);
+      endShape(CLOSE);
+
+      fill("#1B4F72");
+      rectMode(CENTER);
+      rect(185, 478, 30, 10, 2);
+      rect(315, 478, 30, 10, 2);
+
+      fill("#1B4F72");
+      triangle(235, 355, 265, 355, 250, 380);
+    }
   </script>
 
 </body>
