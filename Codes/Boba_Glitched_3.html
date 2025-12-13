@@ -59,10 +59,11 @@
     /* Bold red headers */
     .project-title-red { color: #dc3545; font-weight: bold; }
 
-    /* Description text */
-    .description-black p, .description-black li { color: #000; }
-    .description-black ul, .description-black ol { padding-left: 1.5rem; }
-    .description-black li { margin-bottom: 0.5rem; }
+    /* Section headings */
+    .section-heading { font-weight: 700; margin-bottom: 0.5rem; color: #dc3545; }
+
+    /* Paragraph text */
+    .text-dark { color: #000; }
 
     /* Project image hover effect */
     .project-image img {
@@ -78,19 +79,19 @@
       box-shadow: 0 0.75rem 1.5rem rgba(0,0,0,0.2);
     }
 
+    /* Info cards */
+    .project-info .card {
+      border-left: none;
+      box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.05);
+      border-radius: 1rem;
+    }
+
     /* Footer */
     footer {
       background-color: #343a40;
       color: white;
       text-align: center;
       padding: 1.5rem 0;
-    }
-
-    /* Info cards */
-    .project-info .card {
-      border-left: none;
-      box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.05);
-      border-radius: 1rem;
     }
 
     /* Buttons */
@@ -104,6 +105,7 @@
       background-color: #f8d7da;
       transform: scale(1.05);
     }
+
   </style>
 </head>
 <body>
@@ -131,9 +133,6 @@
   <!-- Main content -->
   <main class="project-section">
 
-    <!-- Project title -->
-    <h2 class="text-center project-title-red mb-5">Project Overview: Advanced Glitch & Layering</h2>
-
     <!-- Project Image -->
     <div class="project-image text-center mb-5">
       <img src="../Images/Boba Glitched - Part 3.jpg" 
@@ -141,23 +140,37 @@
            onerror="this.onerror=null; this.src='https://placehold.co/600x400/DC3545/ffffff?text=Boba+Glitched+3+Not+Found';">
     </div>
 
-    <!-- Process & Execution Card -->
-    <div class="mb-5">
-      <div class="card p-3">
-        <p class="fw-semibold mb-1 text-muted">Process & Execution:</p>
-        <ol class="list-decimal list-inside mb-0">
-          <li>Imported the image into Photoshop and cleared the background to black.</li>
-          <li>Copied and pasted the image twice after masking off the first layer.</li>
-          <li>For the first copy, unchecked the Green and Red channels (leaving only Blue).</li>
-          <li>For the second copy, unchecked Green and Blue channels (leaving only Red).</li>
-          <li>Super-imposed the color layers using arrow keys to create RGB separation glitch.</li>
-          <li>Applied Halftone Pattern (Filter Gallery → Sketch → Line, Size: 2, Contrast: 5).</li>
-          <li>Adjusted curves via Adjustment Layer to modify filter effects.</li>
-          <li>Converted Curves layer into a Smart Object.</li>
-          <li>Used Lasso Tool to copy/paste sections and move them to create vertical distortion and final glitch effect.</li>
-        </ol>
-      </div>
-    </div>
+    <!-- Project Overview -->
+    <section class="mb-5">
+      <h2 class="section-heading">Project Overview</h2>
+      <p class="text-dark">
+        This final piece in the Boba Glitched series moves beyond pure data bending into complex layer and filter manipulation in Adobe Photoshop, achieving intentional digital breakdown aesthetics.
+      </p>
+    </section>
+
+    <!-- Process & Execution -->
+    <section class="mb-5">
+      <h2 class="section-heading">Process & Execution</h2>
+      <ol class="text-dark">
+        <li>Imported the image into Photoshop and cleared the background to black.</li>
+        <li>Copied and pasted the image twice after masking off the first layer.</li>
+        <li>For the first copy, unchecked the Green and Red channels (leaving only Blue).</li>
+        <li>For the second copy, unchecked Green and Blue channels (leaving only Red).</li>
+        <li>Super-imposed the color layers using arrow keys to create RGB separation glitch.</li>
+        <li>Applied Halftone Pattern (Filter Gallery → Sketch → Line, Size: 2, Contrast: 5).</li>
+        <li>Adjusted curves via Adjustment Layer to modify filter effects.</li>
+        <li>Converted Curves layer into a Smart Object.</li>
+        <li>Used Lasso Tool to copy/paste sections and move them to create vertical distortion and final glitch effect.</li>
+      </ol>
+    </section>
+
+    <!-- Reflections -->
+    <section class="mb-5">
+      <h2 class="section-heading">Reflections</h2>
+      <p class="text-dark">
+        This project pushes the exploration of digital errors and creative manipulation, demonstrating how layered Photoshop techniques can transform imagery into visually compelling glitch art.
+      </p>
+    </section>
 
     <!-- Project Info Cards -->
     <div class="row g-3 mb-5 project-info text-center text-md-start">
