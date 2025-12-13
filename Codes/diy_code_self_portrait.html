@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Interactive DIY Self Portrait | Sriya Gopalan</title>
+  <title>DIY Self Portrait | Sriya Gopalan</title>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -32,24 +32,6 @@
       margin: 2rem auto;
     }
 
-    .instructions {
-      max-width: 600px;
-      margin: 1rem auto 3rem;
-      text-align: left;
-      padding: 1rem;
-      background: #fff;
-      border-radius: 1rem;
-      box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
-    }
-
-    .instructions ul {
-      padding-left: 1.5rem;
-    }
-    .instructions li {
-      margin-bottom: 0.5rem;
-      font-weight: 500;
-    }
-
     footer {
       background-color: #343a40;
       color: white;
@@ -61,18 +43,8 @@
 <body>
 
   <header>
-    <h1>Interactive DIY Self Portrait</h1>
-    <p>Use keys 1–8 to select tools. Click & drag to draw.</p>
+    <h1>DIY Self Portrait</h1>
   </header>
-
-  <div class="instructions">
-    <ul>
-      <li>Press keys <strong>1–8</strong> to choose a drawing color/tool</li>
-      <li>Press <strong>x</strong> to clear the canvas</li>
-      <li>Press <strong>p</strong> to save a screenshot</li>
-      <li>Click & drag your mouse to draw</li>
-    </ul>
-  </div>
 
   <div id="canvas-holder"></div>
 
@@ -81,46 +53,17 @@
   </footer>
 
   <script>
-    let choice = '1';
-    let screenbg = 240;
-
     function setup() {
       let canvas = createCanvas(600, 600);
       canvas.parent('canvas-holder');
-      background(screenbg);
+      background(240);
       angleMode(DEGREES);
 
-      // Draw static self-portrait base
+      // Draw the portrait
       drawBraid();
       drawShirt();
       drawNeck();
       drawFace();
-    }
-
-    // ==================== INTERACTIVITY ====================
-    function mouseDragged() {
-      let c;
-      strokeWeight(4);
-      strokeCap(ROUND);
-      switch (choice) {
-        case '1': c = color(255, 0, 0); break;       // red
-        case '2': c = color(0, 0, 255); break;       // blue
-        case '3': c = color(0, 255, 0); break;       // green
-        case '4': c = color(255, 165, 0); break;     // orange
-        case '5': c = color(128, 0, 128); break;     // purple
-        case '6': c = color(255, 192, 203); break;   // pink
-        case '7': c = color(0); break;               // black
-        case '8': c = color(139, 69, 19); break;     // brown
-        default: c = color(0);
-      }
-      stroke(c);
-      line(pmouseX, pmouseY, mouseX, mouseY);
-    }
-
-    function keyPressed() {
-      if (key >= '1' && key <= '8') choice = key;
-      if (key === 'x') background(screenbg);
-      if (key === 'p') saveCanvas('self_portrait', 'png');
     }
 
     // ==================== STATIC PORTRAIT ====================
@@ -164,17 +107,37 @@
     function drawNose() { fill("#A78357"); noStroke(); triangle(245, 260, 255, 260, 250, 285); ellipse(245, 288, 6, 4); ellipse(255, 288, 6, 4); }
     function drawMouth() { fill("#E00000"); noStroke(); arc(250, 310, 50, 15, 0, 180); arc(250, 309, 45, 10, 180, 360); }
     function drawNeck() { fill("#C9A270"); noStroke(); rectMode(CENTER); rect(250, 350, 40, 50, 20); }
+
     function drawShirt() {
       fill("#2E86AB"); noStroke();
-      beginShape(); vertex(230, 355); bezierVertex(220, 420, 220, 520, 200, 550);
-      vertex(300, 550); bezierVertex(280, 520, 280, 420, 270, 355); endShape(CLOSE);
-      fill("#2E86AB");
-      beginShape(); vertex(230, 355); bezierVertex(200, 370, 170, 420, 175, 470);
-      vertex(195, 470); bezierVertex(190, 430, 210, 380, 230, 355); endShape(CLOSE);
-      beginShape(); vertex(270, 355); bezierVertex(300, 370, 330, 420, 325, 470);
-      vertex(305, 470); bezierVertex(310, 430, 290, 380, 270, 355); endShape(CLOSE);
-      fill("#1B4F72"); rect(185, 478, 30, 10, 2); rect(315, 478, 30, 10, 2);
-      fill("#1B4F72"); triangle(235, 355, 265, 355, 250, 380);
+
+      // Shirt body
+      beginShape();
+      vertex(230, 355); 
+      bezierVertex(220, 420, 220, 520, 200, 550); 
+      vertex(300, 550); 
+      bezierVertex(280, 520, 280, 420, 270, 355); 
+      endShape(CLOSE);
+
+      // Left sleeve
+      beginShape();
+      vertex(230, 355); 
+      bezierVertex(200, 370, 170, 420, 185, 470); // Adjust wrist under sleeve
+      vertex(200, 470);
+      bezierVertex(190, 430, 210, 380, 230, 355); 
+      endShape(CLOSE);
+
+      // Right sleeve
+      beginShape();
+      vertex(270, 355); 
+      bezierVertex(300, 370, 330, 420, 315, 470); // Adjust wrist under sleeve
+      vertex(300, 470);
+      bezierVertex(310, 430, 290, 380, 270, 355); 
+      endShape(CLOSE);
+
+      // V-neck collar
+      fill("#1B4F72"); 
+      triangle(235, 355, 265, 355, 250, 380);
     }
   </script>
 </body>
