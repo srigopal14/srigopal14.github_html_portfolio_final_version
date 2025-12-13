@@ -59,11 +59,10 @@
     /* Bold red headers */
     .project-title-red { color: #dc3545; font-weight: bold; }
 
-    /* Section headings */
-    .section-heading { font-weight: 700; margin-bottom: 0.5rem; color: #dc3545; }
-
-    /* Paragraph text */
-    .text-dark { color: #000; }
+    /* Description text */
+    .description-black p, .description-black li { color: #000; }
+    .description-black ul, .description-black ol { padding-left: 1.5rem; }
+    .description-black li { margin-bottom: 0.5rem; }
 
     /* Project image hover effect */
     .project-image img {
@@ -77,13 +76,6 @@
     .project-image img:hover {
       transform: scale(1.05);
       box-shadow: 0 0.75rem 1.5rem rgba(0,0,0,0.2);
-    }
-
-    /* Info cards */
-    .project-info .card {
-      border-left: none;
-      box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.05);
-      border-radius: 1rem;
     }
 
     /* Footer */
@@ -105,7 +97,6 @@
       background-color: #f8d7da;
       transform: scale(1.05);
     }
-
   </style>
 </head>
 <body>
@@ -133,25 +124,26 @@
   <!-- Main content -->
   <main class="project-section">
 
-    <!-- Project Image -->
-    <div class="project-image text-center mb-5">
+    <!-- Project title -->
+    <h2 class="text-center project-title-red mb-4">Project Overview</h2>
+
+    <p class="text-center mb-4 text-muted">
+      This final installment moves beyond pure data bending into complex layer and filter manipulation in Adobe Photoshop to achieve intentional digital breakdown aesthetics.
+    </p>
+
+    <!-- Project image -->
+    <figure class="project-image mb-4 text-center">
       <img src="../Images/Boba Glitched - Part 3.jpg" 
            alt="Boba Glitched 3 Artwork with complex Photoshop effects"
+           class="img-fluid w-100"
            onerror="this.onerror=null; this.src='https://placehold.co/600x400/DC3545/ffffff?text=Boba+Glitched+3+Not+Found';">
-    </div>
+      <figcaption class="text-center text-muted mt-2">Image: Boba Glitched - Part 3.jpg</figcaption>
+    </figure>
 
-    <!-- Project Overview -->
-    <section class="mb-5">
-      <h2 class="section-heading">Project Overview</h2>
-      <p class="text-dark">
-        This final piece in the Boba Glitched series moves beyond pure data bending into complex layer and filter manipulation in Adobe Photoshop, achieving intentional digital breakdown aesthetics.
-      </p>
-    </section>
-
-    <!-- Process & Execution -->
-    <section class="mb-5">
-      <h2 class="section-heading">Process & Execution</h2>
-      <ol class="text-dark">
+    <!-- Process Description -->
+    <section class="description-black mb-5">
+      <h3 class="project-title-red mb-3">Process & Execution</h3>
+      <ol class="list-decimal list-inside">
         <li>Imported the image into Photoshop and cleared the background to black.</li>
         <li>Copied and pasted the image twice after masking off the first layer.</li>
         <li>For the first copy, unchecked the Green and Red channels (leaving only Blue).</li>
@@ -163,36 +155,6 @@
         <li>Used Lasso Tool to copy/paste sections and move them to create vertical distortion and final glitch effect.</li>
       </ol>
     </section>
-
-    <!-- Reflections -->
-    <section class="mb-5">
-      <h2 class="section-heading">Reflections</h2>
-      <p class="text-dark">
-        This project pushes the exploration of digital errors and creative manipulation, demonstrating how layered Photoshop techniques can transform imagery into visually compelling glitch art.
-      </p>
-    </section>
-
-    <!-- Project Info Cards -->
-    <div class="row g-3 mb-5 project-info text-center text-md-start">
-      <div class="col-md-4">
-        <div class="card p-3">
-          <p class="fw-semibold mb-1 text-muted">Category:</p>
-          <p class="mb-0">Advanced Digital Art / Compositing</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card p-3">
-          <p class="fw-semibold mb-1 text-muted">Tools Used:</p>
-          <p class="mb-0">Adobe Photoshop</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card p-3">
-          <p class="fw-semibold mb-1 text-muted">Focus:</p>
-          <p class="mb-0">RGB Separation & Halftone Effect</p>
-        </div>
-      </div>
-    </div>
 
   </main>
 
