@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DIY p5.js Self Portrait | Sriya Gopalan</title>
-  <meta name="description" content="Interactive visualization of a self portrait created in p5.js by Sriya Gopalan.">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -18,6 +17,7 @@
     body {
       font-family: 'Inter', sans-serif;
       background-color: #f8f9fa;
+      line-height: 1.7;
       margin: 0;
       padding: 0;
       color: #000;
@@ -28,18 +28,10 @@
       background-color: #1b3a6b;
       color: white;
       text-align: center;
-      padding: 5rem 1rem;
-    }
-    .project-header h1 {
-      font-weight: 800;
-      margin-bottom: 0.5rem;
-    }
-    .project-header p {
-      font-weight: 500;
-      opacity: 0.85;
+      padding: 5rem 0;
     }
 
-    /* Back Navigation */
+    /* Back navigation */
     .nav-back {
       background-color: #000;
       text-align: center;
@@ -49,8 +41,9 @@
       color: white;
       text-decoration: none;
       font-weight: 500;
-      padding: 0.5rem 1rem;
       display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
       transition: color 0.3s, transform 0.3s;
     }
     .nav-back a:hover {
@@ -58,9 +51,11 @@
       transform: scale(1.05);
     }
 
-    /* Project Section */
+    /* Project card */
     .project-section {
       background-color: #ffffff;
+      border-radius: 2rem;
+      box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
       padding: 2rem;
       max-width: 900px;
       margin: 3rem auto;
@@ -68,10 +63,11 @@
     }
 
     /* Canvas */
-    #canvas-holder canvas {
+    #portrait-holder canvas {
       border: 2px solid #2563eb;
+      border-radius: 0.75rem;
       display: block;
-      margin: 2rem auto;
+      margin: 1.5rem auto;
       max-width: 100%;
       height: auto;
     }
@@ -82,7 +78,6 @@
       color: white;
       text-align: center;
       padding: 1.5rem 0;
-      margin-top: 2rem;
     }
   </style>
 </head>
@@ -90,18 +85,18 @@
 
   <!-- Header -->
   <header class="project-header">
-    <h1>DIY p5.js Self Portrait</h1>
-    <p>Visualization of a self portrait created using p5.js</p>
+    <h1 class="display-4 fw-bold">DIY p5.js Self Portrait</h1>
+    <p class="lead opacity-75">Interactive Self Portrait</p>
   </header>
 
-  <!-- Back Navigation -->
+  <!-- Back navigation -->
   <div class="nav-back">
     <a href="../index.html#projects">← Back to Portfolio</a>
   </div>
 
-  <!-- Project Section -->
+  <!-- Main content -->
   <main class="project-section">
-    <div id="canvas-holder"></div>
+    <div id="portrait-holder"></div>
   </main>
 
   <!-- Footer -->
@@ -109,15 +104,17 @@
     © 2025 Sriya Gopalan — All Rights Reserved.
   </footer>
 
-  <!-- p5.js Script -->
+  <!-- p5.js Sketch -->
   <script>
     function setup() {
-      let canvas = createCanvas(600, 400); // matches other DIY projects
-      canvas.parent('canvas-holder');
+      let canvas = createCanvas(600, 600);
+      canvas.parent('portrait-holder');
       background(240);
       angleMode(DEGREES);
+      drawSelfPortrait();
+    }
 
-      // Draw static self-portrait
+    function drawSelfPortrait() {
       drawBraid();
       drawShirt();
       drawNeck();
@@ -167,28 +164,24 @@
 
     function drawShirt() {
       fill("#2E86AB"); noStroke();
-      // Shirt body
       beginShape();
       vertex(230, 355); 
       bezierVertex(220, 420, 220, 520, 200, 550); 
       vertex(300, 550); 
       bezierVertex(280, 520, 280, 420, 270, 355); 
       endShape(CLOSE);
-      // Left sleeve
       beginShape();
       vertex(230, 355); 
       bezierVertex(200, 370, 170, 420, 185, 470); 
       vertex(200, 470);
       bezierVertex(190, 430, 210, 380, 230, 355); 
       endShape(CLOSE);
-      // Right sleeve
       beginShape();
       vertex(270, 355); 
       bezierVertex(300, 370, 330, 420, 315, 470); 
       vertex(300, 470);
       bezierVertex(310, 430, 290, 380, 270, 355); 
       endShape(CLOSE);
-      // V-neck collar
       fill("#1B4F72"); 
       triangle(235, 355, 265, 355, 250, 380);
     }
