@@ -86,21 +86,9 @@
       padding: 1.5rem 0;
     }
 
-    /* Info cards */
-    .project-info .card {
-      border-left-width: 0.25rem;
-    }
-
-    /* Back button style */
-    .btn-back {
-      background-color: white;
-      color: #dc3545;
+    /* Next Project button */
+    .btn-next {
       font-weight: 600;
-      transition: all 0.3s ease;
-    }
-    .btn-back:hover {
-      background-color: #f8d7da;
-      transform: scale(1.05);
     }
   </style>
 </head>
@@ -126,59 +114,40 @@
     </div>
   </div>
 
-  <!-- Main Content -->
+  <!-- Main content -->
   <main class="project-section">
 
     <!-- Project title -->
-    <h2 class="text-center project-title-red mb-5">Project Overview: Data Bending with Audacity</h2>
+    <h2 class="text-center project-title-red mb-4">Boba Glitched 2: Audacity Data Bending</h2>
 
-    <p class="text-center mb-4 text-muted">
-      This second piece in the series explores a more complex data bending technique using <strong>Audacity</strong> to manipulate the visual data of an image, producing controlled digital artifacts.
-    </p>
-
-    <!-- Project Info Cards -->
-    <div class="row g-3 mb-5 project-info text-center text-md-start">
-      <div class="col-md-4">
-        <div class="card p-3 border-start border-danger">
-          <p class="fw-semibold mb-1 text-muted">Category:</p>
-          <p class="mb-0">Audio Software Data Manipulation</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card p-3 border-start border-danger">
-          <p class="fw-semibold mb-1 text-muted">Tools Used:</p>
-          <p class="mb-0">Audacity, Preview</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card p-3 border-start border-danger">
-          <p class="fw-semibold mb-1 text-muted">File Format:</p>
-          <p class="mb-0">TIF (Tagged Image File Format)</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Project Image -->
-    <div class="project-image text-center mb-5">
+    <!-- Project image -->
+    <figure class="project-image mb-4 text-center">
       <img src="../Images/Boba Glitched - Part 2.jpg" 
-           alt="Boba Glitched 2 Artwork with Audacity-driven distortion"
+           alt="Boba Glitched 2 Artwork with Audacity-driven distortion."
+           class="img-fluid w-100"
            onerror="this.onerror=null; this.src='https://placehold.co/600x400/DC3545/ffffff?text=Boba+Glitched+2+Not+Found';">
+      <figcaption class="text-center text-muted mt-2">Image: Boba Glitched - Part 2.jpg</figcaption>
+    </figure>
+
+    <!-- Project description -->
+    <div class="description-black">
+      <h3 class="project-title-red mb-3">Project Overview</h3>
+      <p>This second piece in the series explores a more complex <strong>data bending</strong> technique using <strong>Audacity</strong> to manipulate the visual data of an image, producing controlled digital artifacts.</p>
+
+      <h3 class="project-title-red mb-3">Process & Execution</h3>
+      <ul>
+        <li>Imported the image as a <strong>.tif</strong> file into Audacity.</li>
+        <li>Copied and manipulated sections of the data, applying the <strong>reverse effect</strong> for distortion.</li>
+        <li>Exported and opened the image in <strong>Preview</strong> to observe the resulting glitch effects.</li>
+      </ul>
+
+      <h3 class="project-title-red mb-3">Reflections</h3>
+      <p>This project continues the exploration of digital errors and creativity, showing how controlled data manipulation can create visually striking outcomes.</p>
     </div>
 
-    <!-- Process Description -->
-    <section class="description-black mb-5">
-      <h3 class="project-title-red mb-3">Process Description</h3>
-      <p class="bg-light p-4 rounded-3 border border-secondary">
-        I first imported my image as a <strong>.tif</strong> file into <strong>Audacity</strong>. 
-        Then I copied sections of the data and applied the <strong>reverse effect</strong> to enhance the wave patterns of the distortion. 
-        Finally, I exported the modified file and opened it in <strong>Preview</strong> to observe the glitch effects.
-      </p>
-    </section>
-
-    <!-- Next Project -->
-    <div class="text-center mt-4">
-      <p class="text-muted mb-3">The final piece in the Boba Glitched series:</p>
-      <a href="Boba_Glitched_3.html" class="btn btn-danger btn-lg rounded-pill shadow">View Boba Glitched 3 →</a>
+    <!-- Next Project Button -->
+    <div class="text-center mt-5">
+      <a href="Boba_Glitched_3.html" class="btn btn-danger btn-lg rounded-pill btn-next">View Boba Glitched 3 →</a>
     </div>
 
   </main>
