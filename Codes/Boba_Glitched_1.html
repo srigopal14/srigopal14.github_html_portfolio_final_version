@@ -13,15 +13,16 @@
 
   <style>
     html { scroll-behavior: smooth; }
+
     body {
       font-family: 'Inter', sans-serif;
       line-height: 1.7;
-      background-color: #f0fdf4;
+      background-color: #f8f9fa; /* grey-ish white background */
     }
 
     /* Header */
     .project-header {
-      background-color: #dc3545;
+      background-color: #dc3545; /* red header for this project */
       color: white;
       text-align: center;
       padding: 5rem 0;
@@ -42,32 +43,34 @@
 
     /* Project section card */
     .project-section {
-      background-color: #ffffff;
+      background-color: #ffffff; /* white card on grey background */
       border-radius: 2rem;
       box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
       padding: 2rem;
       max-width: 900px;
       margin: 3rem auto;
-      transition: box-shadow 0.3s, transform 0.3s;
+      transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
     }
     .project-section:hover {
       transform: translateY(-5px);
       box-shadow: 0 1rem 2rem rgba(0,0,0,0.25);
     }
 
+    /* Bold red headers */
     .project-title-red { color: #dc3545; font-weight: bold; }
 
+    /* Description text */
     .description-black p, .description-black li { color: #000; }
     .description-black ul { list-style: disc; padding-left: 1.5rem; }
     .description-black li { margin-bottom: 0.5rem; }
 
-    /* Project image */
+    /* Project image hover effect */
     .project-image img {
       border-radius: 1rem;
       box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
       max-width: 100%;
       height: auto;
-      transition: transform 0.3s, box-shadow 0.3s;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     }
     .project-image img:hover {
       transform: scale(1.05);
