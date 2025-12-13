@@ -3,10 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DIY Self Portrait | Sriya Gopalan</title>
-
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Interactive DIY Self Portrait | Sriya Gopalan</title>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -15,152 +12,127 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
 
   <style>
-    html { scroll-behavior: smooth; }
-
-    body { 
-      font-family: 'Inter', sans-serif; 
-      background-color: #f8f9fa; 
-      line-height: 1.7; 
-      margin: 0; 
-      padding: 0; 
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
       color: #000;
     }
 
-    /* Header */
-    .project-header { 
-      background-color: #1b3a6b; 
-      color: #ffffff; 
-      text-align: center; 
-      padding: 5rem 0; 
-    }
-
-    /* Back navigation */
-    .nav-back {
-      background-color: #000;
+    header {
       text-align: center;
-      padding: 1rem 0;
-    }
-    .nav-back a {
+      background-color: #1b3a6b;
       color: white;
-      text-decoration: none;
-      font-weight: 500;
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      transition: color 0.3s, transform 0.3s;
-    }
-    .nav-back a:hover {
-      color: #2563eb;
-      transform: scale(1.05);
+      padding: 4rem 1rem;
     }
 
-    /* Project section card */
-    .project-section { 
-      background-color: #ffffff; 
-      border-radius: 2rem; 
-      box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15); 
-      padding: 2rem; 
-      max-width: 900px; 
-      margin: 3rem auto; 
+    #canvas-holder {
+      text-align: center;
+      margin: 2rem auto;
     }
 
-    /* Project titles */
-    .project-title { 
-      color: #1b3a6b; 
-      font-weight: 800; 
-      text-align: center; 
+    .instructions {
+      max-width: 600px;
+      margin: 1rem auto 3rem;
+      text-align: left;
+      padding: 1rem;
+      background: #fff;
+      border-radius: 1rem;
+      box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
     }
 
-    /* Instructions */
     .instructions ul {
       padding-left: 1.5rem;
-      color: #000; /* black text */
     }
     .instructions li {
       margin-bottom: 0.5rem;
       font-weight: 500;
-      color: #000;
     }
 
-    /* Canvas styling */
-    #canvas-holder canvas { 
-      border-radius: 0.5rem; 
-      display: block; 
-      margin: 1.5rem auto; 
-      max-width: 100%; 
-      height: auto; 
-    }
-
-    /* Footer */
-    footer { 
-      background-color: #343a40; 
-      color: white; 
-      text-align: center; 
-      padding: 1.5rem 0; 
+    footer {
+      background-color: #343a40;
+      color: white;
+      text-align: center;
+      padding: 1.5rem 0;
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header class="project-header">
-    <h1 class="display-4 fw-bold">DIY Self Portrait</h1>
-    <p class="lead opacity-75">Interactive Drawing Tool</p>
+  <header>
+    <h1>Interactive DIY Self Portrait</h1>
+    <p>Use keys 1–8 to select tools. Click & drag to draw.</p>
   </header>
 
-  <!-- Back navigation -->
-  <div class="nav-back">
-    <a href="../index.html#projects">
-      <svg class="bi bi-arrow-left me-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M15 8a.5.5 0 0 1-.5.5H2.707l4.147 4.146a.5.5 0 0 1-.708.708l-5-5a.5.5 0 0 1 0-.708l5-5a.5.5 0 0 1 .708.708L2.707 7.5H14.5A.5.5 0 0 1 15 8z"/>
-      </svg>
-      Back to Portfolio
-    </a>
+  <div class="instructions">
+    <ul>
+      <li>Press keys <strong>1–8</strong> to choose a drawing color/tool</li>
+      <li>Press <strong>x</strong> to clear the canvas</li>
+      <li>Press <strong>p</strong> to save a screenshot</li>
+      <li>Click & drag your mouse to draw</li>
+    </ul>
   </div>
 
-  <!-- Main content -->
-  <main class="project-section">
-    <h2 class="project-title mb-4">Instructions</h2>
+  <div id="canvas-holder"></div>
 
-    <div class="instructions">
-      <ul>
-        <li>Press keys <strong>1–8</strong> to choose a drawing tool</li>
-        <li>Press <strong>x</strong> to clear the canvas</li>
-        <li>Press <strong>p</strong> to save a screenshot</li>
-        <li>Click &amp; drag your mouse to draw</li>
-      </ul>
-    </div>
-
-    <div id="canvas-holder"></div>
-  </main>
-
-  <!-- Footer -->
   <footer>
     © 2025 Sriya Gopalan — All Rights Reserved.
   </footer>
 
-  <!-- p5.js sketch -->
   <script>
     let choice = '1';
-    let screenbg = 250;
+    let screenbg = 240;
 
     function setup() {
       let canvas = createCanvas(600, 600);
-      canvas.parent("canvas-holder");
+      canvas.parent('canvas-holder');
       background(screenbg);
       angleMode(DEGREES);
 
+      // Draw static self-portrait base
       drawBraid();
+      drawShirt();
+      drawNeck();
+      drawFace();
+    }
+
+    // ==================== INTERACTIVITY ====================
+    function mouseDragged() {
+      let c;
+      strokeWeight(4);
+      strokeCap(ROUND);
+      switch (choice) {
+        case '1': c = color(255, 0, 0); break;       // red
+        case '2': c = color(0, 0, 255); break;       // blue
+        case '3': c = color(0, 255, 0); break;       // green
+        case '4': c = color(255, 165, 0); break;     // orange
+        case '5': c = color(128, 0, 128); break;     // purple
+        case '6': c = color(255, 192, 203); break;   // pink
+        case '7': c = color(0); break;               // black
+        case '8': c = color(139, 69, 19); break;     // brown
+        default: c = color(0);
+      }
+      stroke(c);
+      line(pmouseX, pmouseY, mouseX, mouseY);
+    }
+
+    function keyPressed() {
+      if (key >= '1' && key <= '8') choice = key;
+      if (key === 'x') background(screenbg);
+      if (key === 'p') saveCanvas('self_portrait', 'png');
+    }
+
+    // ==================== STATIC PORTRAIT ====================
+    function drawFace() {
       drawEars();
       drawHead();
       drawHair();
-      drawShirt();
-      drawNeck();
-      drawEarrings();
       drawEyebrows();
       drawEyes();
       drawNose();
       drawMouth();
+      drawEarrings();
     }
 
     function drawBraid() {
@@ -180,8 +152,7 @@
           ellipse(braidX - sway, y + spacing / 2, w * 0.9, h);
         }
       }
-      fill("#333");
-      ellipse(braidX, braidY + braidSegments * spacing + 5, 20, 15);
+      fill("#333"); ellipse(braidX, braidY + braidSegments * spacing + 5, 20, 15);
     }
 
     function drawEars() { fill("#C9A270"); noStroke(); arc(320, 250, 30, 50, -90, 90, CHORD); arc(180, 250, 30, 50, 90, 270, CHORD); }
@@ -196,12 +167,15 @@
     function drawShirt() {
       fill("#2E86AB"); noStroke();
       beginShape(); vertex(230, 355); bezierVertex(220, 420, 220, 520, 200, 550);
-      vertex(300, 550); bezierVertex(280, 520, 280, 420, 270, 355);
-      endShape(CLOSE);
+      vertex(300, 550); bezierVertex(280, 520, 280, 420, 270, 355); endShape(CLOSE);
+      fill("#2E86AB");
+      beginShape(); vertex(230, 355); bezierVertex(200, 370, 170, 420, 175, 470);
+      vertex(195, 470); bezierVertex(190, 430, 210, 380, 230, 355); endShape(CLOSE);
+      beginShape(); vertex(270, 355); bezierVertex(300, 370, 330, 420, 325, 470);
+      vertex(305, 470); bezierVertex(310, 430, 290, 380, 270, 355); endShape(CLOSE);
+      fill("#1B4F72"); rect(185, 478, 30, 10, 2); rect(315, 478, 30, 10, 2);
+      fill("#1B4F72"); triangle(235, 355, 265, 355, 250, 380);
     }
   </script>
-
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
