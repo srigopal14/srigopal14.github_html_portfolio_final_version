@@ -15,67 +15,88 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
 
   <style>
-    body { 
-      font-family: 'Inter', sans-serif; 
-      background-color: #f8f9fa; 
-      line-height: 1.7; 
-      margin: 0; 
-      padding: 0; 
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8f9fa;
+      line-height: 1.7;
+      margin: 0;
+      padding: 0;
+      color: #000;
     }
 
-    .project-header { 
-      background-color: #2563eb; 
-      color: white; 
-      text-align: center; 
-      padding: 5rem 0; 
+    /* Header */
+    .project-header {
+      background-color: #1b3a6b;
+      color: white;
+      text-align: center;
+      padding: 5rem 0;
     }
 
-    /* Centered Back navigation matching other projects */
+    /* Back navigation */
     .nav-back {
       background-color: #000;
       text-align: center;
-      padding: 0.5rem 0;
+      padding: 1rem 0;
     }
     .nav-back a {
-      display: inline-block;
       color: white;
       text-decoration: none;
       font-weight: 500;
-      font-size: 1rem;
-      transition: color 0.3s;
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      transition: color 0.3s, transform 0.3s;
     }
-    .nav-back a:hover { color: #2563eb; }
-
-    .project-section { 
-      background-color: #fff; 
-      border-radius: 2rem; 
-      box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15); 
-      padding: 2rem; 
-      max-width: 900px; 
-      margin: 3rem auto; 
-      text-align: center; 
-    }
-
-    .project-title {
+    .nav-back a:hover {
       color: #2563eb;
-      font-weight: bold;
+      transform: scale(1.05);
+    }
+
+    /* Project card */
+    .project-section {
+      background-color: #ffffff;
+      border-radius: 2rem;
+      box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+      padding: 2rem;
+      max-width: 900px;
+      margin: 3rem auto;
+    }
+
+    /* Titles */
+    .project-title {
+      color: #1b3a6b;
+      font-weight: 800;
       text-align: center;
       margin-bottom: 1.5rem;
     }
 
-    #game-canvas canvas { 
-      border-radius: 0.5rem; 
-      display: block; 
-      margin: 1rem auto; 
-      max-width: 100%; 
-      height: auto; 
+    /* Instructions */
+    .instructions ul {
+      padding-left: 1.5rem;
+      color: #000;
+      font-weight: 500;
+    }
+    .instructions li {
+      margin-bottom: 0.5rem;
     }
 
-    footer { 
-      background-color: #343a40; 
-      color: white; 
-      text-align: center; 
-      padding: 1.5rem 0; 
+    /* Canvas */
+    #game-canvas canvas {
+      border-radius: 0.75rem;
+      display: block;
+      margin: 1.5rem auto;
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #343a40;
+      color: white;
+      text-align: center;
+      padding: 1.5rem 0;
     }
   </style>
 </head>
@@ -87,7 +108,7 @@
     <p class="lead opacity-75">Pop bubbles without hitting bombs!</p>
   </header>
 
-  <!-- Centered Back navigation -->
+  <!-- Back navigation -->
   <div class="nav-back">
     <a href="../index.html#projects">← Back to Portfolio</a>
   </div>
@@ -95,24 +116,26 @@
   <!-- Main content -->
   <main class="project-section">
     <h2 class="project-title">Instructions</h2>
-    <ul style="padding-left:1.5rem; text-align: left; color:black; font-weight:400;">
-      <li>Click the colorful bubbles to pop them.</li>
-      <li>Avoid the red bombs or you'll lose a life!</li>
-      <li>Some bubbles give extra points or bonus time.</li>
-      <li>You have <strong>5 lives</strong> and <strong>90 seconds</strong> to reach the target score.</li>
-    </ul>
+
+    <div class="instructions">
+      <ul>
+        <li>Click the colorful bubbles to pop them.</li>
+        <li>Avoid the red bombs or you’ll lose a life.</li>
+        <li>Some bubbles give bonus points or extra time.</li>
+        <li>You have <strong>5 lives</strong> and <strong>90 seconds</strong> to win.</li>
+      </ul>
+    </div>
 
     <div id="game-canvas"></div>
   </main>
 
+  <!-- Footer -->
   <footer>
     © 2025 Sriya Gopalan — All Rights Reserved.
   </footer>
 
+  <!-- Game Script (UNCHANGED) -->
   <script>
-    // ===========================
-    // Game Variables
-    // ===========================
     let objects = [], explosions = [], pops = [];
     let score = 0, totalObjects = 15, winScore = 100, lives = 5;
     let gameWon = false, gameLost = false;
@@ -128,142 +151,143 @@
     function draw() {
       background(30, 30, 50);
 
-      if(!gameStarted){
-        drawButton(width/2, height/2, 180, 60, "PLAY");
+      if (!gameStarted) {
+        drawButton(width / 2, height / 2, 180, 60, "PLAY");
         return;
       }
 
-      if(!gameWon && !gameLost){
-        timer -= deltaTime/1000;
-        if(timer <= 0) gameLost = true;
+      if (!gameWon && !gameLost) {
+        timer -= deltaTime / 1000;
+        if (timer <= 0) gameLost = true;
       }
 
       push();
-      if(shakeDuration > 0){
+      if (shakeDuration > 0) {
         translate(random(-shakeAmount, shakeAmount), random(-shakeAmount, shakeAmount));
         shakeDuration--;
       }
 
-      if(gameWon){ displayWinScreen(); pop(); return; }
-      if(gameLost){ displayLoseScreen(); pop(); return; }
+      if (gameWon) { displayWinScreen(); pop(); return; }
+      if (gameLost) { displayLoseScreen(); pop(); return; }
 
-      // HUD
       fill(255);
-      textSize(20);
+      textSize(18);
       textAlign(LEFT);
-      text("Score: " + score, 10, 25);
-      text("Lives: " + lives, 10, 50);
-      text("Time: " + Math.ceil(timer) + "s", 10, 75);
+      text(`Score: ${score}`, 10, 25);
+      text(`Lives: ${lives}`, 10, 45);
+      text(`Time: ${Math.ceil(timer)}s`, 10, 65);
 
-      for(let obj of objects){ obj.move(); obj.show(); }
-      for(let i = explosions.length - 1; i >= 0; i--){ if(explosions[i].update()) explosions.splice(i, 1); }
-      for(let i = pops.length - 1; i >= 0; i--){ if(pops[i].update()) pops.splice(i, 1); }
+      for (let obj of objects) { obj.move(); obj.show(); }
+      for (let i = explosions.length - 1; i >= 0; i--) if (explosions[i].update()) explosions.splice(i, 1);
+      for (let i = pops.length - 1; i >= 0; i--) if (pops[i].update()) pops.splice(i, 1);
 
       pop();
     }
 
-    function mousePressed(){
-      if(!gameStarted){
-        if(mouseX > width/2-90 && mouseX < width/2+90 && mouseY > height/2-30 && mouseY < height/2+30){
-          gameStarted = true; startGame();
-        }
-        return;
-      }
-
-      if(gameWon || gameLost){
-        if(mouseX > width/2-90 && mouseX < width/2+90 && mouseY > height/2+60 && mouseY < height/2+100){
+    function mousePressed() {
+      if (!gameStarted) {
+        if (mouseX > width/2-90 && mouseX < width/2+90 && mouseY > height/2-30 && mouseY < height/2+30) {
+          gameStarted = true;
           startGame();
         }
         return;
       }
 
-      for(let i = objects.length-1; i >= 0; i--){
-        if(objects[i].isClicked(mouseX, mouseY)){
-          if(objects[i].isBomb){
+      if (gameWon || gameLost) {
+        startGame();
+        return;
+      }
+
+      for (let i = objects.length - 1; i >= 0; i--) {
+        if (objects[i].isClicked(mouseX, mouseY)) {
+          if (objects[i].isBomb) {
             explosions.push(new Explosion(objects[i].x, objects[i].y));
-            lives--; score = max(0, score-5);
-            shakeAmount = 10; shakeDuration = 15;
-            if(lives <= 0) gameLost = true;
+            lives--;
+            score = max(0, score - 5);
+            shakeAmount = 10;
+            shakeDuration = 15;
+            if (lives <= 0) gameLost = true;
           } else {
             pops.push(new PopEffect(objects[i].x, objects[i].y));
-            if(objects[i].isBonus){ score += 2; timer = min(timer+TIME_BONUS, MAX_TIME); }
-            else score++;
-            if(score >= winScore) gameWon = true;
+            score += objects[i].isBonus ? 2 : 1;
+            if (objects[i].isBonus) timer = min(timer + TIME_BONUS, MAX_TIME);
+            if (score >= winScore) gameWon = true;
           }
-          objects.splice(i,1); objects.push(new GameObject());
+          objects.splice(i, 1);
+          objects.push(new GameObject());
         }
       }
     }
 
-    function startGame(){
-      objects = []; explosions = []; pops = [];
-      score = 0; lives = 5; timer = MAX_TIME;
-      gameWon = false; gameLost = false;
-      shakeAmount = 0; shakeDuration = 0;
-      for(let i = 0; i < totalObjects; i++) objects.push(new GameObject());
+    function startGame() {
+      objects = [];
+      explosions = [];
+      pops = [];
+      score = 0;
+      lives = 5;
+      timer = MAX_TIME;
+      gameWon = gameLost = false;
+      for (let i = 0; i < totalObjects; i++) objects.push(new GameObject());
     }
 
-    function drawButton(x, y, w, h, label){
-      push();
+    function drawButton(x, y, w, h, label) {
       rectMode(CENTER);
       fill("#2563eb");
       stroke("#1e40af");
       strokeWeight(2);
       rect(x, y, w, h, 10);
-      fill(255);
       noStroke();
-      textSize(24);
-      textAlign(CENTER, CENTER);
-      text(label, x, y);
-      pop();
-    }
-
-    function displayWinScreen(){
       fill(255);
-      textSize(28);
       textAlign(CENTER, CENTER);
-      text(`YOU POPPED ${score} BUBBLES!\nYOU WIN! 🎉\nTime left: ${Math.ceil(timer)}s`, width/2, height/2 - 20);
-      drawButton(width/2, height/2 + 80, 180, 40, "PLAY AGAIN");
+      textSize(24);
+      text(label, x, y);
     }
 
-    function displayLoseScreen(){
-      fill(255,70,70);
-      textSize(20);
-      textAlign(CENTER, CENTER);
-      text(`YOU POPPED ${score} BUBBLES!\nYOU HIT TOO MANY BOMBS OR TIME RAN OUT 💥\nTime left: ${Math.ceil(timer)}s`, width/2, height/2 - 20);
-      drawButton(width/2, height/2 + 80, 180, 40, "PLAY AGAIN");
-    }
-
-    class GameObject{
-      constructor(){ this.reset(); }
-      move(){ this.y -= this.speed; if(this.y < -this.r) this.reset(); }
-      show(){
+    class GameObject {
+      constructor() { this.reset(); }
+      move() { this.y -= this.speed; if (this.y < -this.r) this.reset(); }
+      show() {
         noStroke();
-        if(this.isBomb){ fill(this.col); ellipse(this.x, this.y, this.r*2); fill(0); ellipse(this.x, this.y, this.r*1.2); }
-        else{ fill(this.col); ellipse(this.x, this.y, this.r*2); if(this.isBonus){ fill(255); textAlign(CENTER, CENTER); text("+10s", this.x, this.y); } }
+        fill(this.col);
+        ellipse(this.x, this.y, this.r * 2);
       }
-      isClicked(px, py){ let radius = this.isBonus ? this.r*1.5 : this.r; return dist(px, py, this.x, this.y) < radius; }
-      reset(){
+      isClicked(px, py) {
+        return dist(px, py, this.x, this.y) < this.r;
+      }
+      reset() {
         this.r = random(20, 40);
         this.x = random(this.r, width - this.r);
         this.y = random(height + this.r, height + 200);
         this.speed = random(1, 3);
         this.isBomb = random(1) < 0.2;
         this.isBonus = false;
-        this.col = this.isBomb ? color(255, 50, 50) : color(random(100,255), random(100,255), random(100,255),180);
+        this.col = this.isBomb
+          ? color(255, 50, 50)
+          : color(random(100,255), random(100,255), random(100,255), 180);
       }
     }
 
-    class Explosion{ 
-      constructor(x, y){ this.x = x; this.y = y; this.frames = 0; this.maxFrames = 12; }
-      update(){ this.frames++; let size = this.frames*6; noStroke(); fill(255,150,0,200-this.frames*15); ellipse(this.x,this.y,size); fill(255,50,0,200-this.frames*20); ellipse(this.x,this.y,size*0.7); return this.frames>this.maxFrames; } 
+    class Explosion {
+      constructor(x, y) { this.x = x; this.y = y; this.frames = 0; }
+      update() {
+        this.frames++;
+        noStroke();
+        fill(255, 150, 0, 200 - this.frames * 15);
+        ellipse(this.x, this.y, this.frames * 6);
+        return this.frames > 12;
+      }
     }
 
-    class PopEffect{ 
-      constructor(x, y){ this.x = x; this.y = y; this.frames = 0; this.maxFrames = 10; }
-      update(){ this.frames++; let size=this.frames*3; noFill(); stroke(255,255-this.frames*20); strokeWeight(2); ellipse(this.x,this.y,size); return this.frames>this.maxFrames; }
+    class PopEffect {
+      constructor(x, y) { this.x = x; this.y = y; this.frames = 0; }
+      update() {
+        this.frames++;
+        noFill();
+        stroke(255, 255 - this.frames * 20);
+        ellipse(this.x, this.y, this.frames * 3);
+        return this.frames > 10;
+      }
     }
-
   </script>
 
 </body>
