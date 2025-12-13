@@ -14,10 +14,10 @@
   <style>
     body { font-family: 'Inter', sans-serif; background-color: #f8f9fa; margin: 0; scroll-behavior: smooth; }
 
-    /* Header */
+    /* Top blue header */
     header { background-color: #2563eb; color: white; text-align: center; padding: 5rem 1rem; }
-    header h1 { font-weight: 800; margin-bottom: 0.5rem; }
-    header p { opacity: 0.8; margin-top: 0; }
+    header h1 { font-weight: 800; margin-bottom: 0.5rem; font-size: 3rem; }
+    header p { font-weight: 500; opacity: 0.9; margin-top: 0; font-size: 1.2rem; }
 
     /* Black Tab Navigation */
     .nav-tabs-container { background-color: #000; text-align: center; position: sticky; top: 0; z-index: 999; }
@@ -25,14 +25,15 @@
       color: white;
       text-decoration: none;
       display: inline-block;
-      padding: 1rem 2rem;
+      padding: 1rem 1.2rem;
       transition: color 0.3s, background 0.3s;
       font-weight: 500;
+      margin: 0 0.2rem;
+      border-radius: 0.4rem;
     }
     .nav-tabs-container a:hover {
       color: #2563eb;
       background-color: #111;
-      border-radius: 0.5rem;
     }
 
     /* Section styling */
@@ -49,7 +50,7 @@
 
     /* Project links */
     .project-list { list-style: none; padding-left: 0; }
-    .project-list li { margin: 1rem 0; font-size: 1.2rem; }
+    .project-list li { margin: 1rem 0; font-size: 1.1rem; }
     .project-list a {
       text-decoration: none;
       color: #000;
@@ -64,47 +65,39 @@
     footer { background-color: #343a40; color: white; text-align: center; padding: 1.5rem 0; margin-top: 3rem; }
 
     /* Responsive */
-    @media(max-width: 600px){
-      .nav-tabs-container a { padding: 0.75rem 1rem; font-size: 0.9rem; }
+    @media(max-width: 768px){
+      .nav-tabs-container a { padding: 0.75rem 0.8rem; font-size: 0.9rem; margin: 0.1rem; display: block; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
+  <!-- Top Blue Header -->
   <header>
     <h1>Sriya Gopalan</h1>
-    <p>Interactive Projects & Games Portfolio</p>
+    <p>3rd Year Graphic Design Student at San Jose State University</p>
   </header>
 
   <!-- Black Tab Navigation -->
   <div class="nav-tabs-container">
-    <a href="#projects">Projects</a>
     <a href="#about">About</a>
     <a href="#contact">Contact</a>
+    <a href="#project-1">2-Axis Music Logos</a>
+    <a href="#project-2">Boba Glitched 1</a>
+    <a href="#project-3">Boba Glitched 2</a>
+    <a href="#project-4">Boba Glitched 3</a>
+    <a href="#project-5">Inside Out Meme Final</a>
+    <a href="#project-6">DIY Code Self Portrait</a>
+    <a href="#project-7">DIY Bubble Game</a>
+    <a href="#project-8">DIY Photoshop Project</a>
+    <a href="#project-9">Final Project</a>
+    <a href="#project-10">Net Art Project</a>
   </div>
-
-  <!-- Projects Section -->
-  <section id="projects">
-    <h2>Existing Projects</h2>
-    <ul class="project-list">
-      <li><a href="2-axis-music-logos.html">2-Axis Music Logos</a></li>
-      <li><a href="Boba_Glitched_1.html">Boba Glitched 1</a></li>
-      <li><a href="Boba_Glitched_2.html">Boba Glitched 2</a></li>
-      <li><a href="Boba_Glitched_3.html">Boba Glitched 3</a></li>
-      <li><a href="Inside_Out_Meme_Final.html">Inside Out Meme Final</a></li>
-      <li><a href="diy_code_self_portrait.html">DIY Code Self Portrait</a></li>
-      <li><a href="diy_game.html">DIY Bubble Game</a></li>
-      <li><a href="diy_ps.html">DIY Photoshop Project</a></li>
-      <li><a href="final.html">Final Project</a></li>
-      <li><a href="net_art.html">Net Art Project</a></li>
-    </ul>
-  </section>
 
   <!-- About Section -->
   <section id="about">
     <h2>About Me</h2>
-    <p>Hello! I'm Sriya Gopalan, an interactive media designer and developer. I create playful, experimental projects combining code, art, and design. My work explores creativity through digital and interactive mediums.</p>
+    <p>Hello! I'm Sriya Gopalan, a 3rd year Graphic Design student at San Jose State University. I create interactive projects combining code, art, and design, exploring creativity through digital and playful media.</p>
   </section>
 
   <!-- Contact Section -->
@@ -116,6 +109,58 @@
     <p><strong>Socials:</strong> <a href="#" target="_blank">Instagram</a> | <a href="#" target="_blank">Twitter</a></p>
   </section>
 
+  <!-- Projects Sections -->
+  <section id="project-1">
+    <h2>2-Axis Music Logos</h2>
+    <a href="2-axis-music-logos.html" class="btn btn-outline-primary">View Project</a>
+  </section>
+
+  <section id="project-2">
+    <h2>Boba Glitched 1</h2>
+    <a href="Boba_Glitched_1.html" class="btn btn-outline-primary">View Project</a>
+  </section>
+
+  <section id="project-3">
+    <h2>Boba Glitched 2</h2>
+    <a href="Boba_Glitched_2.html" class="btn btn-outline-primary">View Project</a>
+  </section>
+
+  <section id="project-4">
+    <h2>Boba Glitched 3</h2>
+    <a href="Boba_Glitched_3.html" class="btn btn-outline-primary">View Project</a>
+  </section>
+
+  <section id="project-5">
+    <h2>Inside Out Meme Final</h2>
+    <a href="Inside_Out_Meme_Final.html" class="btn btn-outline-primary">View Project</a>
+  </section>
+
+  <section id="project-6">
+    <h2>DIY Code Self Portrait</h2>
+    <a href="diy_code_self_portrait.html" class="btn btn-outline-primary">View Project</a>
+  </section>
+
+  <section id="project-7">
+    <h2>DIY Bubble Game</h2>
+    <a href="diy_game.html" class="btn btn-outline-primary">View Project</a>
+  </section>
+
+  <section id="project-8">
+    <h2>DIY Photoshop Project</h2>
+    <a href="diy_ps.html" class="btn btn-outline-primary">View Project</a>
+  </section>
+
+  <section id="project-9">
+    <h2>Final Project</h2>
+    <a href="final.html" class="btn btn-outline-primary">View Project</a>
+  </section>
+
+  <section id="project-10">
+    <h2>Net Art Project</h2>
+    <a href="net_art.html" class="btn btn-outline-primary">View Project</a>
+  </section>
+
+  <!-- Footer -->
   <footer>
     © 2025 Sriya Gopalan — All Rights Reserved.
   </footer>
