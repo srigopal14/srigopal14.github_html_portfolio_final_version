@@ -58,14 +58,13 @@
       transform: scale(1.05);
     }
 
-    /* Project Card */
+    /* Project Section */
     .project-section {
       background-color: #ffffff;
       padding: 2rem;
       max-width: 900px;
       margin: 3rem auto;
       text-align: center;
-      /* No rounded corners or shadow */
     }
 
     /* Canvas */
@@ -113,7 +112,7 @@
   <!-- p5.js Script -->
   <script>
     function setup() {
-      let canvas = createCanvas(600, 600);
+      let canvas = createCanvas(600, 400); // matches other DIY projects
       canvas.parent('canvas-holder');
       background(240);
       angleMode(DEGREES);
@@ -168,24 +167,28 @@
 
     function drawShirt() {
       fill("#2E86AB"); noStroke();
+      // Shirt body
       beginShape();
       vertex(230, 355); 
       bezierVertex(220, 420, 220, 520, 200, 550); 
       vertex(300, 550); 
       bezierVertex(280, 520, 280, 420, 270, 355); 
       endShape(CLOSE);
+      // Left sleeve
       beginShape();
       vertex(230, 355); 
       bezierVertex(200, 370, 170, 420, 185, 470); 
       vertex(200, 470);
       bezierVertex(190, 430, 210, 380, 230, 355); 
       endShape(CLOSE);
+      // Right sleeve
       beginShape();
       vertex(270, 355); 
       bezierVertex(300, 370, 330, 420, 315, 470); 
       vertex(300, 470);
       bezierVertex(310, 430, 290, 380, 270, 355); 
       endShape(CLOSE);
+      // V-neck collar
       fill("#1B4F72"); 
       triangle(235, 355, 265, 355, 250, 380);
     }
