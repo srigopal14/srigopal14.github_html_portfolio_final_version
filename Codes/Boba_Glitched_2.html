@@ -17,13 +17,13 @@
     body {
       font-family: 'Inter', sans-serif;
       line-height: 1.7;
-      background-color: #f8f9fa; /* greyish white background */
+      background-color: #f8f9fa;
     }
 
     /* Header */
     .project-header {
-      background-color: #dc3545; /* red header */
-      color: white;
+      background-color: #E6E6FA; /* lavender */
+      color: #000; /* black text for contrast */
       text-align: center;
       padding: 5rem 0;
     }
@@ -38,12 +38,13 @@
       display: flex;
       align-items: center;
       padding: 0.5rem 1rem;
+      transition: color 0.3s ease;
     }
-    .nav-back a:hover { color: #dc3545; }
+    .nav-back a:hover { color: #E6E6FA; } /* lavender hover */
 
     /* Project section card */
     .project-section {
-      background-color: #ffffff; /* white card */
+      background-color: #ffffff;
       border-radius: 2rem;
       box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
       padding: 2rem;
@@ -56,8 +57,8 @@
       box-shadow: 0 1rem 2rem rgba(0,0,0,0.25);
     }
 
-    /* Bold red headers */
-    .project-title-red { color: #dc3545; font-weight: bold; }
+    /* Lavender headers */
+    .project-title-lavender { color: #E6E6FA; font-weight: bold; }
 
     /* Description text */
     .description-black p, .description-black li { color: #000; }
@@ -86,9 +87,17 @@
       padding: 1.5rem 0;
     }
 
-    /* Next Project button */
-    .btn-next {
+    /* Buttons */
+    .btn-lavender {
+      background-color: #E6E6FA;
+      color: #000;
       font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    .btn-lavender:hover {
+      background-color: #d4d4fa;
+      transform: scale(1.05);
+      color: #000;
     }
   </style>
 </head>
@@ -118,36 +127,36 @@
   <main class="project-section">
 
     <!-- Project title -->
-    <h2 class="text-center project-title-red mb-4">Boba Glitched 2: Audacity Data Bending</h2>
+    <h2 class="text-center project-title-lavender mb-4">Boba Glitched 2: Audacity Data Bending</h2>
 
     <!-- Project image -->
     <figure class="project-image mb-4 text-center">
       <img src="../Images/Boba Glitched - Part 2.jpg" 
            alt="Boba Glitched 2 Artwork with Audacity-driven distortion."
            class="img-fluid w-100"
-           onerror="this.onerror=null; this.src='https://placehold.co/600x400/DC3545/ffffff?text=Boba+Glitched+2+Not+Found';">
+           onerror="this.onerror=null; this.src='https://placehold.co/600x400/E6E6FA/000000?text=Boba+Glitched+2+Not+Found';">
       <figcaption class="text-center text-muted mt-2">Image: Boba Glitched - Part 2.jpg</figcaption>
     </figure>
 
     <!-- Project description -->
     <div class="description-black">
-      <h3 class="project-title-red mb-3">Project Overview</h3>
+      <h3 class="project-title-lavender mb-3">Project Overview</h3>
       <p>This second piece in the series explores a more complex <strong>data bending</strong> technique using <strong>Audacity</strong> to manipulate the visual data of an image, producing controlled digital artifacts.</p>
 
-      <h3 class="project-title-red mb-3">Process & Execution</h3>
+      <h3 class="project-title-lavender mb-3">Process & Execution</h3>
       <ul>
         <li>Imported the image as a <strong>.tif</strong> file into Audacity.</li>
         <li>Copied and manipulated sections of the data, applying the <strong>reverse effect</strong> for distortion.</li>
         <li>Exported and opened the image in <strong>Preview</strong> to observe the resulting glitch effects.</li>
       </ul>
 
-      <h3 class="project-title-red mb-3">Reflections</h3>
+      <h3 class="project-title-lavender mb-3">Reflections</h3>
       <p>This project continues the exploration of digital errors and creativity, showing how controlled data manipulation can create visually striking outcomes.</p>
     </div>
 
     <!-- Next Project Button -->
     <div class="text-center mt-5">
-      <a href="Boba_Glitched_3.html" class="btn btn-danger btn-lg rounded-pill btn-next">View Boba Glitched 3 →</a>
+      <a href="Boba_Glitched_3.html" class="btn btn-lavender btn-lg rounded-pill btn-next">View Boba Glitched 3 →</a>
     </div>
 
   </main>
