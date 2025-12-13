@@ -23,13 +23,13 @@
       line-height: 1.7; 
       margin: 0; 
       padding: 0; 
-      color: #000; /* default black text for rest of the page */
+      color: #000;
     }
 
     /* Header */
     .project-header { 
-      background-color: #1b3a6b; /* dark blue */
-      color: white; 
+      background-color: #1b3a6b; 
+      color: #ffffff; 
       text-align: center; 
       padding: 5rem 0; 
     }
@@ -56,7 +56,7 @@
 
     /* Project section card */
     .project-section { 
-      background-color: #fff; 
+      background-color: #ffffff; 
       border-radius: 2rem; 
       box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15); 
       padding: 2rem; 
@@ -66,25 +66,27 @@
 
     /* Project titles */
     .project-title { 
-      color: #1b3a6b; /* dark blue */
-      font-weight: bold; 
+      color: #1b3a6b; 
+      font-weight: 800; 
       text-align: center; 
     }
 
-    /* Instructions text */
+    /* Instructions */
     .instructions ul {
       padding-left: 1.5rem;
-      color: #1b3a6b; /* dark blue */
+      color: #000; /* black text */
     }
     .instructions li {
       margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: #000;
     }
 
     /* Canvas styling */
     #canvas-holder canvas { 
       border-radius: 0.5rem; 
       display: block; 
-      margin: 1rem auto; 
+      margin: 1.5rem auto; 
       max-width: 100%; 
       height: auto; 
     }
@@ -119,12 +121,13 @@
   <!-- Main content -->
   <main class="project-section">
     <h2 class="project-title mb-4">Instructions</h2>
+
     <div class="instructions">
       <ul>
         <li>Press keys <strong>1–8</strong> to choose a drawing tool</li>
         <li>Press <strong>x</strong> to clear the canvas</li>
         <li>Press <strong>p</strong> to save a screenshot</li>
-        <li>Click & drag your mouse to draw</li>
+        <li>Click &amp; drag your mouse to draw</li>
       </ul>
     </div>
 
@@ -138,13 +141,8 @@
 
   <!-- p5.js sketch -->
   <script>
-    let img;
     let choice = '1';
     let screenbg = 250;
-
-    function preload() {
-      img = loadImage('https://dma-git.github.io/images/74.png');
-    }
 
     function setup() {
       let canvas = createCanvas(600, 600);
@@ -182,7 +180,7 @@
           ellipse(braidX - sway, y + spacing / 2, w * 0.9, h);
         }
       }
-      fill("#333333");
+      fill("#333");
       ellipse(braidX, braidY + braidSegments * spacing + 5, 20, 15);
     }
 
@@ -197,16 +195,13 @@
     function drawNeck() { fill("#C9A270"); noStroke(); rectMode(CENTER); rect(250, 350, 40, 50, 20); }
     function drawShirt() {
       fill("#2E86AB"); noStroke();
-      beginShape(); vertex(230, 355); bezierVertex(220, 420, 220, 520, 200, 550); vertex(300, 550); bezierVertex(280, 520, 280, 420, 270, 355); endShape(CLOSE);
-      beginShape(); vertex(230, 355); bezierVertex(200, 370, 170, 420, 175, 470); vertex(195, 470); bezierVertex(190, 430, 210, 380, 230, 355); endShape(CLOSE);
-      beginShape(); vertex(270, 355); bezierVertex(300, 370, 330, 420, 325, 470); vertex(305, 470); bezierVertex(310, 430, 290, 380, 270, 355); endShape(CLOSE);
-      fill("#1B4F72"); rectMode(CENTER); rect(185, 478, 30, 10, 2); rect(315, 478, 30, 10, 2);
-      fill("#1B4F72"); triangle(235, 355, 265, 355, 250, 380);
+      beginShape(); vertex(230, 355); bezierVertex(220, 420, 220, 520, 200, 550);
+      vertex(300, 550); bezierVertex(280, 520, 280, 420, 270, 355);
+      endShape(CLOSE);
     }
   </script>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 </html>
