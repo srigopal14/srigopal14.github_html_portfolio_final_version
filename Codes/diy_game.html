@@ -1,1 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DIY Bubble Game | Sriya Gopalan</title>
 
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+  <!-- p5.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #f8f9fa; line-height: 1.7; }
+    .project-header { background-color: #2563eb; color: white; text-align: center; padding: 5rem 0; }
+    .nav-back { background-color: #000; }
+    .nav-back a { color: white; text-decoration: none; display: flex; align-items: center; padding: 0.5rem 1rem; transition: color 0.3s; }
+    .nav-back a:hover { color: #2563eb; }
+    .project-section { background-color: #fff; border-radius: 2rem; box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15); padding: 2rem; max-width: 900px; margin: 3rem auto; text-align: center; }
+    #game-canvas canvas { border: 2px solid #2563eb; border-radius: 0.5rem; display: block; margin: 1rem auto; max-width: 100%; height: auto; }
+    footer { background-color: #343a40; color: white; text-align: center; padding: 1.5rem 0; }
+    button { cursor: pointer; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="project-header">
+    <h1 class="display-4 fw-bold">DIY Bubble Game</h1>
+    <p class="lead opacity-75">Pop bubbles without hitting bombs!</p>
+  </header>
+
+  <!-- Back navigation -->
+  <div class="nav-back">
+    <div class="container">
+      <a href="../index.html#projects">← Back to Portfolio</a>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <main class="project-section">
+    <h2 class="project-title mb-4">Instructions</h2>
+    <ul style="padding-left:1.5rem; text-align: left;">
+      <li>Click the colorful bubbles to pop them.</li>
+      <li>Avoid the red bombs or you'll lose a life!</li>
+      <li>Some bubbles give extra points or bonus time.</li>
+      <li>You have <strong>5 lives</strong> and <strong>90 seconds</strong> to reach the target score.</li>
+    </ul>
+
+    <div id="game-canvas"></div>
+  </main>
+
+  <footer>
+    © 2025 Sriya Gopalan — All Rights Reserved.
+  </footer>
+
+  <script>
+    // ===========================
+    // P5.js Game Code
+    // ===========================
+    let objects = [];       
+    let explosions = [];    
+    let pops = [];          
+
+    let score = 0;
+    let totalObjects = 15;
+    let winScore = 100;
+    let lives = 5;
+
+    let gameWon = false;
+    let gameLost = false;
+
+    // Countdown timer (in seconds)
+    let timer = 90;
+    const MAX_TIME = 90;
+    const TIME_BONUS = 10;
+
+    let playAgainButton;
+    let resetButton;
+
+    // Screen shake variables
+    let shakeAmount = 0;
+    let shakeDuration = 0;
+
+    function setup() {
+      let canvas = createCanvas(600, 400);
+      canvas.parent("game-canvas");
+
+      // Create PLAY AGAIN button
+      playAgainButton = createButton("PLAY AGAIN");
+      playAgainButton.position(width / 2 - 60, height / 2 + 80);
+      playAgainButton.style("font-size", "18px");
+      playAgainButton.style("padding", "10px 20px");
+      playAgainButton.mousePressed(restartGame);
+      playAgainButton.hide();
+
+      // Create RESET button
+      resetButton = createButton("RESET");
+      resetButton.position(width / 2 - 35, height / 2 + 80);
+      resetButton.style("font-size", "18px");
+      resetButton.style("padding", "10px 20px");
+      resetButton.mousePressed(restartGame);
+      resetButton.hide();
+
+      startGame();
+    }
+
+    function startGame() {
+      objects = [];
+      explosions = [];
+      pops = [];
+      score = 0;
+      lives = 5;
+      gameWon = false;
+      gameLost = false;
+      timer = MAX_TIME;
+      shakeAmount = 0;
+      shakeDuration = 0;
+
+      for (let i = 0; i < totalObjects; i++) {
+        objects.push(new GameObject());
+      }
+
+      playAgainButton.hide();
+      resetButton.hide();
+    }
+
+    function draw() {
+      background(30, 30, 50);
+
+      if (!gameWon && !gameLost) {
+        timer -= deltaTime / 1000; // countdown
+        if (timer <= 0) {
+          timer = 0;
+          gameLost = true;
+        }
+      }
+
+      push();
+      if (shakeDuration > 0) {
+        let shakeX = random(-shakeAmount, shakeAmount);
+        let shakeY = random(-shakeAmount, shakeAmount);
+        translate(shakeX, shakeY);
+        shakeDuration--;
+      }
+
+      if (gameWon) {
+        displayWinScreen();
+        pop();
+        return;
+      }
+
+      if (gameLost) {
+        displayLoseScreen();
+        pop();
+        return;
+      }
+
+      fill(255);
+      textSize(20);
+      textAlign(LEFT);
+      text("Score: " + score, 10, 25);
+      text("Lives: " + lives, 10, 50);
+      text("Time: " + Math.ceil(timer) + "s", 10, 75);
+
+      for (let obj of objects) {
+        obj.move();
+        obj.show();
+      }
+
+      for (let i = explosions.length - 1; i >= 0; i--) {
+        if (explosions[i].update()) explosions.splice(i, 1);
+      }
+
+      for (let i = pops.length - 1; i >= 0; i--) {
+        if (pops[i].update()) pops.splice(i, 1);
+      }
+
+      pop();
+    }
+
+    function mousePressed() {
+      if (gameWon || gameLost) return;
+
+      for (let i = objects.length - 1; i >= 0; i--) {
+        if (objects[i].isClicked(mouseX, mouseY)) {
+          if (objects[i].isBomb) {
+            explosions.push(new Explosion(objects[i].x, objects[i].y));
+            lives--;
+            score = max(0, score - 5);
+            shakeAmount = 10;
+            shakeDuration = 15;
+
+            if (lives <= 0) {
+              gameLost = true;
+            }
+          } else {
+            pops.push(new PopEffect(objects[i].x, objects[i].y));
+
+            if (objects[i].isBonus) {
+              score += 2;
+              timer += TIME_BONUS; 
+              timer = min(timer, MAX_TIME);
+            } else {
+              score++;
+            }
+
+            if (score >= winScore) {
+              gameWon = true;
+            }
+          }
+
+          objects.splice(i, 1);
+          objects.push(new GameObject());
+        }
+      }
+    }
+
+    function restartGame() {
+      startGame();
+    }
+
+    function displayWinScreen() {
+      fill(255);
+      textSize(28);
+      textAlign(CENTER, CENTER);
+
+      let bombsHit = 5 - lives;
+      let accuracy = bombsHit === 0 ? "100%" : `${100 - bombsHit * 10}%`;
+
+      text(
+        `YOU POPPED ${score} BUBBLES!\nYOU WIN! 🎉\nBombs clicked: ${bombsHit}\nAccuracy: ${accuracy}\nTime left: ${Math.ceil(timer)}s`,
+        width / 2,
+        height / 2 - 20
+      );
+
+      playAgainButton.show();
+      resetButton.hide();
+    }
+
+    function displayLoseScreen() {
+      fill(255, 70, 70);
+      textSize(20);
+      textAlign(CENTER, CENTER);
+
+      let bombsHit = 5 - lives;
+      let accuracy = bombsHit === 0 ? "100%" : `${max(0, 100 - bombsHit * 20)}%`;
+
+      text(
+        `YOU POPPED ${score} BUBBLES!\nYOU HIT TOO MANY BOMBS OR TIME RAN OUT 💥\nBombs clicked: ${bombsHit}\nAccuracy: ${accuracy}\nTime left: ${Math.ceil(timer)}s`,
+        width / 2,
+        height / 2 - 20
+      );
+
+      playAgainButton.show();
+      resetButton.hide();
+    }
+
+    // ===========================
+    // GameObject Class
+    // ===========================
+    class GameObject {
+      constructor() { this.reset(); }
+      move() { this.y -= this.speed; if (this.y < -this.r) this.reset(); }
+      show() {
+        noStroke();
+        if (this.isBomb) {
+          fill(this.col); ellipse(this.x, this.y, this.r * 2);
+          fill(0); ellipse(this.x, this.y, this.r * 1.2);
+        } else {
+          fill(this.col); if (this.isSparkle) this.sparkle(); ellipse(this.x, this.y, this.r * 2);
+          if (this.isBonus) { fill(255); textAlign(CENTER, CENTER); text("+10s", this.x, this.y); }
+        }
+      }
+      sparkle() { push(); noFill(); stroke(255, 215, 0, 150); strokeWeight(2); ellipse(this.x, this.y, this.r * random(1.2,1.5)); pop(); }
+      isClicked(px, py) { let radius = this.isSparkle || this.isBonus ? this.r * 1.5 : this.r; return dist(px, py, this.x, this.y) < radius; }
+      reset() {
+        this.r = random(20, 40);
+        this.x = random(this.r, width - this.r);
+        this.y = random(height + this.r, height + 200);
+        this.speed = random(1, 3);
+        this.isBomb = random(1) < 0.2;
+        if (!this.isBomb) {
+          let p = random(1);
+          this.isSparkle = p < 0.15; 
+          this.isBonus = p >=0.05 && p <0.25 ? true : false;
+        } else { this.isSparkle = false; this.isBonus = false; }
+        this.col = this.isBomb ? color(255,50,50) : color(random(100,255), random(100,255), random(100,255),180);
+      }
+    }
+
+    // ===========================
+    // Explosion Class
+    // ===========================
+    class Explosion { constructor(x,y){ this.x=x; this.y=y; this.frames=0; this.maxFrames=12; }
+      update(){ this.frames++; let size=this.frames*6; noStroke(); fill(255,150,0,200-this.frames*15); ellipse(this.x,this.y,size); fill(255,50,0,200-this.frames*20); ellipse(this.x,this.y,size*0.7); return this.frames>this.maxFrames; } 
+    }
+
+    // ===========================
+    // PopEffect Class
+    // ===========================
+    class PopEffect { constructor(x,y){ this.x=x; this.y=y; this.frames=0; this.maxFrames=10; }
+      update(){ this.frames++; let size=this.frames*3; noFill(); stroke(255,255-this.frames*20); strokeWeight(2); ellipse(this.x,this.y,size); stroke(200,255-this.frames*25); ellipse(this.x,this.y,size*1.5); return this.frames>this.maxFrames; }
+    }
+
+  </script>
+
+</body>
+</html>
