@@ -13,6 +13,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
 
   <style>
+    html { scroll-behavior: smooth; }
+
     body {
       font-family: 'Inter', sans-serif;
       background-color: #f8f9fa;
@@ -21,58 +23,97 @@
       color: #000;
     }
 
-    header {
-      text-align: center;
+    /* Header */
+    .project-header {
       background-color: #1b3a6b;
       color: white;
-      padding: 4rem 1rem;
+      text-align: center;
+      padding: 5rem 1rem;
+    }
+    .project-header h1 {
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+    .project-header p {
+      font-weight: 500;
+      opacity: 0.85;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 2rem;
+    /* Back Navigation */
+    .nav-back {
+      background-color: #000;
+      text-align: center;
+      padding: 1rem 0;
+    }
+    .nav-back a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      display: inline-block;
+      transition: color 0.3s, transform 0.3s;
+    }
+    .nav-back a:hover {
+      color: #2563eb;
+      transform: scale(1.05);
     }
 
-    header p {
-      margin-top: 0.5rem;
-      font-size: 1rem;
-      color: #e0e0e0;
+    /* Project Card */
+    .project-section {
+      background-color: #ffffff;
+      border-radius: 2rem;
+      box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+      padding: 2rem;
+      max-width: 900px;
+      margin: 3rem auto;
+      text-align: center;
     }
 
-    #canvas-holder {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    /* Canvas */
+    #canvas-holder canvas {
+      border: 2px solid #2563eb;
+      border-radius: 0.75rem;
+      display: block;
       margin: 2rem auto;
+      max-width: 100%;
+      height: auto;
     }
 
+    /* Footer */
     footer {
       background-color: #343a40;
       color: white;
       text-align: center;
       padding: 1.5rem 0;
-    }
-
-    canvas {
-      max-width: 100%;
-      height: auto;
-      display: block;
+      margin-top: 2rem;
     }
   </style>
 </head>
 <body>
 
-  <header>
+  <!-- Header -->
+  <header class="project-header">
     <h1>DIY p5.js Self Portrait</h1>
     <p>Visualization of a self portrait created using p5.js</p>
   </header>
 
-  <div id="canvas-holder"></div>
+  <!-- Back Navigation -->
+  <div class="nav-back">
+    <a href="../index.html#projects">← Back to Portfolio</a>
+  </div>
 
+  <!-- Project Section -->
+  <main class="project-section">
+    <div id="canvas-holder"></div>
+  </main>
+
+  <!-- Footer -->
   <footer>
     © 2025 Sriya Gopalan — All Rights Reserved.
   </footer>
 
+  <!-- p5.js Script -->
   <script>
     function setup() {
       let canvas = createCanvas(600, 600);
@@ -130,35 +171,28 @@
 
     function drawShirt() {
       fill("#2E86AB"); noStroke();
-
-      // Shirt body
       beginShape();
       vertex(230, 355); 
       bezierVertex(220, 420, 220, 520, 200, 550); 
       vertex(300, 550); 
       bezierVertex(280, 520, 280, 420, 270, 355); 
       endShape(CLOSE);
-
-      // Left sleeve
       beginShape();
       vertex(230, 355); 
       bezierVertex(200, 370, 170, 420, 185, 470); 
       vertex(200, 470);
       bezierVertex(190, 430, 210, 380, 230, 355); 
       endShape(CLOSE);
-
-      // Right sleeve
       beginShape();
       vertex(270, 355); 
       bezierVertex(300, 370, 330, 420, 315, 470); 
       vertex(300, 470);
       bezierVertex(310, 430, 290, 380, 270, 355); 
       endShape(CLOSE);
-
-      // V-neck collar
       fill("#1B4F72"); 
       triangle(235, 355, 265, 355, 250, 380);
     }
   </script>
+
 </body>
 </html>
