@@ -31,12 +31,14 @@
     /* Back navigation */
     .nav-back {
       background-color: #000;
+      text-align: center; /* center the link */
     }
     .nav-back a {
+      display: inline-flex;      /* arrow + text on same line */
+      align-items: center;       /* vertical center */
+      justify-content: center;   /* center content inside the link */
       color: white;
       text-decoration: none;
-      display: flex;
-      align-items: center;
       padding: 0.5rem 1rem;
       transition: color 0.3s ease;
     }
