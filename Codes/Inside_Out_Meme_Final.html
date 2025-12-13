@@ -8,45 +8,50 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
     <style>
-        html {
-            scroll-behavior: smooth; /* Smooth scrolling */
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.7;
-            background-color: #f8f9fa; /* Grey-ish white for page background */
+            background-color: #f8f9fa;
         }
 
         /* Header */
         .project-header {
-            background-color: #16a34a; /* Green header */
+            background-color: #16a34a;
             color: white;
             text-align: center;
             padding: 5rem 0;
         }
 
-        /* Top black back nav */
+        /* Back navigation */
         .nav-back {
             background-color: #000;
+            text-align: center;
+            padding: 1rem 0;
         }
         .nav-back a {
             color: white;
             text-decoration: none;
-            display: flex;
-            align-items: center;
+            font-weight: 500;
+            display: inline-block;
             padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: color 0.3s, transform 0.3s;
         }
         .nav-back a:hover {
-            color: #16a34a; /* Green hover */
+            color: #16a34a;
+            transform: scale(1.05);
         }
 
         /* Project section card */
         .project-section {
-            background-color: #ffffff; /* Grey-ish white */
+            background-color: #ffffff;
             border-radius: 2rem;
             box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
             padding: 2rem;
+            max-width: 900px;
+            margin: 3rem auto;
             transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
         }
         .project-section:hover {
@@ -54,18 +59,15 @@
             box-shadow: 0 1rem 2rem rgba(0,0,0,0.25);
         }
 
-        /* Green bold headers */
-        .project-title-green {
-            color: #16a34a; 
-            font-weight: bold;
-        }
+        /* Green headers */
+        .project-title-green { color: #16a34a; font-weight: bold; }
 
-        /* Black description text */
-        .description-black p {
-            color: #000;
-        }
+        /* Description text */
+        .description-black p { color: #000; }
+        .description-black ul, .description-black ol { padding-left: 1.5rem; }
+        .description-black li { margin-bottom: 0.5rem; }
 
-        /* Project image hover - like Axis Music Logos */
+        /* Project image hover */
         .project-image img {
             border-radius: 1rem;
             border: 4px solid #f1f1f1;
@@ -86,6 +88,18 @@
             text-align: center;
             padding: 1.5rem 0;
         }
+
+        /* Buttons (if needed) */
+        .btn-green {
+            background-color: #16a34a;
+            color: #fff;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-green:hover {
+            background-color: #13813c;
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body>
@@ -98,53 +112,41 @@
         </div>
     </header>
 
-    <!-- Top back navigation -->
+    <!-- Back navigation -->
     <div class="nav-back">
-        <div class="container">
-            <a href="../index.html#projects">
-                <svg class="bi bi-arrow-left me-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 1-.5.5H2.707l4.147 4.146a.5.5 0 0 1-.708.708l-5-5a.5.5 0 0 1 0-.708l5-5a.5.5 0 0 1 .708.708L2.707 7.5H14.5A.5.5 0 0 1 15 8z"/>
-                </svg>
-                Back to Portfolio
-            </a>
-        </div>
+        <a href="../index.html#projects">
+            <svg class="bi bi-arrow-left me-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 1-.5.5H2.707l4.147 4.146a.5.5 0 0 1-.708.708l-5-5a.5.5 0 0 1 0-.708l5-5a.5.5 0 0 1 .708.708L2.707 7.5H14.5A.5.5 0 0 1 15 8z"/>
+            </svg>
+            Back to Portfolio
+        </a>
     </div>
 
     <!-- Main content -->
-    <main class="container my-5">
-        <div class="project-section mx-auto">
+    <main class="project-section">
 
-            <!-- Project title -->
-            <h2 class="text-center project-title-green mb-4">The Inside Scoop</h2>
+        <!-- Project title -->
+        <h2 class="text-center project-title-green mb-4">The Inside Scoop</h2>
 
-            <!-- Project image -->
-            <figure class="project-image mb-4">
-                <img 
-                    src="../Images/ART-74 - Meme.jpg" 
-                    alt="Inside Out Meme about using ChatGPT for assignments" 
-                    class="img-fluid w-100"
-                    onerror="this.onerror=null; this.src='https://placehold.co/600x400/F59E0B/ffffff?text=Image+Not+Found';"
-                >
-                <figcaption class="text-center text-muted mt-2">
-                    Image: ART-74 - Meme.jpg
-                </figcaption>
-            </figure>
+        <!-- Project image -->
+        <figure class="project-image mb-4 text-center">
+            <img src="../Images/ART-74 - Meme.jpg" 
+                 alt="Inside Out Meme about using ChatGPT for assignments" 
+                 class="img-fluid w-100"
+                 onerror="this.onerror=null; this.src='https://placehold.co/600x400/F59E0B/ffffff?text=Image+Not+Found';">
+            <figcaption class="text-center text-muted mt-2">
+                Image: ART-74 - Meme.jpg
+            </figcaption>
+        </figure>
 
-            <!-- Project description -->
-            <div class="description-black">
-                <h3 class="project-title-green mb-3">Description</h3>
-                <p>
-                    This meme explores the <strong>trend of using ChatGPT or AI for completing assignments</strong> in school. It's based on a popular <em>Inside Out</em> Characters meme: "Do you ever look at someone and wonder what is going on inside their head?".
-                </p>
-                <p>
-                    The scene shows Riley's mother worrying about her daughter's anxiety, while inside Riley's mind, she contemplates using <strong>ChatGPT to avoid research</strong> by writing a paper in a 4000-word format.
-                </p>
-                <p>
-                    Other characters inside Riley's mind (Joy, Sadness, Anger, Disgust) are hesitant about the idea, but <strong>Anxiety</strong> ultimately allows the decision to proceed with a <strong>"Good Decision" nod</strong>.
-                </p>
-            </div>
-
+        <!-- Project description -->
+        <div class="description-black">
+            <h3 class="project-title-green mb-3">Description</h3>
+            <p>This meme explores the <strong>trend of using ChatGPT or AI for completing assignments</strong> in school. It's based on a popular <em>Inside Out</em> characters meme: "Do you ever look at someone and wonder what is going on inside their head?".</p>
+            <p>The scene shows Riley's mother worrying about her daughter's anxiety, while inside Riley's mind, she contemplates using <strong>ChatGPT to avoid research</strong> by writing a paper in a 4000-word format.</p>
+            <p>Other characters inside Riley's mind (Joy, Sadness, Anger, Disgust) are hesitant about the idea, but <strong>Anxiety</strong> ultimately allows the decision to proceed with a <strong>"Good Decision" nod</strong>.</p>
         </div>
+
     </main>
 
     <!-- Footer -->
