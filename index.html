@@ -36,15 +36,6 @@
       padding: 1.5rem 0;
       text-align: center;
     }
-
-    #p5js-container, #p5js-game-container {
-      border: 2px solid #2563eb;
-      border-radius: 0.5rem;
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-    }
   </style>
 </head>
 <body>
@@ -110,7 +101,7 @@
             <button class="nav-link mb-2 me-2 fw-bold" id="p6-tab" data-bs-toggle="pill" data-bs-target="#p6" type="button">Net Art</button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link mb-2 me-2 fw-bold" id="p7-tab" data-bs-toggle="pill" data-bs-target="#p7" type="button">DIY p5.js Sketch</button>
+            <button class="nav-link mb-2 me-2 fw-bold" id="p7-tab" data-bs-toggle="pill" data-bs-target="#p7" type="button">DIY p5.js Self Portrait</button>
           </li>
           <li class="nav-item" role="presentation">
             <button class="nav-link mb-2 me-2 fw-bold" id="p8-tab" data-bs-toggle="pill" data-bs-target="#p8" type="button">DIY Game</button>
@@ -173,12 +164,12 @@
             </div>
           </div>
 
-          <!-- DIY p5.js Sketch -->
+          <!-- DIY p5.js Self Portrait -->
           <div class="tab-pane fade" id="p7">
             <div class="card project-card mb-3 p-4 text-center">
-              <h5 class="text-primary fw-bold mb-2">DIY p5.js Sketch</h5>
-              <p>An interactive p5.js self-portrait sketch embedded below.</p>
-              <a href="Codes/diy_ps.html" class="btn btn-outline-primary mt-3">Open Full Project →</a>
+              <h5 class="text-primary fw-bold mb-2">DIY p5.js Self Portrait</h5>
+              <p>An interactive p5.js self-portrait project.</p>
+              <a href="Codes/diy_code_self_portrait.html" class="btn btn-outline-primary mt-3">Open Full Project →</a>
             </div>
           </div>
 
@@ -192,7 +183,6 @@
           </div>
 
         </div>
-
       </div>
 
       <!-- CONTACT -->
@@ -226,46 +216,6 @@
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-  <!-- p5.js CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/p5@1.7.0/lib/p5.min.js"></script>
-
-  <!-- DIY Self-Portrait Sketch (Instance Mode) -->
-  <script>
-    new p5((sk) => {
-      let img, initials='sg', choice='1', screenbg=250, lastscreenshot=61;
-
-      sk.preload = () => { img = sk.loadImage('https://dma-git.github.io/images/74.png'); };
-
-      sk.setup = () => {
-        let canvas = sk.createCanvas(600, 400);
-        canvas.parent('p5js-container');
-        sk.background(screenbg);
-      };
-
-      sk.draw = () => {
-        if(sk.keyIsPressed){ choice = sk.key; clear_print(); }
-        if(sk.mouseIsPressed){ newkeyChoice(choice); }
-      };
-
-      function newkeyChoice(toolChoice){
-        if(toolChoice=='1'){ sk.stroke(0,0,255); sk.strokeWeight(12); sk.line(sk.mouseX, sk.mouseY, sk.pmouseX, sk.pmouseY);}
-        else if(toolChoice=='2'){ sk.stroke(70,130,255); sk.strokeWeight(24); sk.line(sk.mouseX, sk.mouseY, sk.pmouseX, sk.pmouseY);}
-        else if(toolChoice=='3'){ sk.stroke(0,100,0); sk.strokeWeight(2); for(let i=0;i<5;i++){ let x=sk.random(-3,3); let y=sk.random(-10,0); sk.line(sk.mouseX+x, sk.mouseY, sk.mouseX+x, sk.mouseY+y);}}
-        else if(toolChoice=='4'){ sk.noStroke(); sk.fill(34,139,34); sk.triangle(sk.mouseX, sk.mouseY-40, sk.mouseX-20, sk.mouseY+15, sk.mouseX+15, sk.mouseY+15); sk.fill(139,69,19); sk.rect(sk.mouseX-5, sk.mouseY+15,10,30);}
-        else if(toolChoice=='5'){ sk.noStroke(); sk.fill(255,80,100); sk.ellipse(sk.mouseX,sk.mouseY,50,30); sk.fill(240,220,180); sk.rect(sk.mouseX-8,sk.mouseY+5,16,25,5); sk.fill(255); sk.ellipse(sk.mouseX-10,sk.mouseY-5,7,5); sk.ellipse(sk.mouseX+8,sk.mouseY-3,6,4); sk.ellipse(sk.mouseX,sk.mouseY+2,5,4);}
-        else if(toolChoice=='6'){ sk.stroke(255,215,0); sk.strokeWeight(12); sk.line(sk.mouseX, sk.mouseY, sk.pmouseX, sk.pmouseY);}
-        else if(toolChoice=='7'){ sk.stroke(255,140,0); sk.strokeWeight(12); sk.line(sk.mouseX, sk.mouseY, sk.pmouseX, sk.pmouseY);}
-        else if(toolChoice=='8'){ sk.stroke(64,244,208); sk.strokeWeight(12); sk.line(sk.mouseX, sk.mouseY, sk.pmouseX, sk.pmouseY);}
-      }
-
-      function clear_print(){ if(sk.key=='x'||sk.key=='X'){ sk.background(screenbg);} else if(sk.key=='p'||sk.key=='P'){ saveme(); } }
-      function saveme(){ let filename=initials+sk.day()+sk.hour()+sk.minute()+sk.second(); if(sk.second()!=lastscreenshot){ sk.saveCanvas(filename,'jpg'); sk.key=''; } lastscreenshot=sk.second();}
-    });
-  </script>
-
-  <!-- DIY Game Sketch -->
-  <script src="Codes/diy_game.js"></script>
 
 </body>
 </html>
