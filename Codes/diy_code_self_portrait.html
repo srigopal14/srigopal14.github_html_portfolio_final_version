@@ -30,7 +30,9 @@
       text-align: center; /* centers the link */
     }
     .nav-back a {
-      display: inline-block; /* respects text-align center */
+      display: inline-flex; 
+      align-items: center;
+      justify-content: center;
       color: white;
       text-decoration: none;
       padding: 0.5rem 1rem;
@@ -128,23 +130,16 @@
       drawMouth();
     }
 
+    /* Drawing functions */
     function drawBraid() {
-      let braidX = 310;
-      let braidY = 230;
-      let braidSegments = 8;
-      let braidWidth = 45;
-      let braidHeight = 28;
-      let taper = 0.9;
-      let spacing = 22;
-      let sway = 8;
-
-      fill("#6D3327");
-      noStroke();
+      let braidX = 310, braidY = 230;
+      let braidSegments = 8, braidWidth = 45, braidHeight = 28;
+      let taper = 0.9, spacing = 22, sway = 8;
+      fill("#6D3327"); noStroke();
       for (let i = 0; i < braidSegments; i++) {
         let y = braidY + i * spacing;
         let w = braidWidth * pow(taper, i);
         let h = braidHeight;
-
         if (i % 2 === 0) {
           ellipse(braidX - sway, y, w, h);
           ellipse(braidX + sway, y + spacing / 2, w * 0.9, h);
@@ -153,7 +148,6 @@
           ellipse(braidX - sway, y + spacing / 2, w * 0.9, h);
         }
       }
-
       fill("#333333");
       ellipse(braidX, braidY + braidSegments * spacing + 5, 20, 15);
     }
