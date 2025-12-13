@@ -33,8 +33,18 @@
       text-align: center;
       padding: 4rem 1rem;
     }
-    .header h1 { font-weight: 800; margin-bottom: 0.5rem; }
-    .header p { font-weight: 500; font-size: 1.2rem; opacity: 0.85; }
+    .header h1 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 800;
+      font-size: 3rem; /* matches Axis Music project title */
+      margin-bottom: 0.5rem;
+    }
+    .header p {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 1.25rem; /* matches project lead text */
+      opacity: 0.75;
+    }
 
     /* Navigation Bar */
     .navbar-custom {
@@ -44,11 +54,13 @@
       flex-wrap: wrap;
     }
     .navbar-custom .nav-link {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 1rem; /* matches project back link size */
       color: white;
       padding: 1rem 1.2rem;
       text-decoration: none;
       transition: color 0.3s;
-      font-weight: 500;
     }
     .navbar-custom .nav-link:hover {
       color: #2563eb;
@@ -61,14 +73,19 @@
       margin: auto; 
       text-align: center; 
     }
-    #about h2, #contact h2 { 
-      color: #1b3a6b; 
-      font-weight: 700; 
-      margin-bottom: 1.5rem; 
+    section h2 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 800;
+      font-size: 2rem; /* matches project section titles */
+      color: #1b3a6b;
+      margin-bottom: 1.5rem;
     }
-
-    /* About Me Paragraph */
-    #about p { font-size: 1.1rem; line-height: 1.8; }
+    section p {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 1rem; /* matches project instructions/body text */
+      line-height: 1.8;
+    }
 
     /* Contact Form */
     form { display: flex; flex-direction: column; align-items: center; }
@@ -78,25 +95,33 @@
       padding: 0.75rem;
       margin-bottom: 1rem;
       border: 1px solid #ccc;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
       font-size: 1rem;
     }
     form button {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
       background-color: #1b3a6b;
       color: white;
       padding: 0.75rem 1.5rem;
       border: none;
       cursor: pointer;
-      font-weight: 600;
       transition: background-color 0.3s;
     }
     form button:hover { background-color: #163162; }
 
+    /* Footer */
     footer { 
       background-color: #000; 
       color: white; 
       text-align: center; 
       padding: 1.5rem 0; 
       margin-top: 2rem; 
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
     }
   </style>
 </head>
