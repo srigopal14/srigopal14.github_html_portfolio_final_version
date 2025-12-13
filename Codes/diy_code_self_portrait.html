@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DIY p5.js Self Portrait | Sriya Gopalan</title>
 
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
 
@@ -59,7 +62,24 @@
       padding: 2rem;
       max-width: 900px;
       margin: 3rem auto;
+    }
+
+    /* Titles */
+    .project-title {
+      color: #1b3a6b;
+      font-weight: 800;
       text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Instructions / description (BLACK TEXT) */
+    .instructions ul, .instructions p {
+      padding-left: 1.5rem;
+      color: #000;
+      font-weight: 500;
+    }
+    .instructions li {
+      margin-bottom: 0.5rem;
     }
 
     /* Canvas */
@@ -96,6 +116,14 @@
 
   <!-- Main content -->
   <main class="project-section">
+    <h2 class="project-title">Instructions</h2>
+    <div class="instructions">
+      <ul>
+        <li>Click & drag the mouse to draw on the canvas.</li>
+        <li>Press <strong>X</strong> to clear the portrait.</li>
+        <li>Press <strong>P</strong> to save a screenshot.</li>
+      </ul>
+    </div>
     <div id="portrait-holder"></div>
   </main>
 
