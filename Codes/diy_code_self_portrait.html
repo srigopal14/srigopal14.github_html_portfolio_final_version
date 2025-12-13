@@ -22,7 +22,14 @@
     .nav-back a:hover { color: #2563eb; }
     .project-section { background-color: #fff; border-radius: 2rem; box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15); padding: 2rem; max-width: 900px; margin: 3rem auto; }
     .project-title { color: #2563eb; font-weight: bold; text-align: center; }
-    #canvas-holder canvas { border: 2px solid #2563eb; border-radius: 0.5rem; display: block; margin: 1rem auto; max-width: 100%; height: auto; }
+    #canvas-holder canvas { 
+      border: none; /* removed blue border */
+      border-radius: 0.5rem; 
+      display: block; 
+      margin: 1rem auto; 
+      max-width: 100%; 
+      height: auto; 
+    }
     footer { background-color: #343a40; color: white; text-align: center; padding: 1.5rem 0; }
   </style>
 </head>
@@ -60,10 +67,8 @@
 
   <script>
     let img;
-    let initials ='jm';
     let choice = '1';
     let screenbg = 250;
-    let lastscreenshot = 61;
 
     function preload() {
       img = loadImage('https://dma-git.github.io/images/74.png');
