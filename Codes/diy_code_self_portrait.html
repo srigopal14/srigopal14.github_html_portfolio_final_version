@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sriya Gopalan | Portfolio</title>
-  <meta name="description" content="Portfolio of Sriya Gopalan, 3rd Year Graphic Design Student at San Jose State University.">
+  <title>DIY p5.js Self Portrait | Sriya Gopalan</title>
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -12,68 +11,97 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
 
+  <!-- p5.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+
   <style>
     html { scroll-behavior: smooth; }
+
     body {
       font-family: 'Inter', sans-serif;
-      margin: 0;
       background-color: #f8f9fa;
+      line-height: 1.7;
+      margin: 0;
+      padding: 0;
       color: #000;
     }
 
     /* Header */
-    .header {
+    .project-header {
       background-color: #1b3a6b;
       color: white;
       text-align: center;
-      padding: 5rem 1rem;
+      padding: 5rem 0;
     }
-    .header h1 {
-      font-size: 3rem; /* matches Axis Music display-4 */
+    .project-header h1 {
+      font-size: 3rem; /* matches Axis Music Logos display-4 */
       font-weight: 800;
       margin-bottom: 0.5rem;
     }
-    .header p {
-      font-size: 1.25rem;
+    .project-header p {
+      font-size: 1.25rem; /* matches lead text */
       opacity: 0.75;
     }
 
-    /* Navigation Bar */
-    .navbar-custom {
+    /* Back navigation */
+    .nav-back {
       background-color: #000;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
+      text-align: center;
+      padding: 1rem 0;
     }
-    .navbar-custom .nav-link {
+    .nav-back a {
       color: white;
-      padding: 0.75rem 1.2rem;
       text-decoration: none;
       font-weight: 500;
-      transition: color 0.3s;
+      font-size: 1rem; /* matches Axis Music back link size */
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      transition: color 0.3s, transform 0.3s;
     }
-    .navbar-custom .nav-link:hover {
+    .nav-back a:hover {
       color: #1b3a6b;
       transform: scale(1.05);
     }
 
-    /* Sections */
-    section {
-      padding: 3rem 1rem;
+    /* Project card */
+    .project-section {
+      background-color: #ffffff;
+      border-radius: 2rem;
+      box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+      padding: 2rem;
       max-width: 900px;
-      margin: auto;
-      text-align: center;
+      margin: 3rem auto;
     }
-    section h2 {
+
+    /* Titles */
+    .project-title {
       color: #1b3a6b;
-      font-weight: 700;
-      font-size: 2rem;
+      font-weight: 800;
+      font-size: 2rem; /* matches Axis Music section title */
+      text-align: center;
       margin-bottom: 1.5rem;
     }
-    section p {
-      font-size: 1rem;
-      line-height: 1.7;
+
+    /* Instructions / description */
+    .instructions ul, .instructions p {
+      padding-left: 1.5rem;
       color: #000;
+      font-weight: 500;
+      font-size: 1rem; /* matches Axis Music body text */
+    }
+    .instructions li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Canvas */
+    #portrait-holder canvas {
+      border: 2px solid #2563eb;
+      border-radius: 0.75rem;
+      display: block;
+      margin: 1.5rem auto;
+      max-width: 100%;
+      height: auto;
     }
 
     /* Footer */
@@ -83,56 +111,120 @@
       text-align: center;
       padding: 1.5rem 0;
       font-size: 1rem;
-      margin-top: 2rem;
     }
   </style>
 </head>
 <body>
 
   <!-- Header -->
-  <header class="header">
-    <h1>Sriya Gopalan</h1>
-    <p>3rd Year Graphic Design Student at San Jose State University</p>
+  <header class="project-header">
+    <h1>DIY p5.js Self Portrait</h1>
+    <p>Interactive Self Portrait</p>
   </header>
 
-  <!-- Navigation -->
-  <nav class="navbar-custom">
-    <a href="Codes/2-axis-music-logos.html" class="nav-link">2-Axis Music Logos</a>
-    <a href="Codes/Boba_Glitched_1.html" class="nav-link">Boba Glitched 1</a>
-    <a href="Codes/Boba_Glitched_2.html" class="nav-link">Boba Glitched 2</a>
-    <a href="Codes/Boba_Glitched_3.html" class="nav-link">Boba Glitched 3</a>
-    <a href="Codes/Inside_Out_Meme_Final.html" class="nav-link">Inside Out Meme Final</a>
-    <a href="Codes/diy_code_self_portrait.html" class="nav-link">DIY Code Self Portrait</a>
-    <a href="Codes/diy_game.html" class="nav-link">DIY Bubble Game</a>
-    <a href="Codes/diy_ps.html" class="nav-link">DIY Photoshop Project</a>
-    <a href="Codes/final.html" class="nav-link">Final Project</a>
-    <a href="Codes/net_art.html" class="nav-link">Net Art Project</a>
-  </nav>
+  <!-- Back navigation -->
+  <div class="nav-back">
+    <a href="../index.html#projects">← Back to Portfolio</a>
+  </div>
 
-  <!-- About Me Section -->
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      Hello! I'm Sriya Gopalan, a passionate 3rd-year Graphic Design student at San Jose State University. My interest in art started when I was 5 years old and I have continued to explore various creative forms of art throughout my life.  
-      As a visual learner, art has been a medium to improve comprehension. During my free time, I participate in art clubs and volunteer for community programs.  
-      I'm looking forward to collaborating on children's books by inspiring kids for a healthy, stress-free life.
-    </p>
-  </section>
+  <!-- Main content -->
+  <main class="project-section">
+    <h2 class="project-title">Instructions</h2>
+    <div class="instructions">
+      <ul>
+        <li>Press <strong>P</strong> to save a screenshot.</li>
+      </ul>
+    </div>
+    <div id="portrait-holder"></div>
+  </main>
 
-  <!-- Contact Section -->
-  <section id="contact">
-    <h2>Contact</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea placeholder="Your Message" rows="5" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
-
+  <!-- Footer -->
   <footer>
     © 2025 Sriya Gopalan — All Rights Reserved.
   </footer>
+
+  <!-- p5.js Sketch -->
+  <script>
+    function setup() {
+      let canvas = createCanvas(600, 600);
+      canvas.parent('portrait-holder');
+      background(240);
+      angleMode(DEGREES);
+      drawSelfPortrait();
+    }
+
+    function drawSelfPortrait() {
+      drawBraid();
+      drawShirt();
+      drawNeck();
+      drawFace();
+    }
+
+    function drawFace() {
+      drawEars();
+      drawHead();
+      drawHair();
+      drawEyebrows();
+      drawEyes();
+      drawNose();
+      drawMouth();
+      drawEarrings();
+    }
+
+    function drawBraid() {
+      let braidX = 310, braidY = 230;
+      let braidSegments = 8, braidWidth = 45, braidHeight = 28;
+      let taper = 0.9, spacing = 22, sway = 8;
+      fill("#6D3327"); noStroke();
+      for (let i = 0; i < braidSegments; i++) {
+        let y = braidY + i * spacing;
+        let w = braidWidth * pow(taper, i);
+        let h = braidHeight;
+        if (i % 2 === 0) {
+          ellipse(braidX - sway, y, w, h);
+          ellipse(braidX + sway, y + spacing / 2, w * 0.9, h);
+        } else {
+          ellipse(braidX + sway, y, w, h);
+          ellipse(braidX - sway, y + spacing / 2, w * 0.9, h);
+        }
+      }
+      fill("#333"); ellipse(braidX, braidY + braidSegments * spacing + 5, 20, 15);
+    }
+
+    function drawEars() { fill("#C9A270"); noStroke(); arc(320, 250, 30, 50, -90, 90, CHORD); arc(180, 250, 30, 50, 90, 270, CHORD); }
+    function drawEarrings() { fill("#D6B636"); circle(180, 280, 15); circle(320, 280, 15); }
+    function drawHead() { fill("#C9A270"); noStroke(); ellipse(250, 250, 150, 180); }
+    function drawHair() { fill("#6D3327"); noStroke(); arc(250, 215, 141, 141, 180, 360); ellipse(180, 240, 20, 60); ellipse(320, 240, 20, 60); }
+    function drawEyebrows() { noFill(); stroke("#6D3327"); strokeWeight(3); arc(210, 228, 45, 15, 210, 330); arc(290, 228, 45, 15, 210, 330); }
+    function drawEyes() { fill(255); stroke(0); strokeWeight(2); ellipse(210, 232, 20, 12); ellipse(290, 232, 20, 12); fill(0); noStroke(); ellipse(210, 232, 8, 8); ellipse(290, 232, 8, 8); }
+    function drawNose() { fill("#A78357"); noStroke(); triangle(245, 260, 255, 260, 250, 285); ellipse(245, 288, 6, 4); ellipse(255, 288, 6, 4); }
+    function drawMouth() { fill("#E00000"); noStroke(); arc(250, 310, 50, 15, 0, 180); arc(250, 309, 45, 10, 180, 360); }
+    function drawNeck() { fill("#C9A270"); noStroke(); rectMode(CENTER); rect(250, 350, 40, 50, 20); }
+
+    function drawShirt() {
+      fill("#2E86AB"); noStroke();
+      beginShape();
+      vertex(230, 355); 
+      bezierVertex(220, 420, 220, 520, 200, 550); 
+      vertex(300, 550); 
+      bezierVertex(280, 520, 280, 420, 270, 355); 
+      endShape(CLOSE);
+      beginShape();
+      vertex(230, 355); 
+      bezierVertex(200, 370, 170, 420, 185, 470); 
+      vertex(200, 470);
+      bezierVertex(190, 430, 210, 380, 230, 355); 
+      endShape(CLOSE);
+      beginShape();
+      vertex(270, 355); 
+      bezierVertex(300, 370, 330, 420, 315, 470); 
+      vertex(300, 470);
+      bezierVertex(310, 430, 290, 380, 270, 355); 
+      endShape(CLOSE);
+      fill("#1B4F72"); 
+      triangle(235, 355, 265, 355, 250, 380);
+    }
+  </script>
 
 </body>
 </html>
