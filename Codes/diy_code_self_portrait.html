@@ -15,7 +15,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
 
   <style>
-    body { font-family: 'Inter', sans-serif; background-color: #f8f9fa; line-height: 1.7; }
+    body { 
+      font-family: 'Inter', sans-serif; 
+      background-color: #f8f9fa; 
+      line-height: 1.7; 
+      margin: 0; 
+      padding: 0; 
+    }
 
     .project-header { 
       background-color: #2563eb; 
@@ -24,21 +30,23 @@
       padding: 5rem 0; 
     }
 
-    /* Centered Back navigation */
+    /* Centered Back navigation matching other projects */
     .nav-back {
       background-color: #000;
-      text-align: center; /* centers the link */
+      text-align: center;
+      padding: 0.5rem 0;
     }
     .nav-back a {
-      display: inline-flex; 
-      align-items: center;
-      justify-content: center;
+      display: inline-block;
       color: white;
       text-decoration: none;
-      padding: 0.5rem 1rem;
+      font-weight: 500;
+      font-size: 1rem;
       transition: color 0.3s;
     }
-    .nav-back a:hover { color: #2563eb; }
+    .nav-back a:hover {
+      color: #2563eb;
+    }
 
     .project-section { 
       background-color: #fff; 
