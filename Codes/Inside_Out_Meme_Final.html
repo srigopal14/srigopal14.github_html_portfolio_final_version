@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inside Out Meme Final | Sriya Gopalan Portfolio</title>
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+
     <style>
         html { scroll-behavior: smooth; }
 
@@ -18,7 +22,7 @@
 
         /* Header */
         .project-header {
-            background-color: #16a34a;
+            background-color: #1b3a6b; /* blue theme */
             color: white;
             text-align: center;
             padding: 5rem 0;
@@ -40,7 +44,7 @@
             transition: color 0.3s, transform 0.3s;
         }
         .nav-back a:hover {
-            color: #16a34a;
+            color: #1b3a6b;
             transform: scale(1.05);
         }
 
@@ -59,13 +63,23 @@
             box-shadow: 0 1rem 2rem rgba(0,0,0,0.25);
         }
 
-        /* Green headers */
-        .project-title-green { color: #16a34a; font-weight: bold; }
+        /* Blue headers */
+        .project-title-blue {
+            color: #1b3a6b;
+            font-weight: bold;
+        }
 
         /* Description text */
-        .description-black p { color: #000; }
-        .description-black ul, .description-black ol { padding-left: 1.5rem; }
-        .description-black li { margin-bottom: 0.5rem; }
+        .description-black p {
+            color: #000;
+        }
+        .description-black ul,
+        .description-black ol {
+            padding-left: 1.5rem;
+        }
+        .description-black li {
+            margin-bottom: 0.5rem;
+        }
 
         /* Project image hover */
         .project-image img {
@@ -90,14 +104,14 @@
         }
 
         /* Buttons (if needed) */
-        .btn-green {
-            background-color: #16a34a;
+        .btn-blue {
+            background-color: #1b3a6b;
             color: #fff;
             font-weight: 600;
             transition: all 0.3s ease;
         }
-        .btn-green:hover {
-            background-color: #13813c;
+        .btn-blue:hover {
+            background-color: #16305a;
             transform: scale(1.05);
         }
     </style>
@@ -126,14 +140,14 @@
     <main class="project-section">
 
         <!-- Project title -->
-        <h2 class="text-center project-title-green mb-4">The Inside Scoop</h2>
+        <h2 class="text-center project-title-blue mb-4">The Inside Scoop</h2>
 
         <!-- Project image -->
         <figure class="project-image mb-4 text-center">
             <img src="../Images/ART-74 - Meme.jpg" 
                  alt="Inside Out Meme about using ChatGPT for assignments" 
                  class="img-fluid w-100"
-                 onerror="this.onerror=null; this.src='https://placehold.co/600x400/F59E0B/ffffff?text=Image+Not+Found';">
+                 onerror="this.onerror=null; this.src='https://placehold.co/600x400/1b3a6b/ffffff?text=Image+Not+Found';">
             <figcaption class="text-center text-muted mt-2">
                 Image: ART-74 - Meme.jpg
             </figcaption>
@@ -141,10 +155,21 @@
 
         <!-- Project description -->
         <div class="description-black">
-            <h3 class="project-title-green mb-3">Description</h3>
-            <p>This meme explores the <strong>trend of using ChatGPT or AI for completing assignments</strong> in school. It's based on a popular <em>Inside Out</em> characters meme: "Do you ever look at someone and wonder what is going on inside their head?".</p>
-            <p>The scene shows Riley's mother worrying about her daughter's anxiety, while inside Riley's mind, she contemplates using <strong>ChatGPT to avoid research</strong> by writing a paper in a 4000-word format.</p>
-            <p>Other characters inside Riley's mind (Joy, Sadness, Anger, Disgust) are hesitant about the idea, but <strong>Anxiety</strong> ultimately allows the decision to proceed with a <strong>"Good Decision" nod</strong>.</p>
+            <h3 class="project-title-blue mb-3">Description</h3>
+            <p>
+                This meme explores the <strong>trend of using ChatGPT or AI for completing assignments</strong> in school. 
+                It's based on the popular <em>Inside Out</em> meme: 
+                “Do you ever look at someone and wonder what is going on inside their head?”
+            </p>
+            <p>
+                The scene shows Riley’s mother worrying about her daughter’s anxiety, while inside Riley’s mind, 
+                she considers using <strong>ChatGPT to avoid research</strong> by writing a paper in a 4000-word format.
+            </p>
+            <p>
+                Other characters (Joy, Sadness, Anger, and Disgust) are hesitant, but 
+                <strong>Anxiety</strong> ultimately approves the choice with a 
+                <strong>“Good Decision”</strong> nod.
+            </p>
         </div>
 
     </main>
