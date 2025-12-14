@@ -91,11 +91,18 @@ function draw(){
   if(gameWon){ displayWinScreen(); return; }
   if(gameLost){ displayLoseScreen(); return; }
 
+  // HUD background
+  noStroke();
+  fill(0, 0, 0, 120);
+  rect(30, 10, 160, 70, 10);
+
+  // HUD text
   fill(255);
   textSize(16);
-  text(`Score: ${score}`,10,20);
-  text(`Lives: ${lives}`,10,40);
-  text(`Time: ${ceil(timer)}s`,10,60);
+  textAlign(LEFT);
+  text(`Score: ${score}`, 40, 30);
+  text(`Lives: ${lives}`, 40, 50);
+  text(`Time: ${ceil(timer)}s`, 40, 70);
 
   for(let o of objects){ o.move(); o.show(); }
   explosions = explosions.filter(e=>!e.update());
