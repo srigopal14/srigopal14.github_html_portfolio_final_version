@@ -16,17 +16,13 @@
 
   <style>
     html { scroll-behavior: smooth; }
-
     body {
       font-family: 'Inter', sans-serif;
       background-color: #f8f9fa;
-      line-height: 1.7;
       margin: 0;
-      padding: 0;
       color: #000;
     }
 
-    /* Header */
     .project-header {
       background-color: #1b3a6b;
       color: white;
@@ -34,7 +30,6 @@
       padding: 5rem 0;
     }
 
-    /* Back navigation */
     .nav-back {
       background-color: #000;
       text-align: center;
@@ -44,17 +39,8 @@
       color: white;
       text-decoration: none;
       font-weight: 500;
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      transition: color 0.3s, transform 0.3s;
-    }
-    .nav-back a:hover {
-      color: #2563eb;
-      transform: scale(1.05);
     }
 
-    /* Project card */
     .project-section {
       background-color: #ffffff;
       border-radius: 2rem;
@@ -64,34 +50,18 @@
       margin: 3rem auto;
     }
 
-    /* Titles */
     .project-title {
       color: #1b3a6b;
       font-weight: 800;
       text-align: center;
-      margin-bottom: 1.5rem;
     }
 
-    /* Instructions */
-    .instructions ul {
-      padding-left: 1.5rem;
-      color: #000;
-      font-weight: 500;
-    }
-    .instructions li {
-      margin-bottom: 0.5rem;
-    }
-
-    /* Canvas */
     #game-canvas canvas {
-      border-radius: 0.75rem;
       display: block;
       margin: 1.5rem auto;
-      max-width: 100%;
-      height: auto;
+      border-radius: 0.75rem;
     }
 
-    /* Footer */
     footer {
       background-color: #343a40;
       color: white;
@@ -100,195 +70,198 @@
     }
   </style>
 </head>
+
 <body>
 
-  <!-- Header -->
-  <header class="project-header">
-    <h1 class="display-4 fw-bold">DIY Bubble Game</h1>
-    <p class="lead opacity-75">Pop bubbles without hitting bombs!</p>
-  </header>
+<header class="project-header">
+  <h1 class="display-4 fw-bold">DIY Bubble Game</h1>
+  <p class="lead opacity-75">Pop bubbles without hitting bombs!</p>
+</header>
 
-  <!-- Back navigation -->
-  <div class="nav-back">
-    <a href="../index.html#projects">← Back to Portfolio</a>
-  </div>
+<div class="nav-back">
+  <a href="../index.html#projects">← Back to Portfolio</a>
+</div>
 
-  <!-- Main content -->
-  <main class="project-section">
-    <h2 class="project-title">Instructions</h2>
+<main class="project-section">
+  <h2 class="project-title">Instructions</h2>
+  <ul>
+    <li>Click bubbles to pop them.</li>
+    <li>Avoid red bombs.</li>
+    <li>You have <strong>5 lives</strong> and <strong>90 seconds</strong>.</li>
+  </ul>
 
-    <div class="instructions">
-      <ul>
-        <li>Click the colorful bubbles to pop them.</li>
-        <li>Avoid the red bombs or you’ll lose a life.</li>
-        <li>Some bubbles give bonus points or extra time.</li>
-        <li>You have <strong>5 lives</strong> and <strong>90 seconds</strong> to win.</li>
-      </ul>
-    </div>
+  <div id="game-canvas"></div>
+</main>
 
-    <div id="game-canvas"></div>
-  </main>
+<footer>
+  © 2025 Sriya Gopalan — All Rights Reserved.
+</footer>
 
-  <!-- Footer -->
-  <footer>
-    © 2025 Sriya Gopalan — All Rights Reserved.
-  </footer>
+<script>
+let objects = [], explosions = [], pops = [];
+let score = 0, totalObjects = 15, winScore = 100, lives = 5;
+let gameWon = false, gameLost = false;
+let timer = 90, MAX_TIME = 90, TIME_BONUS = 10;
+let shakeAmount = 0, shakeDuration = 0;
+let gameStarted = false;
 
-  <!-- Game Script (UNCHANGED) -->
-  <script>
-    let objects = [], explosions = [], pops = [];
-    let score = 0, totalObjects = 15, winScore = 100, lives = 5;
-    let gameWon = false, gameLost = false;
-    let timer = 90, MAX_TIME = 90, TIME_BONUS = 10;
-    let shakeAmount = 0, shakeDuration = 0;
-    let gameStarted = false;
+function setup() {
+  let canvas = createCanvas(600, 400);
+  canvas.parent("game-canvas");
+}
 
-    function setup() {
-      let canvas = createCanvas(600, 400);
-      canvas.parent("game-canvas");
+function draw() {
+  background(30, 30, 50);
+
+  if (!gameStarted) {
+    drawButton(width / 2, height / 2, 180, 60, "PLAY");
+    return;
+  }
+
+  if (!gameWon && !gameLost) {
+    timer -= deltaTime / 1000;
+    if (timer <= 0) gameLost = true;
+  }
+
+  push();
+  if (shakeDuration > 0) {
+    translate(random(-shakeAmount, shakeAmount), random(-shakeAmount, shakeAmount));
+    shakeDuration--;
+  }
+
+  if (gameWon) { displayWinScreen(); pop(); return; }
+  if (gameLost) { displayLoseScreen(); pop(); return; }
+
+  fill(255);
+  textSize(18);
+  textAlign(LEFT);
+  text(`Score: ${score}`, 10, 25);
+  text(`Lives: ${lives}`, 10, 45);
+  text(`Time: ${ceil(timer)}s`, 10, 65);
+
+  for (let obj of objects) { obj.move(); obj.show(); }
+  for (let i = explosions.length - 1; i >= 0; i--) if (explosions[i].update()) explosions.splice(i, 1);
+  for (let i = pops.length - 1; i >= 0; i--) if (pops[i].update()) pops.splice(i, 1);
+
+  pop();
+}
+
+function mousePressed() {
+  if (!gameStarted) {
+    if (mouseX > width/2-90 && mouseX < width/2+90 && mouseY > height/2-30 && mouseY < height/2+30) {
+      gameStarted = true;
+      startGame();
     }
+    return;
+  }
 
-    function draw() {
-      background(30, 30, 50);
-
-      if (!gameStarted) {
-        drawButton(width / 2, height / 2, 180, 60, "PLAY");
-        return;
-      }
-
-      if (!gameWon && !gameLost) {
-        timer -= deltaTime / 1000;
-        if (timer <= 0) gameLost = true;
-      }
-
-      push();
-      if (shakeDuration > 0) {
-        translate(random(-shakeAmount, shakeAmount), random(-shakeAmount, shakeAmount));
-        shakeDuration--;
-      }
-
-      if (gameWon) { displayWinScreen(); pop(); return; }
-      if (gameLost) { displayLoseScreen(); pop(); return; }
-
-      fill(255);
-      textSize(18);
-      textAlign(LEFT);
-      text(`Score: ${score}`, 10, 25);
-      text(`Lives: ${lives}`, 10, 45);
-      text(`Time: ${Math.ceil(timer)}s`, 10, 65);
-
-      for (let obj of objects) { obj.move(); obj.show(); }
-      for (let i = explosions.length - 1; i >= 0; i--) if (explosions[i].update()) explosions.splice(i, 1);
-      for (let i = pops.length - 1; i >= 0; i--) if (pops[i].update()) pops.splice(i, 1);
-
-      pop();
+  if (gameWon || gameLost) {
+    if (mouseX > width/2-110 && mouseX < width/2+110 &&
+        mouseY > height/2+10 && mouseY < height/2+70) {
+      startGame();
     }
+    return;
+  }
 
-    function mousePressed() {
-      if (!gameStarted) {
-        if (mouseX > width/2-90 && mouseX < width/2+90 && mouseY > height/2-30 && mouseY < height/2+30) {
-          gameStarted = true;
-          startGame();
-        }
-        return;
+  for (let i = objects.length - 1; i >= 0; i--) {
+    if (objects[i].isClicked(mouseX, mouseY)) {
+      if (objects[i].isBomb) {
+        explosions.push(new Explosion(objects[i].x, objects[i].y));
+        lives--;
+        if (lives <= 0) gameLost = true;
+      } else {
+        pops.push(new PopEffect(objects[i].x, objects[i].y));
+        score++;
+        if (score >= winScore) gameWon = true;
       }
-
-      if (gameWon || gameLost) {
-        startGame();
-        return;
-      }
-
-      for (let i = objects.length - 1; i >= 0; i--) {
-        if (objects[i].isClicked(mouseX, mouseY)) {
-          if (objects[i].isBomb) {
-            explosions.push(new Explosion(objects[i].x, objects[i].y));
-            lives--;
-            score = max(0, score - 5);
-            shakeAmount = 10;
-            shakeDuration = 15;
-            if (lives <= 0) gameLost = true;
-          } else {
-            pops.push(new PopEffect(objects[i].x, objects[i].y));
-            score += objects[i].isBonus ? 2 : 1;
-            if (objects[i].isBonus) timer = min(timer + TIME_BONUS, MAX_TIME);
-            if (score >= winScore) gameWon = true;
-          }
-          objects.splice(i, 1);
-          objects.push(new GameObject());
-        }
-      }
+      objects.splice(i, 1);
+      objects.push(new GameObject());
     }
+  }
+}
 
-    function startGame() {
-      objects = [];
-      explosions = [];
-      pops = [];
-      score = 0;
-      lives = 5;
-      timer = MAX_TIME;
-      gameWon = gameLost = false;
-      for (let i = 0; i < totalObjects; i++) objects.push(new GameObject());
-    }
+function startGame() {
+  objects = [];
+  explosions = [];
+  pops = [];
+  score = 0;
+  lives = 5;
+  timer = MAX_TIME;
+  gameWon = gameLost = false;
+  for (let i = 0; i < totalObjects; i++) objects.push(new GameObject());
+}
 
-    function drawButton(x, y, w, h, label) {
-      rectMode(CENTER);
-      fill("#2563eb");
-      stroke("#1e40af");
-      strokeWeight(2);
-      rect(x, y, w, h, 10);
-      noStroke();
-      fill(255);
-      textAlign(CENTER, CENTER);
-      textSize(24);
-      text(label, x, y);
-    }
+function drawButton(x, y, w, h, label) {
+  rectMode(CENTER);
+  fill("#2563eb");
+  rect(x, y, w, h, 10);
+  fill(255);
+  textAlign(CENTER, CENTER);
+  textSize(24);
+  text(label, x, y);
+}
 
-    class GameObject {
-      constructor() { this.reset(); }
-      move() { this.y -= this.speed; if (this.y < -this.r) this.reset(); }
-      show() {
-        noStroke();
-        fill(this.col);
-        ellipse(this.x, this.y, this.r * 2);
-      }
-      isClicked(px, py) {
-        return dist(px, py, this.x, this.y) < this.r;
-      }
-      reset() {
-        this.r = random(20, 40);
-        this.x = random(this.r, width - this.r);
-        this.y = random(height + this.r, height + 200);
-        this.speed = random(1, 3);
-        this.isBomb = random(1) < 0.2;
-        this.isBonus = false;
-        this.col = this.isBomb
-          ? color(255, 50, 50)
-          : color(random(100,255), random(100,255), random(100,255), 180);
-      }
-    }
+function displayLoseScreen() {
+  background(20, 20, 40);
+  textAlign(CENTER);
+  fill(255, 80, 80);
+  textSize(36);
+  text("You hit all 5 bombs!", width/2, height/2 - 50);
+  fill(255);
+  textSize(22);
+  text(`Final Score: ${score}`, width/2, height/2 - 10);
+  drawButton(width/2, height/2 + 40, 220, 60, "PLAY AGAIN");
+}
 
-    class Explosion {
-      constructor(x, y) { this.x = x; this.y = y; this.frames = 0; }
-      update() {
-        this.frames++;
-        noStroke();
-        fill(255, 150, 0, 200 - this.frames * 15);
-        ellipse(this.x, this.y, this.frames * 6);
-        return this.frames > 12;
-      }
-    }
+function displayWinScreen() {
+  background(20, 40, 30);
+  textAlign(CENTER);
+  fill(100, 255, 150);
+  textSize(40);
+  text("🎉 You won!", width/2, height/2 - 50);
+  fill(255);
+  textSize(22);
+  text(`Final Score: ${score}`, width/2, height/2 - 10);
+  drawButton(width/2, height/2 + 40, 220, 60, "PLAY AGAIN");
+}
 
-    class PopEffect {
-      constructor(x, y) { this.x = x; this.y = y; this.frames = 0; }
-      update() {
-        this.frames++;
-        noFill();
-        stroke(255, 255 - this.frames * 20);
-        ellipse(this.x, this.y, this.frames * 3);
-        return this.frames > 10;
-      }
-    }
-  </script>
+class GameObject {
+  constructor() { this.reset(); }
+  move() { this.y -= this.speed; if (this.y < -this.r) this.reset(); }
+  show() { noStroke(); fill(this.col); ellipse(this.x, this.y, this.r * 2); }
+  isClicked(px, py) { return dist(px, py, this.x, this.y) < this.r; }
+  reset() {
+    this.r = random(20, 40);
+    this.x = random(this.r, width - this.r);
+    this.y = random(height + this.r, height + 200);
+    this.speed = random(1, 3);
+    this.isBomb = random(1) < 0.2;
+    this.col = this.isBomb ? color(255,50,50) : color(random(100,255),random(100,255),random(100,255),180);
+  }
+}
+
+class Explosion {
+  constructor(x, y) { this.x = x; this.y = y; this.frames = 0; }
+  update() {
+    this.frames++;
+    noStroke();
+    fill(255, 150, 0, 200 - this.frames * 15);
+    ellipse(this.x, this.y, this.frames * 6);
+    return this.frames > 12;
+  }
+}
+
+class PopEffect {
+  constructor(x, y) { this.x = x; this.y = y; this.frames = 0; }
+  update() {
+    this.frames++;
+    noFill();
+    stroke(255, 255 - this.frames * 20);
+    ellipse(this.x, this.y, this.frames * 3);
+    return this.frames > 10;
+  }
+}
+</script>
 
 </body>
 </html>
