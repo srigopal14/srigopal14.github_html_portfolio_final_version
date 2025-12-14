@@ -1,21 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- =========================
+       Meta & Title
+  ========================== -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DIY p5.js Self Portrait | Sriya Gopalan</title>
 
+  <!-- =========================
+       External Stylesheets
+  ========================== -->
   <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap"
+    rel="stylesheet"
+  >
 
-  <!-- p5.js -->
+  <!-- p5.js Library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
 
+  <!-- =========================
+       Custom Styles
+  ========================== -->
   <style>
-    html { scroll-behavior: smooth; }
+    /* =========================
+       Base Styles
+    ========================== */
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       font-family: 'Inter', sans-serif;
@@ -26,140 +46,173 @@
       color: #000;
     }
 
-    /* Header */
+    /* =========================
+       Header
+    ========================== */
     .project-header {
       background-color: #1b3a6b;
-      color: white;
+      color: #ffffff;
       text-align: center;
       padding: 5rem 0;
     }
+
     .project-header h1 {
-      font-size: 3rem; /* matches Axis Music Logos display-4 */
+      font-size: 3rem;
       font-weight: 800;
       margin-bottom: 0.5rem;
     }
+
     .project-header p {
-      font-size: 1.25rem; /* matches lead text */
+      font-size: 1.25rem;
       opacity: 0.75;
     }
 
-    /* Back navigation */
+    /* =========================
+       Back Navigation
+    ========================== */
     .nav-back {
-      background-color: #000;
+      background-color: #000000;
       text-align: center;
       padding: 1rem 0;
     }
+
     .nav-back a {
-      color: white;
+      color: #ffffff;
       text-decoration: none;
       font-weight: 500;
-      font-size: 1rem; /* matches Axis Music back link size */
+      font-size: 1rem;
       display: inline-block;
       padding: 0.5rem 1rem;
       border-radius: 0.5rem;
-      transition: color 0.3s, transform 0.3s;
+      transition: color 0.3s ease, transform 0.3s ease;
     }
+
     .nav-back a:hover {
       color: #1b3a6b;
       transform: scale(1.05);
     }
 
-    /* Project card */
+    /* =========================
+       Project Card
+    ========================== */
     .project-section {
       background-color: #ffffff;
       border-radius: 2rem;
-      box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
       padding: 2rem;
       max-width: 900px;
       margin: 3rem auto;
     }
 
-    /* Titles */
+    /* =========================
+       Typography
+    ========================== */
     .project-title {
       color: #1b3a6b;
       font-weight: 800;
-      font-size: 2rem; /* matches Axis Music section title */
+      font-size: 2rem;
       text-align: center;
       margin-bottom: 1.5rem;
     }
 
-    /* Instructions / description */
-    .instructions ul, .instructions p {
+    .instructions ul,
+    .instructions p {
       padding-left: 1.5rem;
       color: #000;
       font-weight: 500;
-      font-size: 1rem; /* matches Axis Music body text */
+      font-size: 1rem;
     }
+
     .instructions li {
       margin-bottom: 0.5rem;
     }
 
-    /* Canvas */
+    /* =========================
+       Canvas Styling
+    ========================== */
     #portrait-holder canvas {
-      border-radius: 0.75rem;
       display: block;
       margin: 1.5rem auto;
       max-width: 100%;
       height: auto;
+      border-radius: 0.75rem;
     }
 
-    /* Footer */
+    /* =========================
+       Footer
+    ========================== */
     footer {
       background-color: #343a40;
-      color: white;
+      color: #ffffff;
       text-align: center;
       padding: 1.5rem 0;
       font-size: 1rem;
     }
   </style>
 </head>
+
 <body>
 
-  <!-- Header -->
+  <!-- =========================
+       Header
+  ========================== -->
   <header class="project-header">
     <h1>DIY p5.js Self Portrait</h1>
     <p>Interactive Self Portrait</p>
   </header>
 
-  <!-- Back navigation -->
-  <div class="nav-back">
+  <!-- =========================
+       Back Navigation
+  ========================== -->
+  <nav class="nav-back">
     <a href="../index.html#projects">← Back to Portfolio</a>
-  </div>
+  </nav>
 
-  <!-- Main content -->
+  <!-- =========================
+       Main Content
+  ========================== -->
   <main class="project-section">
     <h2 class="project-title">Approach</h2>
-    <div class="instructions">
+
+    <section class="instructions">
       <ul>
-        <li>For the assignment called, "Code as Art", I used p5.js to create my self portrait.  To impliment my self portrait, I creates sections for head, hair, braids, and sleeves.  
-          I created x and y dimensions for each section and used shapes for circles, triangles, ovals, and rectangles.
-          For the face, I defined a function to draw the face with:
-          - oval: head, locks, ears, neck, eyes
-          - circle: nostrils, braids, earrings, eyeballs in the center of the eyes
-          - stroke: eyebrows
-          - semicricle: lower and upper lips, top of the hair
-          - triangle: nose and the collar
-          - trapezoid: different lengths for the x value, y value, and the height</li>
+        <li>
+          For the assignment <strong>"Code as Art"</strong>, I used p5.js to create a self portrait.
+          I structured the portrait into sections for the head, hair, braids, and sleeves using
+          geometric shapes such as circles, ovals, triangles, rectangles, and custom vertices.
+        </li>
       </ul>
-    </div>
+    </section>
+
+    <!-- Canvas Holder -->
     <div id="portrait-holder"></div>
   </main>
 
-  <!-- Footer -->
+  <!-- =========================
+       Footer
+  ========================== -->
   <footer>
     © 2025 Sriya Gopalan — All Rights Reserved.
   </footer>
 
-  <!-- p5.js Sketch -->
+  <!-- =========================
+       p5.js Sketch
+  ========================== -->
   <script>
+    /* =========================
+       Setup
+    ========================== */
     function setup() {
-      let canvas = createCanvas(600, 600);
+      const canvas = createCanvas(600, 600);
       canvas.parent('portrait-holder');
       background(240);
       angleMode(DEGREES);
       drawSelfPortrait();
     }
 
+    /* =========================
+       Portrait Controller
+    ========================== */
     function drawSelfPortrait() {
       drawBraid();
       drawShirt();
@@ -167,6 +220,9 @@
       drawFace();
     }
 
+    /* =========================
+       Face Components
+    ========================== */
     function drawFace() {
       drawEars();
       drawHead();
@@ -178,57 +234,141 @@
       drawEarrings();
     }
 
+    /* =========================
+       Hair & Braid
+    ========================== */
     function drawBraid() {
-      let braidX = 310, braidY = 230;
-      let braidSegments = 8, braidWidth = 45, braidHeight = 28;
-      let taper = 0.9, spacing = 22, sway = 8;
-      fill("#6D3327"); noStroke();
+      let braidX = 310;
+      let braidY = 230;
+      let braidSegments = 8;
+      let braidWidth = 45;
+      let braidHeight = 28;
+      let taper = 0.9;
+      let spacing = 22;
+      let sway = 8;
+
+      fill("#6D3327");
+      noStroke();
+
       for (let i = 0; i < braidSegments; i++) {
         let y = braidY + i * spacing;
         let w = braidWidth * pow(taper, i);
-        let h = braidHeight;
+
         if (i % 2 === 0) {
-          ellipse(braidX - sway, y, w, h);
-          ellipse(braidX + sway, y + spacing / 2, w * 0.9, h);
+          ellipse(braidX - sway, y, w, braidHeight);
+          ellipse(braidX + sway, y + spacing / 2, w * 0.9, braidHeight);
         } else {
-          ellipse(braidX + sway, y, w, h);
-          ellipse(braidX - sway, y + spacing / 2, w * 0.9, h);
+          ellipse(braidX + sway, y, w, braidHeight);
+          ellipse(braidX - sway, y + spacing / 2, w * 0.9, braidHeight);
         }
       }
-      fill("#333"); ellipse(braidX, braidY + braidSegments * spacing + 5, 20, 15);
+
+      fill("#333");
+      ellipse(braidX, braidY + braidSegments * spacing + 5, 20, 15);
     }
 
-    function drawEars() { fill("#C9A270"); noStroke(); arc(320, 250, 30, 50, -90, 90, CHORD); arc(180, 250, 30, 50, 90, 270, CHORD); }
-    function drawEarrings() { fill("#D6B636"); circle(180, 280, 15); circle(320, 280, 15); }
-    function drawHead() { fill("#C9A270"); noStroke(); ellipse(250, 250, 150, 180); }
-    function drawHair() { fill("#6D3327"); noStroke(); arc(250, 215, 141, 141, 180, 360); ellipse(180, 240, 20, 60); ellipse(320, 240, 20, 60); }
-    function drawEyebrows() { noFill(); stroke("#6D3327"); strokeWeight(3); arc(210, 228, 45, 15, 210, 330); arc(290, 228, 45, 15, 210, 330); }
-    function drawEyes() { fill(255); stroke(0); strokeWeight(2); ellipse(210, 232, 20, 12); ellipse(290, 232, 20, 12); fill(0); noStroke(); ellipse(210, 232, 8, 8); ellipse(290, 232, 8, 8); }
-    function drawNose() { fill("#A78357"); noStroke(); triangle(245, 260, 255, 260, 250, 285); ellipse(245, 288, 6, 4); ellipse(255, 288, 6, 4); }
-    function drawMouth() { fill("#E00000"); noStroke(); arc(250, 310, 50, 15, 0, 180); arc(250, 309, 45, 10, 180, 360); }
-    function drawNeck() { fill("#C9A270"); noStroke(); rectMode(CENTER); rect(250, 350, 40, 50, 20); }
+    function drawHair() {
+      fill("#6D3327");
+      noStroke();
+      arc(250, 215, 141, 141, 180, 360);
+      ellipse(180, 240, 20, 60);
+      ellipse(320, 240, 20, 60);
+    }
+
+    /* =========================
+       Facial Features
+    ========================== */
+    function drawHead() {
+      fill("#C9A270");
+      noStroke();
+      ellipse(250, 250, 150, 180);
+    }
+
+    function drawEars() {
+      fill("#C9A270");
+      noStroke();
+      arc(320, 250, 30, 50, -90, 90, CHORD);
+      arc(180, 250, 30, 50, 90, 270, CHORD);
+    }
+
+    function drawEyebrows() {
+      noFill();
+      stroke("#6D3327");
+      strokeWeight(3);
+      arc(210, 228, 45, 15, 210, 330);
+      arc(290, 228, 45, 15, 210, 330);
+    }
+
+    function drawEyes() {
+      fill(255);
+      stroke(0);
+      strokeWeight(2);
+      ellipse(210, 232, 20, 12);
+      ellipse(290, 232, 20, 12);
+
+      fill(0);
+      noStroke();
+      ellipse(210, 232, 8, 8);
+      ellipse(290, 232, 8, 8);
+    }
+
+    function drawNose() {
+      fill("#A78357");
+      noStroke();
+      triangle(245, 260, 255, 260, 250, 285);
+      ellipse(245, 288, 6, 4);
+      ellipse(255, 288, 6, 4);
+    }
+
+    function drawMouth() {
+      fill("#E00000");
+      noStroke();
+      arc(250, 310, 50, 15, 0, 180);
+      arc(250, 309, 45, 10, 180, 360);
+    }
+
+    function drawEarrings() {
+      fill("#D6B636");
+      circle(180, 280, 15);
+      circle(320, 280, 15);
+    }
+
+    /* =========================
+       Neck & Shirt
+    ========================== */
+    function drawNeck() {
+      fill("#C9A270");
+      noStroke();
+      rectMode(CENTER);
+      rect(250, 350, 40, 50, 20);
+    }
 
     function drawShirt() {
-      fill("#2E86AB"); noStroke();
+      fill("#2E86AB");
+      noStroke();
+
       beginShape();
-      vertex(230, 355); 
-      bezierVertex(220, 420, 220, 520, 200, 550); 
-      vertex(300, 550); 
-      bezierVertex(280, 520, 280, 420, 270, 355); 
+      vertex(230, 355);
+      bezierVertex(220, 420, 220, 520, 200, 550);
+      vertex(300, 550);
+      bezierVertex(280, 520, 280, 420, 270, 355);
       endShape(CLOSE);
+
       beginShape();
-      vertex(230, 355); 
-      bezierVertex(200, 370, 170, 420, 185, 470); 
+      vertex(230, 355);
+      bezierVertex(200, 370, 170, 420, 185, 470);
       vertex(200, 470);
-      bezierVertex(190, 430, 210, 380, 230, 355); 
+      bezierVertex(190, 430, 210, 380, 230, 355);
       endShape(CLOSE);
+
       beginShape();
-      vertex(270, 355); 
-      bezierVertex(300, 370, 330, 420, 315, 470); 
+      vertex(270, 355);
+      bezierVertex(300, 370, 330, 420, 315, 470);
       vertex(300, 470);
-      bezierVertex(310, 430, 290, 380, 270, 355); 
+      bezierVertex(310, 430, 290, 380, 270, 355);
       endShape(CLOSE);
-      fill("#1B4F72"); 
+
+      fill("#1B4F72");
       triangle(235, 355, 265, 355, 250, 380);
     }
   </script>
