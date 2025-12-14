@@ -73,15 +73,28 @@
       text-align: center;
     }
 
-    /* Game Instructions */
+    /* Project Title / "How to Play" */
+    .project-title {
+      color: #1b3a6b; /* same blue as header */
+      font-weight: 800;
+      font-size: 2rem;
+      text-align: center;
+      margin: 2rem 0 1.5rem;
+    }
+
+    /* Game Instructions List */
     .pop-list {
       text-align: left;
       padding-left: 1.5rem;
       font-weight: 500;
+      font-size: 1rem;
       color: #000;
     }
     .pop-list li {
       margin-bottom: 0.75rem;
+    }
+    .pop-list strong {
+      font-weight: 700; /* bubble types bold */
     }
 
     /* Game Canvas */
@@ -121,11 +134,11 @@
 
     <h2 class="project-title">How to Play</h2>
     <ul class="pop-list">
-      <li>✨ Sparkle bubble = +3 points</li>
-      <li>⏱️ Time bubble = +10 seconds</li>
-      <li>🌟 Sparkle + Time bubble = +3 points +10 seconds</li>
-      <li>Regular bubble = +1 point</li>
-      <li>💣 Bombs remove lives</li>
+      <li><strong>✨ Sparkle bubble</strong> = +3 points</li>
+      <li><strong>⏱️ Time bubble</strong> = +10 seconds</li>
+      <li><strong>🌟 Sparkle + Time bubble</strong> = +3 points +10 seconds</li>
+      <li><strong>Regular bubble</strong> = +1 point</li>
+      <li><strong>💣 Bombs</strong> remove lives</li>
     </ul>
 
     <div id="game-canvas"></div>
