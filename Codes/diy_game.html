@@ -1,295 +1,385 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DIY Bubble Game | Sriya Gopalan</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DIY Bubble Game | Sriya Gopalan</title>
 
-<!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<style>
-body {
-  font-family: 'Inter', sans-serif;
-  background: #f8f9fa;
-}
-#game-canvas canvas {
-  display: block;
-  margin: auto;
-  border-radius: 12px;
-}
-.pop-list li {
-  margin-bottom: 0.5rem;
-}
-</style>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+  <!-- p5.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+
+  <style>
+    /* Base Styles */
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+      color: #000;
+    }
+
+    /* Header */
+    .project-header {
+      background-color: #1b3a6b;
+      color: #ffffff;
+      text-align: center;
+      padding: 5rem 0;
+    }
+    .project-header h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+    .project-header p {
+      font-size: 1.25rem;
+      opacity: 0.75;
+    }
+
+    /* Back Navigation */
+    .nav-back {
+      background-color: #000000;
+      text-align: center;
+      padding: 1rem 0;
+    }
+    .nav-back a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+    .nav-back a:hover {
+      color: #1b3a6b;
+      transform: scale(1.05);
+    }
+
+    /* Project Section */
+    .project-section {
+      background-color: #ffffff;
+      border-radius: 2rem;
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+      padding: 2rem;
+      max-width: 900px;
+      margin: 3rem auto;
+      text-align: center;
+    }
+
+    /* Game Instructions */
+    .pop-list {
+      text-align: left;
+      padding-left: 1.5rem;
+      font-weight: 500;
+      color: #000;
+    }
+    .pop-list li {
+      margin-bottom: 0.75rem;
+    }
+
+    /* Game Canvas */
+    #game-canvas canvas {
+      display: block;
+      margin: 2rem auto;
+      border-radius: 1rem;
+      box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.2);
+    }
+
+    /* Footer */
+    footer {
+      background-color: #343a40;
+      color: #ffffff;
+      text-align: center;
+      padding: 1.5rem 0;
+      font-size: 1rem;
+    }
+  </style>
 </head>
 
 <body>
 
-<header class="bg-primary text-white text-center py-5">
-  <div class="container">
-    <h1 class="display-4 fw-bold">DIY Bubble Game</h1>
-    <p class="lead opacity-75">Pop bubbles — avoid bombs!</p>
-  </div>
-</header>
+  <!-- Header -->
+  <header class="project-header">
+    <h1>DIY Bubble Game</h1>
+    <p>Pop bubbles — avoid bombs!</p>
+  </header>
 
-<main class="container my-5">
-  <div class="card shadow p-4">
-    <div class="card-body">
-      <h4 class="card-title mb-3">How to Play:</h4>
-      <ul class="pop-list">
-        <li>✨ Sparkle bubble = +3 points</li>
-        <li>⏱️ Time bubble = +10 seconds</li>
-        <li>🌟 Sparkle + Time bubble = +3 points +10 seconds</li>
-        <li>Regular bubble = +1 point</li>
-        <li>💣 Bombs remove lives</li>
-      </ul>
-    </div>
-  </div>
-  
-  <div id="game-canvas" class="my-4"></div>
-</main>
+  <!-- Back Navigation -->
+  <nav class="nav-back">
+    <a href="../index.html#projects">← Back to Portfolio</a>
+  </nav>
 
-<footer class="bg-dark text-white text-center py-3">
-  © 2025 Sriya Gopalan
-</footer>
+  <!-- Main Content -->
+  <main class="project-section">
 
-<script>
-let objects=[], explosions=[], pops=[];
-let score=0, lives=5, totalObjects=15;
-let winScore=100, timer=90;
-const MAX_TIME=120;
-const BONUS_TIME=10;
+    <h2 class="project-title">How to Play</h2>
+    <ul class="pop-list">
+      <li>✨ Sparkle bubble = +3 points</li>
+      <li>⏱️ Time bubble = +10 seconds</li>
+      <li>🌟 Sparkle + Time bubble = +3 points +10 seconds</li>
+      <li>Regular bubble = +1 point</li>
+      <li>💣 Bombs remove lives</li>
+    </ul>
 
-let gameStarted=false, gameWon=false, gameLost=false;
+    <div id="game-canvas"></div>
+  </main>
 
-function setup(){
-  let c=createCanvas(600,400);
-  c.parent("game-canvas");
-}
+  <!-- Footer -->
+  <footer>
+    © 2025 Sriya Gopalan — All Rights Reserved.
+  </footer>
 
-function draw(){
-  background(30,30,50);
+  <!-- =========================
+       Game Script
+  ========================== -->
+  <script>
+    let objects=[], explosions=[], pops=[];
+    let score=0, lives=5, totalObjects=15;
+    let winScore=100, timer=90;
+    const MAX_TIME=120;
+    const BONUS_TIME=10;
 
-  if(!gameStarted){
-    drawButton(width/2,height/2,180,60,"PLAY");
-    return;
-  }
+    let gameStarted=false, gameWon=false, gameLost=false;
 
-  if(!gameWon && !gameLost){
-    timer -= deltaTime/1000;
-    if(timer<=0) gameLost=true;
-  }
-
-  if(gameWon){ displayWinScreen(); return; }
-  if(gameLost){ displayLoseScreen(); return; }
-
-  // HUD background
-  noStroke();
-  fill(0, 0, 0, 150);
-  rect(30, 10, 200, 70, 10);
-
-  // HUD text
-  fill(255);
-  textSize(16);
-  textAlign(LEFT);
-  text(`Score: ${score}`, 40, 30);
-  text(`Lives: ${lives}`, 40, 50);
-  text(`Time: ${ceil(timer)}s`, 40, 70);
-
-  for(let o of objects){ o.move(); o.show(); }
-  explosions = explosions.filter(e=>!e.update());
-  pops = pops.filter(p=>!p.update());
-}
-
-function mousePressed(){
-  if(!gameStarted){
-    if(overButton(width/2,height/2,180,60)){
-      gameStarted=true;
-      startGame();
-    }
-    return;
-  }
-
-  if(gameWon || gameLost){
-    if(overButton(width/2,height/2+40,220,60)){
-      startGame();
-    }
-    return;
-  }
-
-  for(let i=objects.length-1;i>=0;i--){
-    if(objects[i].clicked(mouseX,mouseY)){
-      objects[i].onClick();
-      objects.splice(i,1);
-      objects.push(new GameObject());
-      break;
-    }
-  }
-}
-
-function startGame(){
-  objects=[];
-  explosions=[];
-  pops=[];
-  score=0;
-  lives=5;
-  timer=90;
-  gameWon=gameLost=false;
-  for(let i=0;i<totalObjects;i++) objects.push(new GameObject());
-}
-
-function drawButton(x,y,w,h,label){
-  rectMode(CENTER);
-  fill("#0d6efd");
-  rect(x,y,w,h,12);
-  fill(255);
-  textAlign(CENTER,CENTER);
-  textSize(24);
-  text(label,x,y);
-}
-
-function overButton(x,y,w,h){
-  return mouseX>x-w/2 && mouseX<x+w/2 && mouseY>y-h/2 && mouseY<y+h/2;
-}
-
-function displayLoseScreen(){
-  background(20);
-  fill(255,80,80);
-  textSize(34);
-  textAlign(CENTER);
-  text("You hit all 5 bombs!",width/2,height/2-40);
-  fill(255);
-  textSize(22);
-  text(`Final Score: ${score}`,width/2,height/2);
-  drawButton(width/2,height/2+40,220,60,"PLAY AGAIN");
-}
-
-function displayWinScreen(){
-  background(20,40,30);
-  fill(120,255,180);
-  textSize(38);
-  textAlign(CENTER);
-  text("🎉 You won!",width/2,height/2-40);
-  fill(255);
-  textSize(22);
-  text(`Final Score: ${score}`,width/2,height/2);
-  drawButton(width/2,height/2+40,220,60,"PLAY AGAIN");
-}
-
-class GameObject{
-  constructor(){ this.reset(); }
-
-  reset(){
-    this.r=random(20,35);
-    this.x=random(this.r,width-this.r);
-    this.y=random(height+this.r,height+200);
-    this.speed=random(1,3);
-
-    this.isBomb=random()<0.2; 
-
-    let type=random();
-    if(this.isBomb){
-      this.type="bomb";
-    } else if(type<0.25){
-      this.type="regular";
-    } else if(type<0.5){
-      this.type="sparkle";
-    } else if(type<0.75){
-      this.type="time";
-    } else{
-      this.type="sparkleTime";
+    function setup(){
+      let c=createCanvas(600,400);
+      c.parent("game-canvas");
     }
 
-    this.col=color(random(150,255), random(150,255), random(150,255), 200);
-  }
+    function draw(){
+      background(30,30,50);
 
-  move(){
-    this.y-=this.speed;
-    if(this.y<-this.r) this.reset();
-  }
+      if(!gameStarted){
+        drawButton(width/2,height/2,180,60,"PLAY");
+        return;
+      }
 
-  show(){
-    if(this.isBomb){
-      drawBomb(this.x,this.y,this.r);
-    } else {
+      if(!gameWon && !gameLost){
+        timer -= deltaTime/1000;
+        if(timer<=0) gameLost=true;
+      }
+
+      if(gameWon){ displayWinScreen(); return; }
+      if(gameLost){ displayLoseScreen(); return; }
+
+      // HUD
       noStroke();
-      fill(this.col);
-      ellipse(this.x,this.y,this.r*2);
-      if(this.type=="sparkle" || this.type=="sparkleTime"){
-        drawSparkle(this.x,this.y,this.r);
+      fill(0, 0, 0, 150);
+      rect(20, 10, 210, 70, 12);
+
+      fill(255);
+      textSize(16);
+      textAlign(LEFT);
+      text(`Score: ${score}`, 30, 30);
+      text(`Lives: ${lives}`, 30, 50);
+      text(`Time: ${ceil(timer)}s`, 30, 70);
+
+      for(let o of objects){ o.move(); o.show(); }
+      explosions = explosions.filter(e=>!e.update());
+      pops = pops.filter(p=>!p.update());
+    }
+
+    function mousePressed(){
+      if(!gameStarted){
+        if(overButton(width/2,height/2,180,60)){
+          gameStarted=true;
+          startGame();
+        }
+        return;
       }
-      if(this.type=="time" || this.type=="sparkleTime"){
-        fill(255,255,0,150);
-        ellipse(this.x,this.y,this.r/2);
+
+      if(gameWon || gameLost){
+        if(overButton(width/2,height/2+40,220,60)){
+          startGame();
+        }
+        return;
+      }
+
+      for(let i=objects.length-1;i>=0;i--){
+        if(objects[i].clicked(mouseX,mouseY)){
+          objects[i].onClick();
+          objects.splice(i,1);
+          objects.push(new GameObject());
+          break;
+        }
       }
     }
-  }
 
-  clicked(px,py){
-    return dist(px,py,this.x,this.y)<this.r;
-  }
-
-  onClick(){
-    if(this.isBomb){
-      explosions.push(new Explosion(this.x,this.y));
-      lives--;
-      if(lives<=0) gameLost=true;
-    } else {
-      pops.push(new PopEffect(this.x,this.y));
-      if(this.type=="regular") score +=1;
-      if(this.type=="sparkle") score +=3;
-      if(this.type=="time") timer=min(timer+BONUS_TIME, MAX_TIME);
-      if(this.type=="sparkleTime"){
-        score +=3;
-        timer=min(timer+BONUS_TIME, MAX_TIME);
-      }
-      if(score>=winScore) gameWon=true;
+    function startGame(){
+      objects=[];
+      explosions=[];
+      pops=[];
+      score=0;
+      lives=5;
+      timer=90;
+      gameWon=gameLost=false;
+      for(let i=0;i<totalObjects;i++) objects.push(new GameObject());
     }
-  }
-}
 
-function drawSparkle(x,y,r){
-  stroke(255,255,150);
-  for(let a=0;a<TWO_PI;a+=PI/4){
-    let d=r+sin(frameCount*0.2)*4;
-    line(x,y,x+cos(a)*d,y+sin(a)*d);
-  }
-}
+    function drawButton(x,y,w,h,label){
+      rectMode(CENTER);
+      fill("#0d6efd");
+      stroke(255);
+      strokeWeight(2);
+      rect(x,y,w,h,16);
+      noStroke();
+      fill(255);
+      textAlign(CENTER,CENTER);
+      textSize(24);
+      text(label,x,y);
+    }
 
-function drawBomb(x,y,r){
-  fill(40);
-  ellipse(x,y,r*2);
-  stroke(200);
-  line(x,y-r,x,y-r-10);
-  fill(255,150,0);
-  ellipse(x,y-r-12,6+sin(frameCount*0.3)*2);
-}
+    function overButton(x,y,w,h){
+      return mouseX>x-w/2 && mouseX<x+w/2 && mouseY>y-h/2 && mouseY<y+h/2;
+    }
 
-class Explosion{
-  constructor(x,y){ this.x=x; this.y=y; this.f=0; }
-  update(){
-    this.f++;
-    fill(255,150,0,200-this.f*15);
-    noStroke();
-    ellipse(this.x,this.y,this.f*6);
-    return this.f>12;
-  }
-}
+    function displayLoseScreen(){
+      background(20);
+      fill(255,80,80);
+      textSize(34);
+      textAlign(CENTER);
+      text("You hit all 5 bombs!",width/2,height/2-40);
+      fill(255);
+      textSize(22);
+      text(`Final Score: ${score}`,width/2,height/2);
+      drawButton(width/2,height/2+40,220,60,"PLAY AGAIN");
+    }
 
-class PopEffect{
-  constructor(x,y){ this.x=x; this.y=y; this.f=0; }
-  update(){
-    this.f++;
-    stroke(255,255-this.f*20);
-    noFill();
-    ellipse(this.x,this.y,this.f*4);
-    return this.f>10;
-  }
-}
-</script>
+    function displayWinScreen(){
+      background(20,40,30);
+      fill(120,255,180);
+      textSize(38);
+      textAlign(CENTER);
+      text("🎉 You won!",width/2,height/2-40);
+      fill(255);
+      textSize(22);
+      text(`Final Score: ${score}`,width/2,height/2);
+      drawButton(width/2,height/2+40,220,60,"PLAY AGAIN");
+    }
+
+    class GameObject{
+      constructor(){ this.reset(); }
+
+      reset(){
+        this.r=random(20,35);
+        this.x=random(this.r,width-this.r);
+        this.y=random(height+this.r,height+200);
+        this.speed=random(1,3);
+
+        this.isBomb=random()<0.2; 
+
+        let type=random();
+        if(this.isBomb){
+          this.type="bomb";
+        } else if(type<0.25){
+          this.type="regular";
+        } else if(type<0.5){
+          this.type="sparkle";
+        } else if(type<0.75){
+          this.type="time";
+        } else{
+          this.type="sparkleTime";
+        }
+
+        this.col=[random(150,255), random(150,255), random(150,255)];
+      }
+
+      move(){
+        this.y-=this.speed;
+        if(this.y<-this.r) this.reset();
+      }
+
+      show(){
+        if(this.isBomb){
+          drawBomb(this.x,this.y,this.r);
+        } else {
+          noStroke();
+          for(let i=0;i<this.r;i++){
+            fill(this.col[0], this.col[1], this.col[2], map(i,0,this.r,50,200));
+            ellipse(this.x-i*0.3,this.y-i*0.3,(this.r-i)*2);
+          }
+          if(this.type=="sparkle" || this.type=="sparkleTime"){
+            drawSparkle(this.x,this.y,this.r);
+          }
+          if(this.type=="time" || this.type=="sparkleTime"){
+            fill(255,255,0,180);
+            ellipse(this.x,this.y,this.r/2);
+          }
+        }
+      }
+
+      clicked(px,py){
+        return dist(px,py,this.x,this.y)<this.r;
+      }
+
+      onClick(){
+        if(this.isBomb){
+          explosions.push(new Explosion(this.x,this.y));
+          lives--;
+          if(lives<=0) gameLost=true;
+        } else {
+          pops.push(new PopEffect(this.x,this.y));
+          if(this.type=="regular") score +=1;
+          if(this.type=="sparkle") score +=3;
+          if(this.type=="time") timer=min(timer+BONUS_TIME, MAX_TIME);
+          if(this.type=="sparkleTime"){
+            score +=3;
+            timer=min(timer+BONUS_TIME, MAX_TIME);
+          }
+          if(score>=winScore) gameWon=true;
+        }
+      }
+    }
+
+    function drawSparkle(x,y,r){
+      stroke(255,255,150);
+      strokeWeight(2);
+      for(let a=0;a<TWO_PI;a+=PI/4){
+        let d=r+sin(frameCount*0.2)*4;
+        line(x,y,x+cos(a)*d,y+sin(a)*d);
+      }
+    }
+
+    function drawBomb(x,y,r){
+      fill(40);
+      stroke(255);
+      strokeWeight(2);
+      ellipse(x,y,r*2);
+      stroke(200);
+      line(x,y-r,x,y-r-10);
+      fill(255,150,0);
+      ellipse(x,y-r-12,6+sin(frameCount*0.3)*2);
+    }
+
+    class Explosion{
+      constructor(x,y){ this.x=x; this.y=y; this.f=0; }
+      update(){
+        this.f++;
+        fill(255,150,0,200-this.f*15);
+        noStroke();
+        ellipse(this.x,this.y,this.f*6);
+        return this.f>12;
+      }
+    }
+
+    class PopEffect{
+      constructor(x,y){ this.x=x; this.y=y; this.f=0; }
+      update(){
+        this.f++;
+        stroke(255,255-this.f*20);
+        noFill();
+        ellipse(this.x,this.y,this.f*4);
+        return this.f>10;
+      }
+    }
+  </script>
 
 </body>
 </html>
